@@ -1,9 +1,9 @@
 package packbarbestial;
 
-public class Zebra extends Karta {
+public class Foka extends Karta {
 
-	public Zebra(int pIndarra, boolean pErrekurrente) {
-		super(7, true);
+	public Foka(int pIndarra, boolean pErrekurrente) {
+		super(6, false);
 		// TODO Auto-generated constructor stub
 	}
 

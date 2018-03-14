@@ -6,4 +6,10 @@ public class Jirafa extends Karta{
 		super(8,true);
 		System.out.println("funsiona?");
 	}
+
+	@Override
+	public void egikaritu() {
+		// TODO Auto-generated method stub
+		
+	}
 }

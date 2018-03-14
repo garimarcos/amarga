@@ -10,7 +10,7 @@ public abstract class Karta {
 		this.errekurrente=pErrekurrente;
 	}
 	
-	public void egikaritu() {}
+	public abstract void egikaritu();
 	
 	
 }

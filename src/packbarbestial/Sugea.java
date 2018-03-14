@@ -7,4 +7,10 @@ public class Sugea extends Karta {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void egikaritu() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

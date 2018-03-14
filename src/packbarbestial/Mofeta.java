@@ -1,19 +1,15 @@
-/**
- * 
- */
 package packbarbestial;
 
+public class Mofeta extends Karta {
 
-public class Lehoia extends Karta {
-
-	public Lehoia() {
-		super(12,false);
+	public Mofeta(int pIndarra, boolean pErrekurrente) {
+		super(1, false);
 	}
 
 	@Override
 	public void egikaritu() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
