@@ -8,6 +8,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.Color;
 import javax.swing.JMenuItem;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
+import java.awt.GridBagLayout;
 
 public class Hasiera {
 
@@ -42,9 +47,25 @@ public class Hasiera {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setForeground(Color.LIGHT_GRAY);
-		frame.setBounds(100, 100, 450, 300);
+		frame.getContentPane().setLayout(new GridLayout(3,1));
+		
+		JPanel panel_goikoa = new JPanel();
+		frame.getContentPane().add(panel_goikoa);
+		
+		JPanel panel_erdikoa = new JPanel();
+		frame.getContentPane().add(panel_erdikoa);
+		panel_erdikoa.setLayout(new GridLayout(1, 9));
+		
+		JPanel panel_behekoa= new JPanel();
+		frame.getContentPane().add(panel_behekoa);
+		panel_behekoa.setLayout(new GridLayout(1, 8));
+		
+		
+		
+		
+	
+		frame.setBounds(100, 100, 780, 477);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
