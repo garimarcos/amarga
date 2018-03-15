@@ -2,7 +2,7 @@ package packbarbestial;
 
 public class Mofeta extends Karta {
 
-	public Mofeta(int pIndarra, boolean pErrekurrente) {
+	public Mofeta() {
 		super(1, false);
 	}
 

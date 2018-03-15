@@ -12,5 +12,9 @@ public abstract class Karta {
 	
 	public abstract void egikaritu();
 	
+	public int getIndarra(){
+		return indarra;
+	}
+	
 	
 }

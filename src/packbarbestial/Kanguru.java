@@ -2,7 +2,7 @@ package packbarbestial;
 
 public class Kanguru extends Karta {
 
-	public Kanguru(int pIndarra, boolean pErrekurrente) {
+	public Kanguru() {
 		super(3, false);
 	}
 
