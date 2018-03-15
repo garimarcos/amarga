@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import java.awt.Color;
+import javax.swing.JMenuItem;
 
 public class Hasiera {
 
@@ -39,6 +41,7 @@ public class Hasiera {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setForeground(Color.LIGHT_GRAY);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -48,6 +51,9 @@ public class Hasiera {
 		
 		JMenu menu = new JMenu("Fitxategia");
 		menuBar.add(menu);
+		
+		JMenuItem mntmItxi = new JMenuItem("Itxi");
+		menu.add(mntmItxi);
 	}
 
 }

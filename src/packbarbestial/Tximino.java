@@ -2,7 +2,7 @@ package packbarbestial;
 
 public class Tximino extends Karta {
 
-	public Tximino(int pIndarra, boolean pErrekurrente) {
+	public Tximino() {
 		super(4, false);
 	}
 

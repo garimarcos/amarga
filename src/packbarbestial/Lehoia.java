@@ -1,8 +1,4 @@
-/**
- * 
- */
 package packbarbestial;
-
 
 public class Lehoia extends Karta {
 

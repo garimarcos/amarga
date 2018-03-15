@@ -2,9 +2,8 @@ package packbarbestial;
 
 public class Foka extends Karta {
 
-	public Foka(int pIndarra, boolean pErrekurrente) {
+	public Foka() {
 		super(6, false);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

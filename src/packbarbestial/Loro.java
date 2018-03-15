@@ -2,7 +2,7 @@ package packbarbestial;
 
 public class Loro extends Karta {
 
-	public Loro(int pIndarra, boolean pErrekurrente) {
+	public Loro() {
 		super(2, false);
 	}
 

@@ -2,7 +2,7 @@ package packbarbestial;
 
 public class Kameleoi extends Karta {
 
-	public Kameleoi(int pIndarra, boolean pErrekurrente) {
+	public Kameleoi() {
 		super(5, false);
 	}
 
