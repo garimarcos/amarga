@@ -29,10 +29,11 @@ public class Jokalaria {
 			if(!pila[zk-1]){
 				gehituKarta(zk);
 				pila[zk-1]=true;
+				k++;
 			}
 		}
-		for(int i=0;i<5;i++){//Eskua bete arte(5 karta egon behar dira)
-			eskuan.add(hartzeke.pop());			
+		for(int i=0;i<4;i++){//Eskua bete arte(5 karta egon behar dira)
+			eskuan.add(hartzeke.pop());	
 		}
 		
 	}
