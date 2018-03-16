@@ -57,6 +57,33 @@ public class Hasiera {
 		
 		JPanel panel_goikoa = new JPanel();
 		frame.getContentPane().add(panel_goikoa);
+		GridBagLayout gbl_panel_goikoa = new GridBagLayout();
+		gbl_panel_goikoa.columnWidths = new int[]{300, 319, 300, 0};
+		gbl_panel_goikoa.rowHeights = new int[]{0, 120, 0};
+		gbl_panel_goikoa.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_goikoa.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panel_goikoa.setLayout(gbl_panel_goikoa);
+		
+		JLabel barBestial = new JLabel("");
+		barBestial.setIcon(new ImageIcon("resources/barbestial.png"));
+		GridBagConstraints gbc_barBestial = new GridBagConstraints();
+		gbc_barBestial.insets = new Insets(0, 0, 0, 5);
+		gbc_barBestial.gridx = 0;
+		gbc_barBestial.gridy = 1;
+		panel_goikoa.add(barBestial, gbc_barBestial);
+		
+		JLabel titulu = new JLabel("New label");
+		GridBagConstraints gbc_titulu = new GridBagConstraints();
+		gbc_titulu.insets = new Insets(0, 0, 0, 5);
+		gbc_titulu.gridx = 1;
+		gbc_titulu.gridy = 1;
+		panel_goikoa.add(titulu, gbc_titulu);
+		
+		JLabel esLoQueHay = new JLabel("New label");
+		GridBagConstraints gbc_esLoQueHay = new GridBagConstraints();
+		gbc_esLoQueHay.gridx = 2;
+		gbc_esLoQueHay.gridy = 1;
+		panel_goikoa.add(esLoQueHay, gbc_esLoQueHay);
 		
 		JPanel panel_erdikoa = new JPanel();
 		frame.getContentPane().add(panel_erdikoa);
