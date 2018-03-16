@@ -8,13 +8,19 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.Color;
 import javax.swing.JMenuItem;
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.Image;
+
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.GridBagConstraints;
@@ -61,7 +67,20 @@ public class Hasiera {
 		panel_goikoa.setLayout(new GridLayout(1, 3));
 		
 		JLabel barBestial = new JLabel("");
-		barBestial.setIcon(new ImageIcon("F:\\WorkSpace_eclipse\\amarga\\resources\\barBestial---copia1.png"));
+		try {
+			URL url=new URL("https://i.imgur.com/F3xnPNi.png");
+			Image image = ImageIO.read(url);
+			barBestial.setIcon(new ImageIcon(image));
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		//barBestial.setIcon(new ImageIcon("F:\\WorkSpace_eclipse\\amarga\\resources\\barBestial---copia1.png"));
 		barBestial.setHorizontalAlignment(JLabel.CENTER);
 		barBestial.setHorizontalTextPosition(JLabel.CENTER);
 		panel_goikoa.add(barBestial);
