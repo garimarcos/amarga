@@ -101,6 +101,8 @@ public class Hasiera {
 		panel_erdikoa.setLayout(new GridLayout(1, 9));
 		
 		JLabel hutsuneErdEzk = new JLabel("New label");
+		hutsuneErdEzk.setHorizontalAlignment(JLabel.CENTER);
+		hutsuneErdEzk.setHorizontalTextPosition(JLabel.CENTER);
 		panel_erdikoa.add(hutsuneErdEzk);
 		
 		JLabel zerukoAtea = new JLabel("");
@@ -175,6 +177,10 @@ public class Hasiera {
 			}
 		});
 		menu.add(mntmItxi);
+	}
+	
+	private void erdianJarri(){
+		
 	}
 
 }
