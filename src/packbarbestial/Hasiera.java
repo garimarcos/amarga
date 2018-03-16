@@ -56,43 +56,38 @@ public class Hasiera {
 		frame.getContentPane().setLayout(new GridLayout(3,1));
 		
 		JPanel panel_goikoa = new JPanel();
+		panel_goikoa.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel_goikoa);
-		GridBagLayout gbl_panel_goikoa = new GridBagLayout();
-		gbl_panel_goikoa.columnWidths = new int[]{300, 319, 300, 0};
-		gbl_panel_goikoa.rowHeights = new int[]{0, 108, 0};
-		gbl_panel_goikoa.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_goikoa.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		panel_goikoa.setLayout(gbl_panel_goikoa);
+		panel_goikoa.setLayout(new GridLayout(1, 3));
 		
 		JLabel barBestial = new JLabel("");
-		barBestial.setIcon(new ImageIcon("resources/barbestial.png"));
-		GridBagConstraints gbc_barBestial = new GridBagConstraints();
-		gbc_barBestial.insets = new Insets(0, 0, 0, 5);
-		gbc_barBestial.gridx = 0;
-		gbc_barBestial.gridy = 1;
-		panel_goikoa.add(barBestial, gbc_barBestial);
+		barBestial.setIcon(new ImageIcon("F:\\WorkSpace_eclipse\\amarga\\resources\\barBestial---copia1.png"));
+		barBestial.setHorizontalAlignment(JLabel.CENTER);
+		barBestial.setHorizontalTextPosition(JLabel.CENTER);
+		panel_goikoa.add(barBestial);
 		
 		JLabel titulu = new JLabel("New label");
-		GridBagConstraints gbc_titulu = new GridBagConstraints();
-		gbc_titulu.insets = new Insets(0, 0, 0, 5);
-		gbc_titulu.gridx = 1;
-		gbc_titulu.gridy = 1;
-		panel_goikoa.add(titulu, gbc_titulu);
+		panel_goikoa.add(titulu);
 		
-		JLabel esLoQueHay = new JLabel("New label");
-		GridBagConstraints gbc_esLoQueHay = new GridBagConstraints();
-		gbc_esLoQueHay.gridx = 2;
-		gbc_esLoQueHay.gridy = 1;
-		panel_goikoa.add(esLoQueHay, gbc_esLoQueHay);
+		JLabel esLoQueHay = new JLabel("");
+		esLoQueHay.setIcon(new ImageIcon("F:\\WorkSpace_eclipse\\amarga\\resources\\esloquehay---copia1.png"));
+		esLoQueHay.setHorizontalAlignment(JLabel.CENTER);
+		esLoQueHay.setHorizontalTextPosition(JLabel.CENTER);
+		panel_goikoa.add(esLoQueHay);
+		
 		
 		JPanel panel_erdikoa = new JPanel();
+		panel_erdikoa.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel_erdikoa);
 		panel_erdikoa.setLayout(new GridLayout(1, 9));
 		
 		JLabel hutsuneErdEzk = new JLabel("New label");
 		panel_erdikoa.add(hutsuneErdEzk);
 		
-		JLabel zerukoAtea = new JLabel("New label");
+		JLabel zerukoAtea = new JLabel("");
+		zerukoAtea.setIcon(new ImageIcon("F:\\WorkSpace_eclipse\\amarga\\resources\\puertacielo---copia1.png"));
+		zerukoAtea.setHorizontalAlignment(JLabel.CENTER);
+		zerukoAtea.setHorizontalTextPosition(JLabel.CENTER);
 		panel_erdikoa.add(zerukoAtea);
 		
 		JLabel tablero1 = new JLabel("New label");
@@ -110,13 +105,17 @@ public class Hasiera {
 		JLabel tablero5 = new JLabel("New label");
 		panel_erdikoa.add(tablero5);
 		
-		JLabel patada = new JLabel("New label");
+		JLabel patada = new JLabel("");
+		patada.setIcon(new ImageIcon("F:\\WorkSpace_eclipse\\amarga\\resources\\patada---copia1.png"));
+		patada.setHorizontalAlignment(JLabel.CENTER);
+		patada.setHorizontalTextPosition(JLabel.CENTER);
 		panel_erdikoa.add(patada);
 		
 		JLabel hutsuneErdEsk = new JLabel("New label");
 		panel_erdikoa.add(hutsuneErdEsk);
 		
 		JPanel panel_behekoa= new JPanel();
+		panel_behekoa.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel_behekoa);
 		panel_behekoa.setLayout(new GridLayout(1, 7));
 		
