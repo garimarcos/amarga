@@ -49,46 +49,7 @@ public class Jokalaria {
 	}
 	
 	private void gehituKarta(int indarra){//Karta bat eskura gehitzeko metodoa
-		hartzeke.add(KartenBilera.getKartenBilera().getKarta(1));
-		
-		switch (indarra){
-		case 1:
-			hartzeke.add(new Mofeta());
-			break;
-		case 2:
-			hartzeke.add(new Loro());
-			break;
-		case 3:
-			hartzeke.add(new Kanguru());
-			break;
-		case 4:
-			hartzeke.add(new Tximino());
-			break;
-		case 5:
-			hartzeke.add(new Kameleoi());
-			break;
-		case 6:
-			hartzeke.add(new Foka());
-			break;
-		case 7:
-			hartzeke.add(new Zebra());
-			break;
-		case 8:
-			hartzeke.add(new Jirafa());
-			break;
-		case 9:
-			hartzeke.add(new Sugea());
-			break;
-		case 10:
-			hartzeke.add(new Krokodiloa());
-			break;
-		case 11:
-			hartzeke.add(new Hipopotamo());
-			break;
-		case 12:
-			hartzeke.add(new Lehoia());
-			break;
-		}
+		hartzeke.add(Factory.getnFactory().kartaSortu(indarra));
 	}
 
 }
