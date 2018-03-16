@@ -59,7 +59,7 @@ public class Hasiera {
 		frame.getContentPane().add(panel_goikoa);
 		GridBagLayout gbl_panel_goikoa = new GridBagLayout();
 		gbl_panel_goikoa.columnWidths = new int[]{300, 319, 300, 0};
-		gbl_panel_goikoa.rowHeights = new int[]{0, 120, 0};
+		gbl_panel_goikoa.rowHeights = new int[]{0, 108, 0};
 		gbl_panel_goikoa.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_goikoa.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_goikoa.setLayout(gbl_panel_goikoa);
