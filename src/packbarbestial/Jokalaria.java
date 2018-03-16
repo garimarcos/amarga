@@ -49,6 +49,8 @@ public class Jokalaria {
 	}
 	
 	private void gehituKarta(int indarra){//Karta bat eskura gehitzeko metodoa
+		hartzeke.add(KartenBilera.getKartenBilera().getKarta(1));
+		
 		switch (indarra){
 		case 1:
 			hartzeke.add(new Mofeta());
