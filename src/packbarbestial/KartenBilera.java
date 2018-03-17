@@ -13,10 +13,9 @@ public class KartenBilera {
 	private HashMap<Integer,String> kartaUrdinak=new HashMap<Integer,String>();
 	private HashMap<Integer,String> kartaBerdeak=new HashMap<Integer,String>();
 
-
 	private KartenBilera() {
 		kartakHasieratu("urdina");
-		//kartakHasieratu("berde");
+		kartakHasieratu("berdea");
 	}
 	
 	public static KartenBilera getnKartenBilera(){

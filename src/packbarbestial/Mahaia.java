@@ -21,14 +21,23 @@ public class Mahaia {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Sartu jokalari kopurua (ordenagailuaren kontra jokatzetakoan, sartu 1): ");
 		int kop=sc.nextInt();
-		for(int i=0;i<=kop;i++){ //sartutako kopuruaren arabera burutuko dugu metodo hau, horrela hedagarria izango da jokalari gehiago sartzerako orduan
+		for(int i=1;i<=kop;i++){ //sartutako kopuruaren arabera burutuko dugu metodo hau, horrela hedagarria izango da jokalari gehiago sartzerako orduan
+			Scanner sc1=new Scanner(System.in);
 			System.out.println("Sartu jokalariaren izena: ");
-			String izena=sc.nextLine();
-			System.out.println(izena + ", sartu nahi duzun kolorea: ");
-			String kolorea=sc.nextLine();
+			String izena=sc1.nextLine();
+			Scanner sc2=new Scanner(System.in);
+			System.out.println(izena + ", sartu nahi duzun kolorea");
+			String kolorea=sc2.nextLine();
 			ListaJokalariak.getNireLista().add(new Jokalaria(izena,kolorea)); //EMAn sartu
-			sc.close();
+			sc1.close();
+			sc2.close();
 		}
+		sc.close();
+	}
+	
+	public String[] mahaiaPrestatu(){
+		ListaJokalariak.getNireLista().jokLortu(1).hasieratu();
+		return ListaJokalariak.getNireLista().jokLortu(1).mahaiaPrestatu();
 	}
 
 }

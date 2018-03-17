@@ -59,6 +59,7 @@ public class Hasiera {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		Mahaia.getnMahaia().hasieratu();
 		frame = new JFrame();
 		frame.getContentPane().setForeground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(new GridLayout(3,1));
@@ -127,16 +128,31 @@ public class Hasiera {
 		JLabelPro hutsuneBehEzk_1 = new JLabelPro("New label");
 		panel_behekoa.add(hutsuneBehEzk_1);
 		
-		JLabelPro karta1 = new JLabelPro("New label");
+		String[] kartaurl = new String[4];
+		kartaurl = Mahaia.getnMahaia().mahaiaPrestatu();
+		
+		JLabelPro karta1 = new JLabelPro("");
+		karta1.setIconURL(kartaurl[0]);
+		karta1.setHorizontalAlignment(JLabel.CENTER);
+		karta1.setHorizontalTextPosition(JLabel.CENTER);
 		panel_behekoa.add(karta1);
 		
-		JLabelPro karta2 = new JLabelPro("New label");
+		JLabelPro karta2 = new JLabelPro("");
+		karta2.setIconURL(kartaurl[1]);
+		karta2.setHorizontalAlignment(JLabel.CENTER);
+		karta2.setHorizontalTextPosition(JLabel.CENTER);
 		panel_behekoa.add(karta2);
 		
-		JLabelPro karta3 = new JLabelPro("New label");
+		JLabelPro karta3 = new JLabelPro("");
+		karta3.setIconURL(kartaurl[2]);
+		karta3.setHorizontalAlignment(JLabel.CENTER);
+		karta3.setHorizontalTextPosition(JLabel.CENTER);
 		panel_behekoa.add(karta3);
 		
-		JLabelPro karta4 = new JLabelPro("New label");
+		JLabelPro karta4 = new JLabelPro("");
+		karta4.setIconURL(kartaurl[3]);
+		karta4.setHorizontalAlignment(JLabel.CENTER);
+		karta4.setHorizontalTextPosition(JLabel.CENTER);
 		panel_behekoa.add(karta4);
 		
 		JLabelPro hutsuneBehEsk_1 = new JLabelPro("New label");

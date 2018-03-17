@@ -17,5 +17,9 @@ public class ListaJokalariak {
 	public void add(Jokalaria pJokalaria){
 		this.lista.add(pJokalaria);
 	}
+	
+	public Jokalaria jokLortu(int z){
+		return this.lista.get(z-1);
+	}
 
 }

@@ -1,5 +1,6 @@
 package packbarbestial;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
@@ -50,6 +51,14 @@ public class Jokalaria {
 	
 	private void gehituKarta(int indarra){//Karta bat eskura gehitzeko metodoa
 		hartzeke.add(Factory.getnFactory().kartaSortu(indarra));
+	}
+	
+	public String[] mahaiaPrestatu(){
+		String[] urlak = new String[4];;
+		for (int i = 0; i < 4; i++){
+			urlak[i]= KartenBilera.getnKartenBilera().getURL(this.eskuan.get(i).getIndarra(), this.kolorea);
+		}
+		return urlak;
 	}
 
 }
