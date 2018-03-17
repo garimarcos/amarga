@@ -74,8 +74,9 @@ public class Hasiera {
 		barBestial.setIconURL("https://i.imgur.com/F3xnPNi.png");
 		panel_goikoa.add(barBestial);
 		
-		JLabelPro titulu = new JLabelPro("New label");
+		JLabelPro titulu = new JLabelPro("");
 		titulu.erdianJarri();
+		titulu.setIconURL("https://i.imgur.com/1bpmanW.png");
 		panel_goikoa.add(titulu);
 		
 		JLabelPro esLoQueHay = new JLabelPro("");
@@ -158,7 +159,9 @@ public class Hasiera {
 		JLabelPro hutsuneBehEsk_1 = new JLabelPro("New label");
 		panel_behekoa.add(hutsuneBehEsk_1);
 		
-		JLabelPro hartzeke = new JLabelPro("New label");
+		JLabelPro hartzeke = new JLabelPro("");
+		hartzeke.erdianJarri();
+		hartzeke.setIconURL("https://i.imgur.com/7rFbePP.png");
 		panel_behekoa.add(hartzeke);
 	
 		frame.setBounds(100, 100, 919, 477);
