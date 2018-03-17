@@ -16,7 +16,7 @@ public class KartenBilera {
 
 	private KartenBilera() {
 		kartakHasieratu("urdina");
-		//kartakHasieratu("berde");
+		kartakHasieratu("berde");
 	}
 	
 	public static KartenBilera getnKartenBilera(){
