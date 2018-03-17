@@ -42,9 +42,9 @@ public class Mahaia {
 					ondo=true;
 				}
 			}catch(InputMismatchException e){
-				e.printStackTrace();
+				System.out.println("Sartu ondo datuak");
 			}catch(KopuruEzEgokiaException e){
-				e.printStackTrace();
+				System.out.println("Kopuru egokia sartu");
 			}
 		}while(!ondo);
 		sc.close();
