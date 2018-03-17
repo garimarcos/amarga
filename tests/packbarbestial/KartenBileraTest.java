@@ -7,13 +7,14 @@ import org.junit.Test;
 public class KartenBileraTest {
 
 	@Test
-	public void testGetKartenBilera() {
-		fail("Not yet implemented");
+	public void testGetnKartenBilera() {
+		assertNotNull(KartenBilera.getnKartenBilera());
 	}
 
 	@Test
-	public void testGetKarta() {
-		KartenBilera.getKartenBilera().getKarta(1);
+	public void testGetURLUrdina() {
+		assertEquals(KartenBilera.getnKartenBilera().getURL(1,"urdina"),"https://i.imgur.com/VFYH0nl.png");
 	}
+	
 
 }

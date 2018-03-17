@@ -19,7 +19,6 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
-//import packbarbestial.JLabelPro;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -72,23 +71,16 @@ public class Hasiera {
 		JLabelPro barBestial = new JLabelPro("");
 		barBestial.erdianJarri();
 		barBestial.setIconURL("https://i.imgur.com/F3xnPNi.png");
-		
-//		barBestial.setHorizontalAlignment(JLabel.CENTER);
-//		barBestial.setHorizontalTextPosition(JLabel.CENTER);
 		panel_goikoa.add(barBestial);
 		
 		JLabelPro titulu = new JLabelPro("New label");
+		titulu.erdianJarri();
 		panel_goikoa.add(titulu);
 		
 		JLabelPro esLoQueHay = new JLabelPro("");
 		esLoQueHay.erdianJarri();
-		esLoQueHay.setIconURL("https://i.imgur.com/Ob4fbBg.png");
-		//esLoQueHay.setIcon(new ImageIcon("F:\\WorkSpace_eclipse\\amarga\\resources\\esloquehay---copia1.png"));
-//		esLoQueHay.setHorizontalAlignment(JLabelPro.CENTER);
-//		esLoQueHay.setHorizontalTextPosition(JLabelPro.CENTER);
-		
+		esLoQueHay.setIconURL("https://i.imgur.com/Ob4fbBg.png");		
 		panel_goikoa.add(esLoQueHay);
-		
 		
 		JPanel panel_erdikoa = new JPanel();
 		panel_erdikoa.setBackground(Color.WHITE);
@@ -97,14 +89,11 @@ public class Hasiera {
 		
 		JLabelPro hutsuneErdEzk = new JLabelPro("New label");
 		hutsuneErdEzk.erdianJarri();
-//		hutsuneErdEzk.setHorizontalAlignment(JLabelPro.CENTER);
-//		hutsuneErdEzk.setHorizontalTextPosition(JLabelPro.CENTER);
 		panel_erdikoa.add(hutsuneErdEzk);
 		
 		JLabelPro zerukoAtea = new JLabelPro("");
 		zerukoAtea.setIconURL("https://i.imgur.com/ZxIaeus.png");
-		zerukoAtea.setHorizontalAlignment(JLabelPro.CENTER);
-		zerukoAtea.setHorizontalTextPosition(JLabelPro.CENTER);
+		zerukoAtea.erdianJarri();
 		panel_erdikoa.add(zerukoAtea);
 		
 		JLabelPro tablero1 = new JLabelPro("New label");
@@ -124,8 +113,7 @@ public class Hasiera {
 		
 		JLabelPro patada = new JLabelPro("");
 		patada.setIconURL("https://i.imgur.com/Sb87kRz.png");
-		patada.setHorizontalAlignment(JLabel.CENTER);
-		patada.setHorizontalTextPosition(JLabel.CENTER);
+		patada.erdianJarri();
 		panel_erdikoa.add(patada);
 		
 		JLabelPro hutsuneErdEsk = new JLabelPro("New label");
@@ -174,56 +162,6 @@ public class Hasiera {
 		});
 		menu.add(mntmItxi);
 	}
-	
-	
-//	private class JLabelPro extends JLabel{
-//		public JLabelPro() {
-//			// TODO Auto-generated constructor stub
-//		}
-//
-//		public JLabelPro(String text) {
-//			super(text);
-//			// TODO Auto-generated constructor stub
-//		}
-//
-//		public JLabelPro(Icon image) {
-//			super(image);
-//			// TODO Auto-generated constructor stub
-//		}
-//
-//		public JLabelPro(String text, int horizontalAlignment) {
-//			super(text, horizontalAlignment);
-//			// TODO Auto-generated constructor stub
-//		}
-//
-//		public JLabelPro(Icon image, int horizontalAlignment) {
-//			super(image, horizontalAlignment);
-//			// TODO Auto-generated constructor stub
-//		}
-//
-//		public JLabelPro(String text, Icon icon, int horizontalAlignment) {
-//			super(text, icon, horizontalAlignment);
-//			// TODO Auto-generated constructor stub
-//		}
-//		
-//		public void erdianJarri(){
-//			this.setHorizontalAlignment(JLabel.CENTER);
-//			this.setHorizontalTextPosition(JLabel.CENTER);
-//		}
-//		
-//		public void setIconURL(String pURL){
-//			try{
-//				URL url=new URL(pURL);
-//				Image image=ImageIO.read(url);
-//				this.setIcon(new ImageIcon(image));
-//			}catch(MalformedURLException e){
-//				e.printStackTrace();
-//			}catch(IOException e){
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//	}
 
 }
 
