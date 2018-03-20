@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
+@SuppressWarnings("unused")
 public class Hasiera {
 
 	private JFrame frame;
@@ -78,8 +79,9 @@ public class Hasiera {
 		barBestial.setIconURL("https://i.imgur.com/F3xnPNi.png");
 		panel_goikoa.add(barBestial);
 		
-		JLabelPro titulu = new JLabelPro("New label");
+		JLabelPro titulu = new JLabelPro("");
 		titulu.erdianJarri();
+		titulu.setIconURL("https://i.imgur.com/1bpmanW.png");
 		panel_goikoa.add(titulu);
 		
 		JLabelPro esLoQueHay = new JLabelPro("");
@@ -92,7 +94,7 @@ public class Hasiera {
 		frame.getContentPane().add(panel_erdikoa);
 		panel_erdikoa.setLayout(new GridLayout(1, 9));
 		
-		JLabelPro hutsuneErdEzk = new JLabelPro("New label");
+		JLabelPro hutsuneErdEzk = new JLabelPro("");
 		hutsuneErdEzk.erdianJarri();
 		panel_erdikoa.add(hutsuneErdEzk);
 		
@@ -101,19 +103,19 @@ public class Hasiera {
 		zerukoAtea.erdianJarri();
 		panel_erdikoa.add(zerukoAtea);
 		
-		JLabelPro tablero1 = new JLabelPro("New label");
+		JLabelPro tablero1 = new JLabelPro("KARTA1");
 		panel_erdikoa.add(tablero1);
 		
-		JLabelPro tablero2 = new JLabelPro("New label");
+		JLabelPro tablero2 = new JLabelPro("KARTA2");
 		panel_erdikoa.add(tablero2);
 		
-		JLabelPro tablero3 = new JLabelPro("New label");
+		JLabelPro tablero3 = new JLabelPro("KARTA3");
 		panel_erdikoa.add(tablero3);
 		
-		JLabelPro tablero4 = new JLabelPro("New label");
+		JLabelPro tablero4 = new JLabelPro("KARTA4");
 		panel_erdikoa.add(tablero4);
 		
-		JLabelPro tablero5 = new JLabelPro("New label");
+		JLabelPro tablero5 = new JLabelPro("KARTA5");
 		panel_erdikoa.add(tablero5);
 		
 		JLabelPro patada = new JLabelPro("");
@@ -121,7 +123,7 @@ public class Hasiera {
 		patada.erdianJarri();
 		panel_erdikoa.add(patada);
 		
-		JLabelPro hutsuneErdEsk = new JLabelPro("New label");
+		JLabelPro hutsuneErdEsk = new JLabelPro("");
 		hutsuneErdEsk.erdianJarri();
 		panel_erdikoa.add(hutsuneErdEsk);
 		
@@ -130,7 +132,7 @@ public class Hasiera {
 		frame.getContentPane().add(panel_behekoa);
 		panel_behekoa.setLayout(new GridLayout(1, 7));
 		
-		JLabelPro hutsuneBehEzk_1 = new JLabelPro("New label");
+		JLabelPro hutsuneBehEzk_1 = new JLabelPro("");
 		hutsuneBehEzk_1.erdianJarri();
 		panel_behekoa.add(hutsuneBehEzk_1);
 		
@@ -158,12 +160,13 @@ public class Hasiera {
 		karta4.erdianJarri();
 		panel_behekoa.add(karta4);
 		
-		JLabelPro hutsuneBehEsk_1 = new JLabelPro("New label");
+		JLabelPro hutsuneBehEsk_1 = new JLabelPro("");
 		hutsuneBehEsk_1.erdianJarri();
 		panel_behekoa.add(hutsuneBehEsk_1);
 		
-		JLabelPro hartzeke = new JLabelPro("New label");
+		JLabelPro hartzeke = new JLabelPro("");
 		hartzeke.erdianJarri();
+		hartzeke.setIconURL("https://i.imgur.com/7rFbePP.png");
 		panel_behekoa.add(hartzeke);
 	
 		frame.setBounds(100, 100, 919, 477);
