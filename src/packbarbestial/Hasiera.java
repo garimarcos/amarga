@@ -10,21 +10,20 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.Color;
 import javax.swing.JMenuItem;
-import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.GridLayout;
 import java.awt.Image;
 
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
@@ -59,9 +58,14 @@ public class Hasiera {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		Mahaia.getnMahaia().hasieratu();
+		KopuruAukera.main();
+		int i=1;
+		while(i<=ListaJokalariak.getNireLista().getKop()){
+			i++;
+			DatuenSarrera.main();
+		}
 		frame = new JFrame();
-		frame.getContentPane().setForeground(Color.LIGHT_GRAY);
+		frame.getContentPane().setForeground(Color.WHITE);
 		frame.getContentPane().setLayout(new GridLayout(3,1));
 		
 		JPanel panel_goikoa = new JPanel();
@@ -118,6 +122,7 @@ public class Hasiera {
 		panel_erdikoa.add(patada);
 		
 		JLabelPro hutsuneErdEsk = new JLabelPro("New label");
+		hutsuneErdEsk.erdianJarri();
 		panel_erdikoa.add(hutsuneErdEsk);
 		
 		JPanel panel_behekoa= new JPanel();
@@ -126,39 +131,39 @@ public class Hasiera {
 		panel_behekoa.setLayout(new GridLayout(1, 7));
 		
 		JLabelPro hutsuneBehEzk_1 = new JLabelPro("New label");
+		hutsuneBehEzk_1.erdianJarri();
 		panel_behekoa.add(hutsuneBehEzk_1);
+		
 		
 		String[] kartaurl = new String[4];
 		kartaurl = Mahaia.getnMahaia().mahaiaPrestatu();
 		
 		JLabelPro karta1 = new JLabelPro("");
 		karta1.setIconURL(kartaurl[0]);
-		karta1.setHorizontalAlignment(JLabel.CENTER);
-		karta1.setHorizontalTextPosition(JLabel.CENTER);
+		karta1.erdianJarri();
 		panel_behekoa.add(karta1);
 		
 		JLabelPro karta2 = new JLabelPro("");
 		karta2.setIconURL(kartaurl[1]);
-		karta2.setHorizontalAlignment(JLabel.CENTER);
-		karta2.setHorizontalTextPosition(JLabel.CENTER);
+		karta2.erdianJarri();
 		panel_behekoa.add(karta2);
 		
 		JLabelPro karta3 = new JLabelPro("");
 		karta3.setIconURL(kartaurl[2]);
-		karta3.setHorizontalAlignment(JLabel.CENTER);
-		karta3.setHorizontalTextPosition(JLabel.CENTER);
+		karta3.erdianJarri();
 		panel_behekoa.add(karta3);
 		
 		JLabelPro karta4 = new JLabelPro("");
 		karta4.setIconURL(kartaurl[3]);
-		karta4.setHorizontalAlignment(JLabel.CENTER);
-		karta4.setHorizontalTextPosition(JLabel.CENTER);
+		karta4.erdianJarri();
 		panel_behekoa.add(karta4);
 		
 		JLabelPro hutsuneBehEsk_1 = new JLabelPro("New label");
+		hutsuneBehEsk_1.erdianJarri();
 		panel_behekoa.add(hutsuneBehEsk_1);
 		
 		JLabelPro hartzeke = new JLabelPro("New label");
+		hartzeke.erdianJarri();
 		panel_behekoa.add(hartzeke);
 	
 		frame.setBounds(100, 100, 919, 477);
@@ -173,7 +178,7 @@ public class Hasiera {
 		JMenuItem mntmItxi = new JMenuItem("Itxi");
 		mntmItxi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
 			}
 		});
 		menu.add(mntmItxi);

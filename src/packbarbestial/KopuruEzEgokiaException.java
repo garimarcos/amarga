@@ -3,7 +3,7 @@ package packbarbestial;
 public class KopuruEzEgokiaException extends Exception {
 
 	public KopuruEzEgokiaException() {
-		// TODO Auto-generated constructor stub
+		//System.out.println("Momentuz jokalari bakarrarekin jolasteko aukera dago, berriz saiatu zaitez");
 	}
 
 	public KopuruEzEgokiaException(String message) {

@@ -54,7 +54,7 @@ public class Jokalaria {
 	}
 	
 	public String[] mahaiaPrestatu(){
-		String[] urlak = new String[4];;
+		String[] urlak = new String[4];
 		for (int i = 0; i < 4; i++){
 			urlak[i]= KartenBilera.getnKartenBilera().getURL(this.eskuan.get(i).getIndarra(), this.kolorea);
 		}
