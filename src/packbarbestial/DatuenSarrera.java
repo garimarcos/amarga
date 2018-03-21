@@ -44,9 +44,9 @@ public class DatuenSarrera extends JDialog {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				int erantzuna=JOptionPane.showConfirmDialog(frame, "Ziur irten nahi zarela?");
+				int erantzuna=JOptionPane.showConfirmDialog(frame, "Ziur irten nahi zarela?","Irteera",JOptionPane.INFORMATION_MESSAGE);
 				if(erantzuna==JOptionPane.YES_OPTION) System.exit(0);
-				if(erantzuna==JOptionPane.NO_OPTION) frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				else if((erantzuna==JOptionPane.NO_OPTION) || (erantzuna==JOptionPane.CANCEL_OPTION)) frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			}
 		});
 		setModal(true);

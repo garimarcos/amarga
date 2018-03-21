@@ -16,6 +16,22 @@ public class JokalariaTest {
 	@Test
 	public void testHasieratu() {
 		j1.hasieratu();
+		String[] kartak=j1.mahaiaPrestatu();
+		for(int i=0;i<kartak.length;i++){
+			System.out.println(kartak[i]);
+		}
+	}
+	
+	@Test
+	public void testGetHartzeke(){
+		j1.hasieratu();
+		assertTrue(j1.getHartzeke().size()==8);
+	}
+	
+	@Test
+	public void testEskuan(){
+		j1.hasieratu();
+		assertTrue(j1.getEskuan().size()==4);
 	}
 
 }

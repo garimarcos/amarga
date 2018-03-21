@@ -6,41 +6,38 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
+import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class JLabelPro extends JLabel {
+public class JButtonPro extends JButton {
 
-	public JLabelPro() {
+	public JButtonPro() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public JLabelPro(String text) {
+	public JButtonPro(Icon icon) {
+		super(icon);
+		// TODO Auto-generated constructor stub
+	}
+
+	public JButtonPro(String text) {
 		super(text);
 		// TODO Auto-generated constructor stub
 	}
 
-	public JLabelPro(Icon image) {
-		super(image);
+	public JButtonPro(Action a) {
+		super(a);
 		// TODO Auto-generated constructor stub
 	}
 
-	public JLabelPro(String text, int horizontalAlignment) {
-		super(text, horizontalAlignment);
+	public JButtonPro(String text, Icon icon) {
+		super(text, icon);
 		// TODO Auto-generated constructor stub
 	}
-
-	public JLabelPro(Icon image, int horizontalAlignment) {
-		super(image, horizontalAlignment);
-		// TODO Auto-generated constructor stub
-	}
-
-	public JLabelPro(String text, Icon icon, int horizontalAlignment) {
-		super(text, icon, horizontalAlignment);
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	public void erdianJarri(){
 		this.setHorizontalAlignment(JLabel.CENTER);
 		this.setHorizontalTextPosition(JLabel.CENTER);
@@ -59,4 +56,5 @@ public class JLabelPro extends JLabel {
 			e.printStackTrace();
 		}
 	}
+
 }

@@ -10,6 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.Color;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -26,6 +27,7 @@ import java.awt.event.WindowListener;
 import java.awt.event.ActionEvent;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.WindowAdapter;
 
 @SuppressWarnings("unused")
 public class Hasiera {
@@ -66,9 +68,17 @@ public class Hasiera {
 			DatuenSarrera.main();
 		}
 		frame = new JFrame();
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				int erantzuna=JOptionPane.showConfirmDialog(frame, "Ziur irten nahi zarela?","Irteera",JOptionPane.INFORMATION_MESSAGE);
+				if(erantzuna==JOptionPane.YES_OPTION) System.exit(0);
+				else if((erantzuna==JOptionPane.NO_OPTION) || (erantzuna==JOptionPane.CANCEL_OPTION)) frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+			}
+		});
 		frame.getContentPane().setForeground(Color.WHITE);
 		frame.getContentPane().setLayout(new GridLayout(3,1));
-		
+
 		JPanel panel_goikoa = new JPanel();
 		panel_goikoa.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel_goikoa);
@@ -77,6 +87,7 @@ public class Hasiera {
 		JLabelPro barBestial = new JLabelPro("");
 		barBestial.erdianJarri();
 		barBestial.setIconURL("https://i.imgur.com/F3xnPNi.png");
+		
 		panel_goikoa.add(barBestial);
 		
 		JLabelPro titulu = new JLabelPro("");
@@ -140,22 +151,22 @@ public class Hasiera {
 		String[] kartaurl = new String[4];
 		kartaurl = Mahaia.getnMahaia().mahaiaPrestatu();
 		
-		JLabelPro karta1 = new JLabelPro("");
+		JButtonPro karta1 = new JButtonPro("");
 		karta1.setIconURL(kartaurl[0]);
-		karta1.erdianJarri();
 		panel_behekoa.add(karta1);
+		karta1.erdianJarri();
 		
-		JLabelPro karta2 = new JLabelPro("");
+		JButtonPro karta2 = new JButtonPro("");
 		karta2.setIconURL(kartaurl[1]);
 		karta2.erdianJarri();
 		panel_behekoa.add(karta2);
 		
-		JLabelPro karta3 = new JLabelPro("");
+		JButtonPro karta3 = new JButtonPro("");
 		karta3.setIconURL(kartaurl[2]);
 		karta3.erdianJarri();
 		panel_behekoa.add(karta3);
 		
-		JLabelPro karta4 = new JLabelPro("");
+		JButtonPro karta4 = new JButtonPro("");
 		karta4.setIconURL(kartaurl[3]);
 		karta4.erdianJarri();
 		panel_behekoa.add(karta4);
@@ -164,7 +175,7 @@ public class Hasiera {
 		hutsuneBehEsk_1.erdianJarri();
 		panel_behekoa.add(hutsuneBehEsk_1);
 		
-		JLabelPro hartzeke = new JLabelPro("");
+		JButtonPro hartzeke = new JButtonPro("");
 		hartzeke.erdianJarri();
 		hartzeke.setIconURL("https://i.imgur.com/7rFbePP.png");
 		panel_behekoa.add(hartzeke);
