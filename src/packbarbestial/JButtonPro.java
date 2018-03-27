@@ -48,8 +48,7 @@ public class JButtonPro extends JButton {
 			URL url=new URL(pURL);
 			Image image=ImageIO.read(url);
 			//Image newImg=image.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
-			this.setIcon(new ImageIcon(image));
-			
+			this.setIcon(new ImageIcon(image));	
 		}catch(MalformedURLException e){
 			e.printStackTrace();
 		}catch(IOException e){

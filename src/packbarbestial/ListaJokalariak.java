@@ -17,6 +17,7 @@ public class ListaJokalariak {
 	
 	public void add(Jokalaria pJokalaria){
 		this.lista.add(pJokalaria);
+		kop++;
 	}
 	
 	public Jokalaria jokLortu(int z){
@@ -29,6 +30,11 @@ public class ListaJokalariak {
 	
 	public int getKop(){
 		return kop;
+	}
+	
+	public void clear(){
+		lista.clear();
+		kop=0;
 	}
 
 }

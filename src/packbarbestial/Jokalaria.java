@@ -20,9 +20,9 @@ public class Jokalaria {
 		this.eskuan=new LinkedList<Karta>();
 	}
 	
-	public Stack<Karta> getHartzeke(){ return hartzeke; }
+	public Stack<Karta> getHartzeke(){ return hartzeke; }//test gauzatzeko
 	
-	public LinkedList<Karta> getEskuan(){ return eskuan; }
+	public LinkedList<Karta> getEskuan(){ return eskuan; }//test gauzatzeko
 	
 	public void hasieratu(){//Kartak banatzeko metodoa
 		boolean[] pila=new boolean[12];
