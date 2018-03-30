@@ -69,8 +69,8 @@ public class KopuruAukera extends JDialog {
 								int pKop=Integer.parseInt(jokKopText.getText());
 								if(pKop!=1) throw new KopuruEzEgokiaException();
 								else{
-									dispose();
 									ListaJokalariak.getNireLista().setKop(pKop);
+									dispose();
 								}
 							}catch(NumberFormatException e1){
 								JOptionPane.showMessageDialog(contentPanel, "Kopuru okerra");
@@ -94,7 +94,7 @@ public class KopuruAukera extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Kantzelatu");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						System.exit(0);

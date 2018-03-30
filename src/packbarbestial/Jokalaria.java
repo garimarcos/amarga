@@ -37,7 +37,7 @@ public class Jokalaria {
 				k++;
 			}
 		}
-		for(int i=0;i<4;i++){//Eskua bete arte(5 karta egon behar dira)
+		for(int i=0;i<4;i++){//Eskua bete arte(4 karta egon behar dira)
 			eskuan.add(hartzeke.pop());	
 		}
 		
@@ -63,6 +63,14 @@ public class Jokalaria {
 			urlak[i]= KartenBilera.getnKartenBilera().getURL(this.eskuan.get(i).getIndarra(), this.kolorea);
 		}
 		return urlak;
+	}
+	
+	public boolean hartu(){
+		if(eskuan.size()<4){
+			eskuan.add(hartzeke.pop());
+			return true;
+		}
+		else return false;
 	}
 
 }

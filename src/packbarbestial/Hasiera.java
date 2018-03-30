@@ -62,11 +62,14 @@ public class Hasiera {
 	 */
 	private void initialize() {
 		KopuruAukera.main();
-		int i=1;
-		while(i<=ListaJokalariak.getNireLista().getKop()){
-			i++;
-			DatuenSarrera.main();
-		}
+		int i=0;
+		DatuenSarrera.main();
+//		System.out.println(ListaJokalariak.getNireLista().getKop());
+//		while(i<ListaJokalariak.getNireLista().getKop()){
+//			DatuenSarrera.main();
+//			i++;
+//			System.out.println(i);
+//		}
 		frame = new JFrame();
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
@@ -176,6 +179,12 @@ public class Hasiera {
 		panel_behekoa.add(hutsuneBehEsk_1);
 		
 		JButtonPro hartzeke = new JButtonPro("");
+		hartzeke.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean ondo=ListaJokalariak.getNireLista().jokLortu(1).hartu();
+				if(!ondo) JOptionPane.showMessageDialog(frame, "Jada 4 karta dituzu eskuan!");
+			}
+		});
 		hartzeke.erdianJarri();
 		hartzeke.setIconURL("https://i.imgur.com/7rFbePP.png");
 		panel_behekoa.add(hartzeke);
