@@ -52,7 +52,7 @@ public class JButtonPro extends JButton {
 		}catch(MalformedURLException e){
 			e.printStackTrace();
 		}catch(IOException e){
-			e.printStackTrace();
+			this.setIcon(null);
 		}
 	}
 

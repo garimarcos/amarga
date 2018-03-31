@@ -24,6 +24,8 @@ public class Jokalaria {
 	
 	public LinkedList<Karta> getEskuan(){ return eskuan; }//test gauzatzeko
 	
+	public String getKolore(){ return kolorea; }
+	
 	public void hasieratu(){//Kartak banatzeko metodoa
 		boolean[] pila=new boolean[12];
 		int k=0;
@@ -71,6 +73,12 @@ public class Jokalaria {
 			return true;
 		}
 		else return false;
+	}
+	
+	public Karta bota(int posizioa){
+		if(posizioa==1) return eskuan.removeFirst();
+		else if(posizioa==4) return eskuan.removeLast();
+		else return eskuan.remove(posizioa);
 	}
 
 }

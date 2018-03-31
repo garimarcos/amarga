@@ -62,9 +62,9 @@ public class Hasiera {
 	 */
 	private void initialize() {
 		KopuruAukera.main();
-		int i=0;
+//		int i=0;
 		DatuenSarrera.main();
-//		System.out.println(ListaJokalariak.getNireLista().getKop());
+//		System.out.println(ListaJokalariazk.getNireLista().getKop());
 //		while(i<ListaJokalariak.getNireLista().getKop()){
 //			DatuenSarrera.main();
 //			i++;
@@ -155,21 +155,45 @@ public class Hasiera {
 		kartaurl = Mahaia.getnMahaia().mahaiaPrestatu();
 		
 		JButtonPro karta1 = new JButtonPro("");
+		karta1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Karta k=ListaJokalariak.getNireLista().jokLortu(1).bota(1);
+				karta1.setIcon(null);
+				Tableroa.getnTableroa().gehituKarta(k);
+//				tablero1.setIconURL(KartenBilera.getnKartenBilera().getURL(k.getIndarra(), ListaJokalariak.getNireLista().jokLortu(1).getKolore()));
+				k.egikaritu();
+			}
+		});
 		karta1.setIconURL(kartaurl[0]);
 		panel_behekoa.add(karta1);
 		karta1.erdianJarri();
 		
 		JButtonPro karta2 = new JButtonPro("");
+		karta2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaJokalariak.getNireLista().jokLortu(1).bota(2);
+			}
+		});
 		karta2.setIconURL(kartaurl[1]);
 		karta2.erdianJarri();
 		panel_behekoa.add(karta2);
 		
 		JButtonPro karta3 = new JButtonPro("");
+		karta3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaJokalariak.getNireLista().jokLortu(1).bota(3);
+			}
+		});
 		karta3.setIconURL(kartaurl[2]);
 		karta3.erdianJarri();
 		panel_behekoa.add(karta3);
 		
 		JButtonPro karta4 = new JButtonPro("");
+		karta4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaJokalariak.getNireLista().jokLortu(1).bota(4);
+			}
+		});
 		karta4.setIconURL(kartaurl[3]);
 		karta4.erdianJarri();
 		panel_behekoa.add(karta4);
@@ -183,6 +207,9 @@ public class Hasiera {
 			public void actionPerformed(ActionEvent e) {
 				boolean ondo=ListaJokalariak.getNireLista().jokLortu(1).hartu();
 				if(!ondo) JOptionPane.showMessageDialog(frame, "Jada 4 karta dituzu eskuan!");
+				else{
+					
+				}
 			}
 		});
 		hartzeke.erdianJarri();

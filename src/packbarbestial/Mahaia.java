@@ -1,10 +1,15 @@
 package packbarbestial;
 
+import java.util.ArrayList;
+
 public class Mahaia {
 	private static Mahaia nMahaia=new Mahaia();
+	private ArrayList<Karta> zerua;
+	private ArrayList<Karta> inpernua;
 	
 	private Mahaia(){
-		
+		zerua=new ArrayList<Karta>();
+		inpernua=new ArrayList<Karta>();
 	}
 	
 	public static Mahaia getnMahaia(){
@@ -22,6 +27,14 @@ public class Mahaia {
 	public String[] mahaiaPrestatu(){
 		ListaJokalariak.getNireLista().jokLortu(1).hasieratu();
 		return ListaJokalariak.getNireLista().jokLortu(1).mahaiaPrestatu();
+	}
+	
+	public void zerura(Karta pKarta){
+		zerua.add(pKarta);
+	}
+	
+	public void inpernura(Karta pKarta){
+		inpernua.add(pKarta);
 	}
 
 }
