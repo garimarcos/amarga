@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
@@ -31,9 +32,22 @@ import java.awt.event.WindowAdapter;
 
 @SuppressWarnings("unused")
 public class Hasiera {
+	
+	private Jokoa j=Jokoa.getnJokoa();
 
 	private JFrame frame;
-	private Jokoa j=Jokoa.getnJokoa();
+	
+	private JLabelPro tablero1;
+	private JLabelPro tablero2;
+	private JLabelPro tablero3;
+	private JLabelPro tablero4;
+	private JLabelPro tablero5;
+	
+	private JButtonPro karta1;
+	private JButtonPro karta2;
+	private JButtonPro karta3;
+	private JButtonPro karta4;
+	private JButtonPro hartzeke;
 
 	/**
 	 * Launch the application.
@@ -91,6 +105,7 @@ public class Hasiera {
 		
 		JLabelPro barBestial = new JLabelPro("");
 		barBestial.erdianJarri();
+		//barBestial.setIcon(new ImageIcon("img/barBestialTamaina.png"));
 		barBestial.setIconURL("https://i.imgur.com/F3xnPNi.png");
 		
 		panel_goikoa.add(barBestial);
@@ -119,19 +134,19 @@ public class Hasiera {
 		zerukoAtea.erdianJarri();
 		panel_erdikoa.add(zerukoAtea);
 		
-		JLabelPro tablero1 = new JLabelPro("KARTA1");
+		tablero1 = new JLabelPro("KARTA1");
 		panel_erdikoa.add(tablero1);
 		
-		JLabelPro tablero2 = new JLabelPro("KARTA2");
+		tablero2 = new JLabelPro("KARTA2");
 		panel_erdikoa.add(tablero2);
 		
-		JLabelPro tablero3 = new JLabelPro("KARTA3");
+		tablero3 = new JLabelPro("KARTA3");
 		panel_erdikoa.add(tablero3);
 		
-		JLabelPro tablero4 = new JLabelPro("KARTA4");
+		tablero4 = new JLabelPro("KARTA4");
 		panel_erdikoa.add(tablero4);
 		
-		JLabelPro tablero5 = new JLabelPro("KARTA5");
+		tablero5 = new JLabelPro("KARTA5");
 		panel_erdikoa.add(tablero5);
 		
 		JLabelPro patada = new JLabelPro("");
@@ -156,73 +171,26 @@ public class Hasiera {
 		String[] kartaurl = new String[4];
 		kartaurl = j.mahaiaPrestatu();
 		
-		JButtonPro karta1 = new JButtonPro("");
-		karta1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Karta k=j.bota(1);
-				karta1.setIcon(null);
-				j.gehituTablerora(k);
-				int pos=j.getTableroKop();
-				String non="tablero"+String.valueOf(pos);
-				switch(pos){
-				case 1:
-					tablero1.setIconURL(j.getUrl(k.getIndarra()));
-					break;
-				case 2:
-					tablero2.setIconURL(j.getUrl(k.getIndarra()));
-					break;
-				case 3:
-					tablero3.setIconURL(j.getUrl(k.getIndarra()));
-					break;
-				case 4:
-					tablero4.setIconURL(j.getUrl(k.getIndarra()));
-					break;
-				case 5:
-					tablero5.setIconURL(j.getUrl(k.getIndarra()));
-					break;
-				}
-//				tablero1.setIconURL(KartenBilera.getnKartenBilera().getURL(k.getIndarra(), ListaJokalariak.getNireLista().jokLortu(1).getKolore()));
-				try{
-					k.egikaritu();
-				}catch(NullPointerException x){
-					JOptionPane.showMessageDialog(frame, "Ez duzu karta berria hartu!");
-				}
-				
-			}
-		});
+		karta1 = new JButtonPro("");
+		karta1.addActionListener(new GertaeraKudeatzailea());
 		karta1.setIconURL(kartaurl[0]);
 		panel_behekoa.add(karta1);
 		karta1.erdianJarri();
 		
-		JButtonPro karta2 = new JButtonPro("");
-		karta2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Karta k=j.bota(2);
-				karta2.setIcon(null);
-			}
-		});
+		karta2 = new JButtonPro("");
+		karta2.addActionListener(new GertaeraKudeatzailea());
 		karta2.setIconURL(kartaurl[1]);
 		karta2.erdianJarri();
 		panel_behekoa.add(karta2);
 		
-		JButtonPro karta3 = new JButtonPro("");
-		karta3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Karta k=j.bota(3);
-				karta3.setIcon(null);
-			}
-		});
+		karta3 = new JButtonPro("");
+		karta3.addActionListener(new GertaeraKudeatzailea());
 		karta3.setIconURL(kartaurl[2]);
 		karta3.erdianJarri();
 		panel_behekoa.add(karta3);
 		
-		JButtonPro karta4 = new JButtonPro("");
-		karta4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Karta k=j.bota(4);
-				karta4.setIcon(null);
-			}
-		});
+		karta4 = new JButtonPro("");
+		karta4.addActionListener(new GertaeraKudeatzailea());
 		karta4.setIconURL(kartaurl[3]);
 		karta4.erdianJarri();
 		panel_behekoa.add(karta4);
@@ -231,7 +199,7 @@ public class Hasiera {
 		hutsuneBehEsk_1.erdianJarri();
 		panel_behekoa.add(hutsuneBehEsk_1);
 		
-		JButtonPro hartzeke = new JButtonPro("");
+		hartzeke = new JButtonPro("");
 		hartzeke.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int[] ondo=j.hartu();
@@ -288,7 +256,44 @@ public class Hasiera {
 	private void irudiaIpini(JLabelPro tablero,String url){
 		tablero.setIconURL(url);
 	}
+	
+	public class GertaeraKudeatzailea implements ActionListener{
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.print(e.getSource().equals(karta1));
+			Karta k=j.bota(1);
+			karta1.setIcon(null);
+			j.gehituTablerora(k);
+			int pos=j.getTableroKop();
+			switch(pos){
+			case 1:
+				tablero1.setIconURL(j.getUrl(k.getIndarra()));
+				break;
+			case 2:
+				tablero2.setIconURL(j.getUrl(k.getIndarra()));
+				break;
+			case 3:
+				tablero3.setIconURL(j.getUrl(k.getIndarra()));
+				break;
+			case 4:
+				tablero4.setIconURL(j.getUrl(k.getIndarra()));
+				break;
+			case 5:
+				tablero5.setIconURL(j.getUrl(k.getIndarra()));
+				break;
+			}
+			try{
+				k.egikaritu();
+			}catch(NullPointerException x){
+				JOptionPane.showMessageDialog(frame, "Ez duzu karta berria hartu!");
+			}
+			
+		}
+			
+		}
+		
+	}
 
-}
 
 

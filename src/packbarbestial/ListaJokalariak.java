@@ -9,6 +9,7 @@ public class ListaJokalariak {
 	
 	private ListaJokalariak(){
 		this.lista=new ArrayList<Jokalaria>();
+		//lista.set(2, new Jokalaria("ordenagailua","urdina"));
 	}
 	
 	public static ListaJokalariak getNireLista(){
