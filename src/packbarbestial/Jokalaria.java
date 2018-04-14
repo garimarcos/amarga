@@ -14,6 +14,7 @@ public class Jokalaria {
 	private Karta[] eskuan;
 	private int kop;
 	private int azkena;
+	private boolean hutsune;
 	
 	public Jokalaria(String pIzen, String pKolore){
 		this.izena=pIzen;
@@ -46,17 +47,7 @@ public class Jokalaria {
 		}
 		
 	}
-	
-//	private boolean eskuanDaukat(int indarra){ //Jokalariak karta bat eskuan badauka esaten duen metodoa
-//		Iterator<Karta> it=eskuan.iterator();
-//		boolean aurkituta=false;
-//		while(!aurkituta && it.hasNext()){
-//			Karta kart=it.next();
-//			if(kart.getIndarra()==indarra) aurkituta=true;
-//		}
-//		return aurkituta;
-//	}
-	
+		
 	private void gehituKarta(int indarra){//Karta bat eskura gehitzeko metodoa
 		hartzeke.add(Factory.getnFactory().kartaSortu(indarra));
 	}
@@ -78,6 +69,7 @@ public class Jokalaria {
 				kop++;
 				ondoPosizioa[2]=eskuan[azkena].getIndarra();
 				ondoPosizioa[0]=1;
+				hutsune=false;
 				return ondoPosizioa;//ondo egin du
 			}else{
 				ondoPosizioa[0]=2;
@@ -91,24 +83,30 @@ public class Jokalaria {
 	}
 	
 	public Karta bota(int posizioa){
-		kop--;
-		azkena=posizioa-1;
-		switch(posizioa){
-		case 1:
-			return bota1(0);
-		case 2: 
-			return bota1(1);
-		case 3: 
-			return bota1(2);
-		case 4: 
-			return bota1(3);
+		if(hartzeke.size()>0 && !hutsune){
+			kop--;
+			azkena=posizioa-1;
+			switch(posizioa){
+			case 1:
+				return bota1(0);
+			case 2: 
+				return bota1(1);
+			case 3: 
+				return bota1(2);
+			case 4: 
+				return bota1(3);
+			}
+			return null;
 		}
-		return null;
+		//return null;
+		return new Lehoia(0,false);
+
 	}
 	
 	private Karta bota1(int posizio){
 		Karta k=eskuan[posizio];
 		eskuan[posizio]=null;
+		hutsune=true;
 		return k;
 	}
 

@@ -1,10 +1,12 @@
 package packbarbestial;
 
 public class Jokoa {
+
 	Mahaia m=Mahaia.getnMahaia();
 	ListaJokalariak l=ListaJokalariak.getNireLista();
 	Tableroa t=Tableroa.getnTableroa();
 	KartenBilera k=KartenBilera.getnKartenBilera();
+
 	private static Jokoa nJokoa=new Jokoa();
 
 	private Jokoa() {
@@ -36,5 +38,14 @@ public class Jokoa {
 	}
 	
 	public int getTableroKop(){ return t.getKop(); }
+	
+	public void ordenagailuaSortu(){
+		String jokKolore=l.jokLortu(1).getKolore();
+		String ordKolore="";
+		if(jokKolore.equals("urdina")) ordKolore="berdea";
+		else ordKolore="urdina";
+		l.add(new Jokalaria("ordenagailua",ordKolore));
+		//System.out.println(l.jokLortu(2).getKolore());
+	}
 
 }

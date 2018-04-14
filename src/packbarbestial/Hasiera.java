@@ -86,6 +86,7 @@ public class Hasiera {
 //			i++;
 //			System.out.println(i);
 //		}
+		j.ordenagailuaSortu();
 		frame = new JFrame();
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
@@ -105,7 +106,7 @@ public class Hasiera {
 		
 		JLabelPro barBestial = new JLabelPro("");
 		barBestial.erdianJarri();
-		//barBestial.setIcon(new ImageIcon("img/barBestialTamaina.png"));
+		barBestial.setIcon(new ImageIcon("img/barBestialTamaina.png"));
 		barBestial.setIconURL("https://i.imgur.com/F3xnPNi.png");
 		
 		panel_goikoa.add(barBestial);
@@ -261,34 +262,52 @@ public class Hasiera {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.print(e.getSource().equals(karta1));
-			Karta k=j.bota(1);
-			karta1.setIcon(null);
-			j.gehituTablerora(k);
-			int pos=j.getTableroKop();
-			switch(pos){
-			case 1:
-				tablero1.setIconURL(j.getUrl(k.getIndarra()));
-				break;
-			case 2:
-				tablero2.setIconURL(j.getUrl(k.getIndarra()));
-				break;
-			case 3:
-				tablero3.setIconURL(j.getUrl(k.getIndarra()));
-				break;
-			case 4:
-				tablero4.setIconURL(j.getUrl(k.getIndarra()));
-				break;
-			case 5:
-				tablero5.setIconURL(j.getUrl(k.getIndarra()));
-				break;
+			Karta k = null;
+			if(e.getSource().equals(karta1)){
+				k=j.bota(1);
+				karta1.setIcon(null);
 			}
-			try{
-				k.egikaritu();
-			}catch(NullPointerException x){
-				JOptionPane.showMessageDialog(frame, "Ez duzu karta berria hartu!");
+			else if(e.getSource().equals(karta2)){
+				k=j.bota(2);
+				karta2.setIcon(null);
+			}
+			else if(e.getSource().equals(karta3)){
+				k=j.bota(3);
+				karta3.setIcon(null);
+			}
+			else if(e.getSource().equals(karta4)){
+				k=j.bota(4);
+				karta4.setIcon(null);
 			}
 			
+			try{
+				if(k==null) throw new NullPointerException();
+				else if(k.getIndarra()==0) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
+				else{
+					j.gehituTablerora(k);
+					int pos=j.getTableroKop();
+					switch(pos){
+					case 1:
+						tablero1.setIconURL(j.getUrl(k.getIndarra()));
+						break;
+					case 2:
+						tablero2.setIconURL(j.getUrl(k.getIndarra()));
+						break;
+					case 3:
+						tablero3.setIconURL(j.getUrl(k.getIndarra()));
+						break;
+					case 4:
+						tablero4.setIconURL(j.getUrl(k.getIndarra()));
+						break;
+					case 5:
+						tablero5.setIconURL(j.getUrl(k.getIndarra()));
+						break;
+					}
+					k.egikaritu();
+				}
+			}catch(NullPointerException x){
+				JOptionPane.showMessageDialog(frame, "Hutsik");
+			}
 		}
 			
 		}
