@@ -31,7 +31,7 @@ public class JokalariaTest {
 	@Test
 	public void testEskuan(){
 		j1.hasieratu();
-		assertTrue(j1.getEskuan().size()==4);
+		assertTrue(j1.getEskuan().length==4);
 	}
 
 }

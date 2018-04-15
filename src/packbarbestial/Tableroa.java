@@ -21,5 +21,14 @@ public class Tableroa {
 	}
 	
 	public int getKop(){ return kop; }
+	
+	public void animaladakGauzatu(){
+		int i=kop;
+		kartak[kop].egikaritu();
+		while(i!=0){
+			if(kartak[i].errekurrenteaDa()) kartak[i].egikaritu();
+			i--;
+		}
+	}
 
 }

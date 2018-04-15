@@ -204,6 +204,7 @@ public class Hasiera {
 		hartzeke.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int[] ondo=j.hartu();
+				//System.out.println(ondo[0]);
 				if(ondo[0]==0) JOptionPane.showMessageDialog(frame, "Jada 4 karta dituzu eskuan!");
 				else if(ondo[0]==2) JOptionPane.showMessageDialog(frame, "Ez duzu karta berria hartu!");
 				else{
@@ -254,10 +255,6 @@ public class Hasiera {
 		return j.getUrl(indarra);
 	}
 	
-	private void irudiaIpini(JLabelPro tablero,String url){
-		tablero.setIconURL(url);
-	}
-	
 	public class GertaeraKudeatzailea implements ActionListener{
 		
 		@Override
@@ -265,21 +262,20 @@ public class Hasiera {
 			Karta k = null;
 			if(e.getSource().equals(karta1)){
 				k=j.bota(1);
-				karta1.setIcon(null);
+				if(k!=null && k.getIndarra()!=0) karta1.setIcon(null);
 			}
 			else if(e.getSource().equals(karta2)){
 				k=j.bota(2);
-				karta2.setIcon(null);
+				if(k!=null && k.getIndarra()!=0) karta2.setIcon(null);
 			}
 			else if(e.getSource().equals(karta3)){
 				k=j.bota(3);
-				karta3.setIcon(null);
+				if(k!=null && k.getIndarra()!=0) karta3.setIcon(null);
 			}
 			else if(e.getSource().equals(karta4)){
 				k=j.bota(4);
-				karta4.setIcon(null);
+				if(k!=null && k.getIndarra()!=0) karta4.setIcon(null);
 			}
-			
 			try{
 				if(k==null) throw new NullPointerException();
 				else if(k.getIndarra()==0) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
@@ -303,16 +299,12 @@ public class Hasiera {
 						tablero5.setIconURL(j.getUrl(k.getIndarra()));
 						break;
 					}
-					k.egikaritu();
+					j.animaladakGauzatu();
+					//k.egikaritu();
 				}
 			}catch(NullPointerException x){
 				JOptionPane.showMessageDialog(frame, "Hutsik");
 			}
 		}
-			
-		}
-		
 	}
-
-
-
+}

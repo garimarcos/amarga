@@ -21,6 +21,7 @@ public class Jokalaria {
 		this.kolorea=pKolore;
 		this.hartzeke=new Mazo();
 		this.eskuan=new Karta[4];
+		kop=0;
 	}
 	
 	public Mazo getHartzeke(){ return hartzeke; }//test gauzatzeko
@@ -43,7 +44,8 @@ public class Jokalaria {
 			}
 		}
 		for(int i=0;i<4;i++){//Eskua bete arte(4 karta egon behar dira)
-			eskuan[i]=hartzeke.pop();	
+			eskuan[i]=hartzeke.pop();
+			kop++;
 		}
 		
 	}
@@ -76,7 +78,7 @@ public class Jokalaria {
 				return ondoPosizioa;//ez du hartu karta
 			}
 		}
-		else{
+		else {
 			ondoPosizioa[0]=0;
 			return ondoPosizioa;//jada 4 karta daude	
 		}

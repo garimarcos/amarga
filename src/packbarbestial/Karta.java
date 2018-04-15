@@ -16,5 +16,7 @@ public abstract class Karta {
 		return indarra;
 	}
 	
+	public boolean errekurrenteaDa(){ return errekurrente; }
+	
 	
 }

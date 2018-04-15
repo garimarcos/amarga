@@ -2,10 +2,10 @@ package packbarbestial;
 
 public class Jokoa {
 
-	Mahaia m=Mahaia.getnMahaia();
-	ListaJokalariak l=ListaJokalariak.getNireLista();
-	Tableroa t=Tableroa.getnTableroa();
-	KartenBilera k=KartenBilera.getnKartenBilera();
+	private Mahaia m=Mahaia.getnMahaia();
+	private ListaJokalariak l=ListaJokalariak.getNireLista();
+	private Tableroa t=Tableroa.getnTableroa();
+	private KartenBilera k=KartenBilera.getnKartenBilera();
 
 	private static Jokoa nJokoa=new Jokoa();
 
@@ -46,6 +46,10 @@ public class Jokoa {
 		else ordKolore="urdina";
 		l.add(new Jokalaria("ordenagailua",ordKolore));
 		//System.out.println(l.jokLortu(2).getKolore());
+	}
+	
+	public void animaladakGauzatu(){
+		t.animaladakGauzatu();
 	}
 
 }
