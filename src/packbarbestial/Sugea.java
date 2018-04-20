@@ -1,6 +1,7 @@
 package packbarbestial;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Sugea extends Karta {
 
@@ -10,8 +11,8 @@ public class Sugea extends Karta {
 
 	@Override
 	public void egikaritu() {
-		Karta[] k=Tableroa.getnTableroa().hartuKartak();
-		Arrays.sort(k);
+		ArrayList<Karta> k=Tableroa.getnTableroa().hartuKartak();
+		Collections.sort(k,Collections.reverseOrder());
 	}
 
 

@@ -16,7 +16,7 @@ public class Kameleoi extends Karta {
 
 	@Override
 	public void egikaritu() {
-		//state.egikaritu();
+		state.egikaritu();
 
 	}
 

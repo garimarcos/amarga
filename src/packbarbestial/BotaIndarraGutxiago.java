@@ -1,8 +1,8 @@
 package packbarbestial;
 
-public class EzBota implements Bota {
+public class BotaIndarraGutxiago implements Bota {
 
-	public EzBota() {
+	public BotaIndarraGutxiago() {
 		// TODO Auto-generated constructor stub
 	}
 

@@ -1,46 +1,35 @@
 package packbarbestial;
 
+import java.util.ArrayList;
+
 public class Tableroa {
 	
 	private static Tableroa nTableroa=new Tableroa();
-	private Karta[] kartak;
-	private int kop;
+	private ArrayList<Karta> kartak;
 
 	private Tableroa() {
-		kartak=new Karta[5];
-		kop=0;
+		kartak=new ArrayList<Karta>();
 	}
 	
-	public Karta[] hartuKartak(){ return kartak; }
+	public ArrayList<Karta> hartuKartak(){ return kartak; }
 	
 	public static Tableroa getnTableroa(){
 		return nTableroa;
 	}
 	
-	public void gehituKarta(int indarra){
-		Karta k=bilatu(indarra);
-		kartak[kop]=k;
-		kop++;
+	public void gehituKarta(Karta pKarta){
+		kartak.add(pKarta);
 	}
 	
-	public int getKop(){ return kop; }
+	public int getKop(){ return kartak.size(); }
 	
-	public void animaladakGauzatu(Karta pKarta){
-		int i=kop-1;
-		kartak[kop-1].egikaritu();
-		while(i>=0){
-			if(kartak[i].errekurrenteaDa() && !kartak[i].equals(pKarta)) kartak[i].egikaritu();
-			i--;
-		}
+	public void animaladakGauzatu(int jok, int indarra){
+		//Karta k=ListaJokalariak.getNireLista().jokLortu(jok);
+		kartak.get(kartak.size()-1).egikaritu();
+//		while(i>=0){
+//			if(kartak[i].errekurrenteaDa() && !kartak[i].equals(k)) kartak[i].egikaritu();
+//			i--;
+//		}
 	}
 	
-	private Karta bilatu(int indarra){
-		int i=0;
-		while(i<kop){
-			if(kartak[i].getIndarra()==indarra) return kartak[i];
-			else i++;
-		}
-		return null;
-	}
-
 }

@@ -81,7 +81,7 @@ public class DatuenSarrera extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						ListaJokalariak.getNireLista().add(new Jokalaria(jokIzenText.getText().toString(),jokKoloreText.getText().toString()));
+						Jokoa.getnJokoa().addJokalaria(jokIzenText.getText(), jokKoloreText.getText());
 						dispose();
 					}
 				});

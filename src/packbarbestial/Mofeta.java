@@ -8,8 +8,7 @@ public class Mofeta extends Karta {
 
 	@Override
 	public void egikaritu() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

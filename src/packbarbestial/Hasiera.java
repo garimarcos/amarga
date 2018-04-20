@@ -1,37 +1,24 @@
 package packbarbestial;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import java.awt.BorderLayout;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-
-import java.awt.GridLayout;
-import java.awt.Image;
-
 import javax.swing.JPanel;
-import java.awt.GridBagLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.awt.event.ActionEvent;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.event.WindowAdapter;
 
-@SuppressWarnings("unused")
-public class Hasiera {
+public class Hasiera implements Observer{
 	
 	private Jokoa j=Jokoa.getnJokoa();
 
@@ -251,7 +238,7 @@ public class Hasiera {
 		
 	}
 	private String kokatu(int indarra){
-		return j.getUrl(indarra);
+		return j.getUrl(indarra,1);
 	}
 	
 	public class GertaeraKudeatzailea implements ActionListener{
@@ -279,32 +266,45 @@ public class Hasiera {
 				if(k==0) throw new NullPointerException();
 				else if(k==-1) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
 				else{
-					j.gehituTablerora(k);
 					int pos=j.getTableroKop();
-					switch(pos){
-					case 1:
-						tablero1.setIconURL(j.getUrl(k));
-						break;
-					case 2:
-						tablero2.setIconURL(j.getUrl(k));
-						break;
-					case 3:
-						tablero3.setIconURL(j.getUrl(k));
-						break;
-					case 4:
-						tablero4.setIconURL(j.getUrl(k));
-						break;
-					case 5:
-						tablero5.setIconURL(j.getUrl(k));
-						break;
-					}
-					//j.animaladakGauzatu(k);
-					
+					tableroanKartaIpini(k, pos,1);
+					j.animaladakGauzatu(k,1);
+					//irudiakEguneratu();
+					int ord=j.botaOrdenagailua();
+					pos=j.getTableroKop();
+					tableroanKartaIpini(ord, pos,2);
+					j.animaladakGauzatu(k,2);
 					//k.egikaritu();
 				}
 			}catch(NullPointerException x){
 				JOptionPane.showMessageDialog(frame, "Hutsik");
 			}
 		}
+		
+		private void tableroanKartaIpini(int k,int pos,int jok){
+			switch(pos){
+			case 1:
+				tablero1.setIconURL(j.getUrl(k,jok));
+				break;
+			case 2:
+				tablero2.setIconURL(j.getUrl(k,jok));
+				break;
+			case 3:
+				tablero3.setIconURL(j.getUrl(k,jok));
+				break;
+			case 4:
+				tablero4.setIconURL(j.getUrl(k,jok));
+				break;
+			case 5:
+				tablero5.setIconURL(j.getUrl(k,jok));
+				break;
+			}
+		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 }

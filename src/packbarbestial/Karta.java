@@ -4,8 +4,8 @@ public abstract class Karta implements Comparable<Karta> {
 
 	private int indarra;
 	private boolean errekurrente;
-	private Bota b;
-	private Aurreratu a;
+	private Bota b=new EzBota();
+	private Aurreratu a=new EzAurreratu();
 	
 	public Karta(int pIndarra, boolean pErrekurrente){
 		this.indarra=pIndarra;
@@ -26,6 +26,12 @@ public abstract class Karta implements Comparable<Karta> {
 	}
 	
 	public boolean errekurrenteaDa(){ return errekurrente; }
+	
+	protected void setBota(Bota pBota){ b=pBota; }
+	
+	protected void setAurreratu(Aurreratu pAurreratu){ a=pAurreratu; }
+	
+	protected void bota(int indarra){ b.bota(indarra); }
 	
 	
 }

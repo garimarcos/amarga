@@ -25,7 +25,6 @@ public class Mahaia {
 	}
 	
 	public String[] mahaiaPrestatu(){
-		ListaJokalariak.getNireLista().jokLortu(1).hasieratu();
 		return ListaJokalariak.getNireLista().jokLortu(1).mahaiaPrestatu();
 	}
 	

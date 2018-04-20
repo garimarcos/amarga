@@ -1,12 +1,9 @@
 package packbarbestial;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.Observable;
 import java.util.Random;
-import java.util.Stack;
 
-public class Jokalaria {
+public class Jokalaria extends Observable{
 	
 	private String izena;
 	private String kolorea;
@@ -22,6 +19,7 @@ public class Jokalaria {
 		this.hartzeke=new Mazo();
 		this.eskuan=new Karta[4];
 		kop=0;
+		hasieratu();
 	}
 	
 	public Mazo getHartzeke(){ return hartzeke; }//test gauzatzeko
@@ -72,44 +70,81 @@ public class Jokalaria {
 				ondoPosizioa[2]=eskuan[azkena].getIndarra();
 				ondoPosizioa[0]=1;
 				hutsune=false;
+				notifyObservers();
 				return ondoPosizioa;//ondo egin du
 			}else{
 				ondoPosizioa[0]=2;
+				notifyObservers();
 				return ondoPosizioa;//ez du hartu karta
 			}
 		}
 		else {
 			ondoPosizioa[0]=0;
+			notifyObservers();
 			return ondoPosizioa;//jada 4 karta daude	
 		}
+		
 	}
 	
 	public int bota(int posizioa){
-		if(hartzeke.size()>0 && !hutsune){
-			kop--;
-			azkena=posizioa-1;
-			switch(posizioa){
-			case 1:
-				return bota1(0);
-			case 2: 
-				return bota1(1);
-			case 3: 
-				return bota1(2);
-			case 4: 
-				return bota1(3);
-			}
-			return -1;
-		}
+		Karta k=null;
+		if(hartzeke.size()>0){
+			if(!hutsune){
+				kop--;
+				azkena=posizioa-1;
+				switch(posizioa){
+				case 1:
+					 k= bota1(0);
+					 break;
+				case 2: 
+					 k= bota1(1);
+					 break;
+				case 3: 
+					 k= bota1(2);
+					 break;
+				case 4: 
+					 k= bota1(3);
+					 break;
+				}
+				Jokoa.getnJokoa().gehituTablerora(k);
+				return k.getIndarra();
+			}else return -1; 
+		}else return 0;
 		//return null;
-		return 0;//4 karta jadanik
-
+		//return 0; //4 karta jadanik
 	}
 	
-	private int bota1(int posizio){
+	
+	private Karta bota1(int posizio){
 		Karta k=eskuan[posizio];
 		eskuan[posizio]=null;
 		hutsune=true;
-		return k.getIndarra();
+		return k;
+	}
+	
+	public int botaOrd(){
+		boolean ondo=false;
+		int i=0;
+		int k=0;
+		while(!ondo){
+			k=botaOrd1(i);
+			if(k!=0) return k;
+		}
+		return 0;
+		
+	}
+	
+	private int botaOrd1(int pos){
+		Karta k =null;
+		if (eskuan[pos]!=null){
+			k=eskuan[pos];
+			Jokoa.getnJokoa().gehituTablerora(k);
+			bota1(pos);
+			kop--;
+			hartu();
+			return k.getIndarra();
+		}
+		return 0;
 	}
 
 }

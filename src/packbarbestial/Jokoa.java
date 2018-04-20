@@ -29,12 +29,12 @@ public class Jokoa {
 		return l.jokLortu(1).hartu();
 	}
 	
-	public String getUrl(int indarra){
-		return k.getURL(indarra, l.jokLortu(1).getKolore());
+	public String getUrl(int indarra,int jok){
+		return k.getURL(indarra, l.jokLortu(jok).getKolore());
 	}
 	
-	public void gehituTablerora(int indarra){
-		t.gehituKarta(indarra);
+	public void gehituTablerora(Karta pKarta){
+		t.gehituKarta(pKarta);
 	}
 	
 	public int getTableroKop(){ return t.getKop(); }
@@ -48,11 +48,15 @@ public class Jokoa {
 		//System.out.println(l.jokLortu(2).getKolore());
 	}
 	
-	public void animaladakGauzatu(Karta pKarta){
-		t.animaladakGauzatu(pKarta);
+	public void animaladakGauzatu(int jok,int indarra){
+		t.animaladakGauzatu(jok, indarra);
 	}
 	
-	public void botaOrdenagailua(){
-		l.jokLortu(2).bota(0);
+	public int botaOrdenagailua(){
+		return l.jokLortu(2).botaOrd();
+	}
+	
+	public void addJokalaria(String pIzen, String pKolore){
+		ListaJokalariak.getNireLista().add(new Jokalaria(pIzen,pKolore));
 	}
 }
