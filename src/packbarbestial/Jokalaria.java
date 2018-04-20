@@ -84,7 +84,7 @@ public class Jokalaria {
 		}
 	}
 	
-	public Karta bota(int posizioa){
+	public int bota(int posizioa){
 		if(hartzeke.size()>0 && !hutsune){
 			kop--;
 			azkena=posizioa-1;
@@ -98,18 +98,18 @@ public class Jokalaria {
 			case 4: 
 				return bota1(3);
 			}
-			return null;
+			return -1;
 		}
 		//return null;
-		return new Lehoia(0,false);
+		return 0;//4 karta jadanik
 
 	}
 	
-	private Karta bota1(int posizio){
+	private int bota1(int posizio){
 		Karta k=eskuan[posizio];
 		eskuan[posizio]=null;
 		hutsune=true;
-		return k;
+		return k.getIndarra();
 	}
 
 }

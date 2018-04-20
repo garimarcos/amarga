@@ -1,5 +1,7 @@
 package packbarbestial;
 
+import java.util.Arrays;
+
 public class Sugea extends Karta {
 
 	public Sugea() {
@@ -8,8 +10,9 @@ public class Sugea extends Karta {
 
 	@Override
 	public void egikaritu() {
-		// TODO Auto-generated method stub
-		
+		Karta[] k=Tableroa.getnTableroa().hartuKartak();
+		Arrays.sort(k);
 	}
+
 
 }

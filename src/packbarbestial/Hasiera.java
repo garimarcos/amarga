@@ -76,8 +76,7 @@ public class Hasiera {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
-		KopuruAukera.main();
+		//KopuruAukera.main();
 //		int i=0;
 		DatuenSarrera.main();
 //		System.out.println(ListaJokalariazk.getNireLista().getKop());
@@ -259,47 +258,48 @@ public class Hasiera {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Karta k = null;
+			int k=0;
 			if(e.getSource().equals(karta1)){
 				k=j.bota(1);
-				if(k!=null && k.getIndarra()!=0) karta1.setIcon(null);
+				if(k!=0 && k!=-1) karta1.setIcon(null);
 			}
 			else if(e.getSource().equals(karta2)){
 				k=j.bota(2);
-				if(k!=null && k.getIndarra()!=0) karta2.setIcon(null);
+				if(k!=0 && k!=-1) karta2.setIcon(null);
 			}
 			else if(e.getSource().equals(karta3)){
 				k=j.bota(3);
-				if(k!=null && k.getIndarra()!=0) karta3.setIcon(null);
+				if(k!=0 && k!=-1) karta3.setIcon(null);
 			}
 			else if(e.getSource().equals(karta4)){
 				k=j.bota(4);
-				if(k!=null && k.getIndarra()!=0) karta4.setIcon(null);
+				if(k!=0 && k!=-1) karta4.setIcon(null);
 			}
 			try{
-				if(k==null) throw new NullPointerException();
-				else if(k.getIndarra()==0) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
+				if(k==0) throw new NullPointerException();
+				else if(k==-1) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
 				else{
 					j.gehituTablerora(k);
 					int pos=j.getTableroKop();
 					switch(pos){
 					case 1:
-						tablero1.setIconURL(j.getUrl(k.getIndarra()));
+						tablero1.setIconURL(j.getUrl(k));
 						break;
 					case 2:
-						tablero2.setIconURL(j.getUrl(k.getIndarra()));
+						tablero2.setIconURL(j.getUrl(k));
 						break;
 					case 3:
-						tablero3.setIconURL(j.getUrl(k.getIndarra()));
+						tablero3.setIconURL(j.getUrl(k));
 						break;
 					case 4:
-						tablero4.setIconURL(j.getUrl(k.getIndarra()));
+						tablero4.setIconURL(j.getUrl(k));
 						break;
 					case 5:
-						tablero5.setIconURL(j.getUrl(k.getIndarra()));
+						tablero5.setIconURL(j.getUrl(k));
 						break;
 					}
-					j.animaladakGauzatu();
+					//j.animaladakGauzatu(k);
+					
 					//k.egikaritu();
 				}
 			}catch(NullPointerException x){

@@ -21,7 +21,7 @@ public class Jokoa {
 		return m.mahaiaPrestatu();
 	}
 	
-	public Karta bota(int pPosizioa){
+	public int bota(int pPosizioa){
 		return l.jokLortu(1).bota(pPosizioa);
 	}
 	
@@ -33,8 +33,8 @@ public class Jokoa {
 		return k.getURL(indarra, l.jokLortu(1).getKolore());
 	}
 	
-	public void gehituTablerora(Karta k){
-		t.gehituKarta(k);
+	public void gehituTablerora(int indarra){
+		t.gehituKarta(indarra);
 	}
 	
 	public int getTableroKop(){ return t.getKop(); }
@@ -48,8 +48,11 @@ public class Jokoa {
 		//System.out.println(l.jokLortu(2).getKolore());
 	}
 	
-	public void animaladakGauzatu(){
-		t.animaladakGauzatu();
+	public void animaladakGauzatu(Karta pKarta){
+		t.animaladakGauzatu(pKarta);
 	}
-
+	
+	public void botaOrdenagailua(){
+		l.jokLortu(2).bota(0);
+	}
 }
