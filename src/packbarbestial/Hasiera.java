@@ -331,6 +331,10 @@ public class Hasiera implements Observer{
 			switch(i){
 			case 0:
 				tablero1.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				tablero2.setIcon(null);
+				tablero3.setIcon(null);
+				tablero4.setIcon(null);
+				tablero5.setIcon(null);
 				break;
 			case 2:
 				tablero2.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
