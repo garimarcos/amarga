@@ -5,9 +5,10 @@ import java.util.Iterator;
 
 public class Lehoia extends Karta {
 
-	public Lehoia() {
-		super(12,false);
+	public Lehoia(String pKolore) {
+		super(12,false, pKolore);
 		setBota(new BotaIndarra());
+		setAurreratu(new AurreratuIndarra());
 	}
 
 	@Override
@@ -25,6 +26,7 @@ public class Lehoia extends Karta {
 			m.inpernura(this);
 			k.remove(this);
 		}
+		aurreratu(12);
 	}
 
 }

@@ -18,7 +18,7 @@ public class BotaIndarra implements Bota {
 			Karta kar=it.next();
 			if(kar.getIndarra()==indarra){
 				m.inpernura(kar);
-				k.remove(kar);
+				it.remove();
 			}
 		}
 	}

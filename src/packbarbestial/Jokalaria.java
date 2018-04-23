@@ -1,9 +1,8 @@
 package packbarbestial;
 
-import java.util.Observable;
 import java.util.Random;
 
-public class Jokalaria extends Observable{
+public class Jokalaria{
 	
 	private String izena;
 	private String kolorea;
@@ -28,7 +27,7 @@ public class Jokalaria extends Observable{
 	
 	public String getKolore(){ return kolorea; }
 	
-	public void hasieratu(){//Kartak banatzeko metodoa
+	private void hasieratu(){//Kartak banatzeko metodoa
 		boolean[] pila=new boolean[12];
 		int k=0;
 		while(k<12){
@@ -49,13 +48,15 @@ public class Jokalaria extends Observable{
 	}
 		
 	private void gehituKarta(int indarra){//Karta bat eskura gehitzeko metodoa
-		hartzeke.add(Factory.getnFactory().kartaSortu(indarra));
+		Factory f=Factory.getnFactory();
+		hartzeke.add(f.kartaSortu(indarra,kolorea));
 	}
 	
 	public String[] mahaiaPrestatu(){
 		String[] urlak = new String[4];
+		KartenBilera k=KartenBilera.getnKartenBilera();
 		for (int i = 0; i < 4; i++){
-			urlak[i]= KartenBilera.getnKartenBilera().getURL(eskuan[i].getIndarra(), this.kolorea);
+			urlak[i]= k.getURL(eskuan[i].getIndarra(), this.kolorea);
 		}
 		return urlak;
 	}
@@ -70,17 +71,17 @@ public class Jokalaria extends Observable{
 				ondoPosizioa[2]=eskuan[azkena].getIndarra();
 				ondoPosizioa[0]=1;
 				hutsune=false;
-				notifyObservers();
+				//notifyObservers();
 				return ondoPosizioa;//ondo egin du
 			}else{
 				ondoPosizioa[0]=2;
-				notifyObservers();
+				//notifyObservers();
 				return ondoPosizioa;//ez du hartu karta
 			}
 		}
 		else {
 			ondoPosizioa[0]=0;
-			notifyObservers();
+			//notifyObservers();
 			return ondoPosizioa;//jada 4 karta daude	
 		}
 		
@@ -131,13 +132,16 @@ public class Jokalaria extends Observable{
 			if(k!=0) return k;
 		}
 		return 0;
-		
 	}
 	
 	private int botaOrd1(int pos){
 		Karta k =null;
 		if (eskuan[pos]!=null){
 			k=eskuan[pos];
+			if(k.getIndarra()==5){
+				int ind=kameleoiEsleitu(0);
+				k=new Kameleoi(ind,kolorea);
+			}
 			Jokoa.getnJokoa().gehituTablerora(k);
 			bota1(pos);
 			kop--;
@@ -145,6 +149,14 @@ public class Jokalaria extends Observable{
 			return k.getIndarra();
 		}
 		return 0;
+	}
+	
+	public int kameleoiEsleitu(int indarra){
+		if(indarra==0){
+			Random rn=new Random();
+			int ind=rn.nextInt(11)+1;
+			return ind;
+		}return 0;
 	}
 
 }

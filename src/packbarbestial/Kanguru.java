@@ -2,8 +2,8 @@ package packbarbestial;
 
 public class Kanguru extends Karta {
 
-	public Kanguru() {
-		super(3, false);
+	public Kanguru(String pKolore) {
+		super(3, false, pKolore);
 	}
 
 	@Override

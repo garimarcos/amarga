@@ -2,8 +2,8 @@ package packbarbestial;
 
 public class Krokodiloa extends Karta {
 
-	public Krokodiloa() {
-		super(10, true);
+	public Krokodiloa(String pKolore) {
+		super(10, true, pKolore);
 	}
 
 	@Override

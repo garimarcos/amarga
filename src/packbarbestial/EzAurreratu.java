@@ -7,7 +7,7 @@ public class EzAurreratu implements Aurreratu {
 	}
 
 	@Override
-	public void aurreratu() {
+	public void aurreratu(int indarra) {
 		// TODO Auto-generated method stub
 
 	}

@@ -2,8 +2,8 @@ package packbarbestial;
 
 public class Jirafa extends Karta{
 	
-	public Jirafa(){
-		super(8,true);
+	public Jirafa(String pKolore){
+		super(8,true, pKolore);
 	}
 
 	@Override

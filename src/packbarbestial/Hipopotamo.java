@@ -2,8 +2,8 @@ package packbarbestial;
 
 public class Hipopotamo extends Karta {
 
-	public Hipopotamo() {
-		super(11,true);
+	public Hipopotamo(String pKolore) {
+		super(11,true, pKolore);
 	}
 
 	@Override

@@ -6,11 +6,14 @@ public abstract class Karta implements Comparable<Karta> {
 	private boolean errekurrente;
 	private Bota b=new EzBota();
 	private Aurreratu a=new EzAurreratu();
+	private String kolore;
 	
-	public Karta(int pIndarra, boolean pErrekurrente){
+	public Karta(int pIndarra, boolean pErrekurrente, String pKolore){
 		this.indarra=pIndarra;
-		this.errekurrente=pErrekurrente;
+		this.kolore=pKolore;
 	}
+	
+	public String getKolore(){ return kolore; }
 	
 	@Override
 	public int compareTo(Karta o) {
@@ -33,5 +36,6 @@ public abstract class Karta implements Comparable<Karta> {
 	
 	protected void bota(int indarra){ b.bota(indarra); }
 	
+	protected void aurreratu(int indarra){ a.aurreratu(indarra); }
 	
 }

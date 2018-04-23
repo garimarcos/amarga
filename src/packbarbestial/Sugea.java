@@ -5,8 +5,8 @@ import java.util.Collections;
 
 public class Sugea extends Karta {
 
-	public Sugea() {
-		super(9, false);
+	public Sugea(String pKolore) {
+		super(9, false, pKolore);
 	}
 
 	@Override

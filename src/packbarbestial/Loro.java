@@ -2,8 +2,8 @@ package packbarbestial;
 
 public class Loro extends Karta {
 
-	public Loro() {
-		super(2, false);
+	public Loro(String pKolore) {
+		super(2, false, pKolore);
 	}
 
 	@Override

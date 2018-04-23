@@ -23,17 +23,13 @@ public class KartenBilera {
 	}
 	
 	private void kartakHasieratu(String pKolore){
-		switch(pKolore){
-		case "urdina":
+		if(pKolore.equalsIgnoreCase("urdina")){
 			File kartaUrdinakURL=new File("resources/kartaUrdinakURL.txt");
 			fitxategiaKargatu(kartaUrdinakURL,kartaUrdinak);
-			break;
-		case "berdea":
+		}else{
 			File kartaBerdeakURL=new File("resources/kartaBerdeakURL.txt");
 			fitxategiaKargatu(kartaBerdeakURL,kartaBerdeak);
-			break;
 		}
-		
 	}
 	
 	private void fitxategiaKargatu(File pFile, HashMap<Integer,String> th){
@@ -59,6 +55,5 @@ public class KartenBilera {
 		if(pKolore.equalsIgnoreCase("urdina")) return kartaUrdinak.get(pIndarra);
 		else return kartaBerdeak.get(pIndarra);
 	}
-	
 
 }

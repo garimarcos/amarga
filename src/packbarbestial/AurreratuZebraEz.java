@@ -7,7 +7,7 @@ public class AurreratuZebraEz implements Aurreratu { //HIPOPOTAMO ETA KROKODILO
 	}
 
 	@Override
-	public void aurreratu() {
+	public void aurreratu(int indarra) {
 		// TODO Auto-generated method stub
 
 	}

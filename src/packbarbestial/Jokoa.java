@@ -1,5 +1,7 @@
 package packbarbestial;
 
+import java.util.Observer;
+
 public class Jokoa {
 
 	private Mahaia m=Mahaia.getnMahaia();
@@ -10,7 +12,10 @@ public class Jokoa {
 	private static Jokoa nJokoa=new Jokoa();
 
 	private Jokoa() {
-		
+	}
+	
+	public void addObserver(Observer o){
+		t.addObserver(o);
 	}
 	
 	public static Jokoa getnJokoa(){
@@ -42,14 +47,19 @@ public class Jokoa {
 	public void ordenagailuaSortu(){
 		String jokKolore=l.jokLortu(1).getKolore();
 		String ordKolore="";
-		if(jokKolore.equals("urdina")) ordKolore="berdea";
+		if(jokKolore.equalsIgnoreCase("urdina")) ordKolore="berdea";
 		else ordKolore="urdina";
 		l.add(new Jokalaria("ordenagailua",ordKolore));
 		//System.out.println(l.jokLortu(2).getKolore());
 	}
 	
-	public void animaladakGauzatu(int jok,int indarra){
-		t.animaladakGauzatu(jok, indarra);
+	public void animaladakGauzatu(int indarra,int jok){
+		t.animaladakGauzatu(indarra, jok);
+	}
+	
+	public String getKartaUrl(int pIndarra,int pKolore){
+		if(pKolore==0) return KartenBilera.getnKartenBilera().getURL(pIndarra, "berdea");
+		else return KartenBilera.getnKartenBilera().getURL(pIndarra, "urdina");
 	}
 	
 	public int botaOrdenagailua(){

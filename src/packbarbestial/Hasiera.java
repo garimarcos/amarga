@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -35,6 +36,10 @@ public class Hasiera implements Observer{
 	private JButtonPro karta3;
 	private JButtonPro karta4;
 	private JButtonPro hartzeke;
+	
+	private boolean hasiera = true;
+	
+//	private static Hasiera nHasiera=new Hasiera();
 
 	/**
 	 * Launch the application.
@@ -45,6 +50,7 @@ public class Hasiera implements Observer{
 				try {
 					Hasiera window = new Hasiera();
 					window.frame.setVisible(true);
+					//nHasiera.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,14 +62,20 @@ public class Hasiera implements Observer{
 	 * Create the application.
 	 */
 	public Hasiera() {
+		j.addObserver(this);
 		initialize();
 	}
+	
+//	public static Hasiera getnHasiera(){
+//		return nHasiera;
+//	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		//KopuruAukera.main();
+//		KopuruAukera.main();
 //		int i=0;
 		DatuenSarrera.main();
 //		System.out.println(ListaJokalariazk.getNireLista().getKop());
@@ -265,11 +277,18 @@ public class Hasiera implements Observer{
 			try{
 				if(k==0) throw new NullPointerException();
 				else if(k==-1) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
+				else if(k==5){
+					String karta=JOptionPane.showInputDialog(frame, "Aukeratu kameleoia zer bihurtu behar den");
+					
+				}
 				else{
 					int pos=j.getTableroKop();
 					tableroanKartaIpini(k, pos,1);
-					j.animaladakGauzatu(k,1);
-					//irudiakEguneratu();
+					if (!hasiera){
+						j.animaladakGauzatu(k,1);
+						//irudiakEguneratu();
+					}
+					hasiera = false;
 					int ord=j.botaOrdenagailua();
 					pos=j.getTableroKop();
 					tableroanKartaIpini(ord, pos,2);
@@ -302,9 +321,33 @@ public class Hasiera implements Observer{
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		ArrayList<Integer> kartak = new ArrayList<Integer>();
+		kartak = (ArrayList<Integer>)arg;
+		int i=0;
+		while (i<kartak.size()-1){
+			switch(i){
+			case 0:
+				tablero1.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				break;
+			case 2:
+				tablero2.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				break;
+			case 4:
+				tablero3.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				break;
+			case 6:
+				tablero4.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				break;
+			case 8:
+				tablero5.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				break;
+			}
+			i++;
+		}
 		
 	}
+	
 }
