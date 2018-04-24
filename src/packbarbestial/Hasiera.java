@@ -19,7 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Hasiera implements Observer{
+public class Hasiera extends JFrame implements Observer{
 	
 	private Jokoa j=Jokoa.getnJokoa();
 
@@ -36,10 +36,11 @@ public class Hasiera implements Observer{
 	private JButtonPro karta3;
 	private JButtonPro karta4;
 	private JButtonPro hartzeke;
+	private JButtonPro titulu;
 	
 	private boolean hasiera = true;
-	
-//	private static Hasiera nHasiera=new Hasiera();
+	private boolean botaOrd = false;
+	private boolean botaJok = true;
 
 	/**
 	 * Launch the application.
@@ -105,18 +106,21 @@ public class Hasiera implements Observer{
 		JLabelPro barBestial = new JLabelPro("");
 		barBestial.erdianJarri();
 		barBestial.setIcon(new ImageIcon("img/barBestialTamaina.png"));
-		barBestial.setIconURL("https://i.imgur.com/F3xnPNi.png");
+		//barBestial.setIconURL("https://i.imgur.com/F3xnPNi.png");
 		
 		panel_goikoa.add(barBestial);
 		
-		JLabelPro titulu = new JLabelPro("");
+		titulu = new JButtonPro("");
+		titulu.addActionListener(new GertaeraKudeatzailea());
 		titulu.erdianJarri();
-		titulu.setIconURL("https://i.imgur.com/1bpmanW.png");
+		titulu.setIcon(new ImageIcon("img/proyect.png"));
+		//titulu.setIconURL("https://i.imgur.com/1bpmanW.png");
 		panel_goikoa.add(titulu);
 		
 		JLabelPro esLoQueHay = new JLabelPro("");
 		esLoQueHay.erdianJarri();
-		esLoQueHay.setIconURL("https://i.imgur.com/Ob4fbBg.png");		
+		esLoQueHay.setIcon(new ImageIcon("img/esloquehay--copia1.png"));
+		//esLoQueHay.setIconURL("https://i.imgur.com/Ob4fbBg.png");		
 		panel_goikoa.add(esLoQueHay);
 		
 		JPanel panel_erdikoa = new JPanel();
@@ -129,7 +133,8 @@ public class Hasiera implements Observer{
 		panel_erdikoa.add(hutsuneErdEzk);
 		
 		JLabelPro zerukoAtea = new JLabelPro("");
-		zerukoAtea.setIconURL("https://i.imgur.com/ZxIaeus.png");
+		//zerukoAtea.setIconURL("https://i.imgur.com/ZxIaeus.png");
+		zerukoAtea.setIcon(new ImageIcon("img/puertacielo--copia1.png"));
 		zerukoAtea.erdianJarri();
 		panel_erdikoa.add(zerukoAtea);
 		
@@ -149,7 +154,8 @@ public class Hasiera implements Observer{
 		panel_erdikoa.add(tablero5);
 		
 		JLabelPro patada = new JLabelPro("");
-		patada.setIconURL("https://i.imgur.com/Sb87kRz.png");
+		//patada.setIconURL("https://i.imgur.com/Sb87kRz.png");
+		patada.setIcon(new ImageIcon("img/patada.png"));
 		patada.erdianJarri();
 		panel_erdikoa.add(patada);
 		
@@ -172,25 +178,29 @@ public class Hasiera implements Observer{
 		
 		karta1 = new JButtonPro("");
 		karta1.addActionListener(new GertaeraKudeatzailea());
-		karta1.setIconURL(kartaurl[0]);
+		//karta1.setIconURL(kartaurl[0]);
+		karta1.setIcon(new ImageIcon(kartaurl[0]));
 		panel_behekoa.add(karta1);
 		karta1.erdianJarri();
 		
 		karta2 = new JButtonPro("");
 		karta2.addActionListener(new GertaeraKudeatzailea());
-		karta2.setIconURL(kartaurl[1]);
+		//karta2.setIconURL(kartaurl[1]);
+		karta2.setIcon(new ImageIcon(kartaurl[1]));
 		karta2.erdianJarri();
 		panel_behekoa.add(karta2);
 		
 		karta3 = new JButtonPro("");
 		karta3.addActionListener(new GertaeraKudeatzailea());
-		karta3.setIconURL(kartaurl[2]);
+		//karta3.setIconURL(kartaurl[2]);
+		karta3.setIcon(new ImageIcon(kartaurl[2]));
 		karta3.erdianJarri();
 		panel_behekoa.add(karta3);
 		
 		karta4 = new JButtonPro("");
 		karta4.addActionListener(new GertaeraKudeatzailea());
-		karta4.setIconURL(kartaurl[3]);
+		//karta4.setIconURL(kartaurl[3]);
+		karta4.setIcon(new ImageIcon(kartaurl[3]));
 		karta4.erdianJarri();
 		panel_behekoa.add(karta4);
 		
@@ -203,7 +213,8 @@ public class Hasiera implements Observer{
 			public void actionPerformed(ActionEvent e) {
 				int[] ondo=j.hartu();
 				//System.out.println(ondo[0]);
-				if(ondo[0]==0) JOptionPane.showMessageDialog(frame, "Jada 4 karta dituzu eskuan!");
+				if(ondo[0]==3) JOptionPane.showMessageDialog(frame, "Mazoa hutsik dago");
+				else if(ondo[0]==0) JOptionPane.showMessageDialog(frame, "Jada 4 karta dituzu eskuan!");
 				else if(ondo[0]==2) JOptionPane.showMessageDialog(frame, "Ez duzu karta berria hartu!");
 				else{
 					int posizioa=ondo[1];
@@ -211,23 +222,24 @@ public class Hasiera implements Observer{
 					String url=kokatu(indarra);
 					switch(posizioa){
 					case 0:
-						karta1.setIconURL(url);
+						karta1.setIcon(new ImageIcon(url));
 						break;
 					case 1:
-						karta2.setIconURL(url);
+						karta2.setIcon(new ImageIcon(url));
 						break;
 					case 2:
-						karta3.setIconURL(url);
+						karta3.setIcon(new ImageIcon(url));
 						break;
 					case 3:
-						karta4.setIconURL(url);
+						karta4.setIcon(new ImageIcon(url));
 						break;
 					}
 				}
 			}
 		});
 		hartzeke.erdianJarri();
-		hartzeke.setIconURL("https://i.imgur.com/7rFbePP.png");
+		hartzeke.setIcon(new ImageIcon("img/hartzeke.png"));
+		//hartzeke.setIconURL("https://i.imgur.com/7rFbePP.png");
 		panel_behekoa.add(hartzeke);
 	
 		frame.setBounds(100, 100, 919, 477);
@@ -254,46 +266,71 @@ public class Hasiera implements Observer{
 	}
 	
 	public class GertaeraKudeatzailea implements ActionListener{
-		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int k=0;
+			int k=-8;
 			if(e.getSource().equals(karta1)){
-				k=j.bota(1);
-				if(k!=0 && k!=-1) karta1.setIcon(null);
+				if(botaJok){
+					k=j.bota(1);		
+					botaJok=false;
+					botaOrd=true;
+					if(k!=0 && k!=-1) karta1.setIcon(null);
+				}
+				
 			}
 			else if(e.getSource().equals(karta2)){
-				k=j.bota(2);
-				if(k!=0 && k!=-1) karta2.setIcon(null);
+				if(botaJok){
+					k=j.bota(2);		
+					botaJok=false;
+					botaOrd=true;
+					if(k!=0 && k!=-1) karta2.setIcon(null);
+				}
+				
 			}
 			else if(e.getSource().equals(karta3)){
-				k=j.bota(3);
-				if(k!=0 && k!=-1) karta3.setIcon(null);
+				if(botaJok){
+					k=j.bota(3);		
+					botaJok=false;
+					botaOrd=true;
+					if(k!=0 && k!=-1) karta3.setIcon(null);
+				}
+				
 			}
 			else if(e.getSource().equals(karta4)){
-				k=j.bota(4);
-				if(k!=0 && k!=-1) karta4.setIcon(null);
+				if(botaJok){
+					k=j.bota(4);		
+					botaJok=false;
+					botaOrd=true;
+					if(k!=0 && k!=-1) karta4.setIcon(null);
+				}
+				
+			}
+			else if(e.getSource().equals(titulu)){
+				if(botaOrd){
+					k=j.botaOrdenagailua();
+					int pos=j.getTableroKop();
+					tableroanKartaIpini(k, pos,2);
+					j.animaladakGauzatu(k,2);
+					botaOrd=false;
+					botaJok=true;
+				}else k=-8;
 			}
 			try{
-				if(k==0) throw new NullPointerException();
-				else if(k==-1) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
+				if(k==0) JOptionPane.showMessageDialog(frame, "Hutsik!");
+				if(k==-1) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
 				else if(k==5){
-					String karta=JOptionPane.showInputDialog(frame, "Aukeratu kameleoia zer bihurtu behar den");
-					
-				}
+					JOptionPane.showMessageDialog(frame, "Aukeratu karta");
+					KameleoiAukera.main(null);
+				}else if(k==2){
+					int erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));
+				}if(k==-8) JOptionPane.showMessageDialog(frame, "Ez da zure txanda");
 				else{
 					int pos=j.getTableroKop();
 					tableroanKartaIpini(k, pos,1);
 					if (!hasiera){
 						j.animaladakGauzatu(k,1);
-						//irudiakEguneratu();
 					}
 					hasiera = false;
-					int ord=j.botaOrdenagailua();
-					pos=j.getTableroKop();
-					tableroanKartaIpini(ord, pos,2);
-					j.animaladakGauzatu(k,2);
-					//k.egikaritu();
 				}
 			}catch(NullPointerException x){
 				JOptionPane.showMessageDialog(frame, "Hutsik");
@@ -303,19 +340,19 @@ public class Hasiera implements Observer{
 		private void tableroanKartaIpini(int k,int pos,int jok){
 			switch(pos){
 			case 1:
-				tablero1.setIconURL(j.getUrl(k,jok));
+				tablero1.setIcon(new ImageIcon(j.getUrl(k,jok)));
 				break;
 			case 2:
-				tablero2.setIconURL(j.getUrl(k,jok));
+				tablero2.setIcon(new ImageIcon(j.getUrl(k,jok)));
 				break;
 			case 3:
-				tablero3.setIconURL(j.getUrl(k,jok));
+				tablero3.setIcon(new ImageIcon(j.getUrl(k,jok)));
 				break;
 			case 4:
-				tablero4.setIconURL(j.getUrl(k,jok));
+				tablero4.setIcon(new ImageIcon(j.getUrl(k,jok)));
 				break;
 			case 5:
-				tablero5.setIconURL(j.getUrl(k,jok));
+				tablero5.setIcon(new ImageIcon(j.getUrl(k,jok)));
 				break;
 			}
 		}
@@ -330,23 +367,23 @@ public class Hasiera implements Observer{
 		while (i<kartak.size()-1){
 			switch(i){
 			case 0:
-				tablero1.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				tablero1.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
 				tablero2.setIcon(null);
 				tablero3.setIcon(null);
 				tablero4.setIcon(null);
 				tablero5.setIcon(null);
 				break;
 			case 2:
-				tablero2.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				tablero2.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
 				break;
 			case 4:
-				tablero3.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				tablero3.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
 				break;
 			case 6:
-				tablero4.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				tablero4.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
 				break;
 			case 8:
-				tablero5.setIconURL(j.getKartaUrl(kartak.get(i),kartak.get(i+1)));
+				tablero5.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
 				break;
 			}
 			i++;

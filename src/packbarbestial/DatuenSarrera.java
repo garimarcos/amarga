@@ -16,13 +16,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JRadioButton;
 
 public class DatuenSarrera extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JFrame frame;
 	private JTextField jokIzenText;
-	private JTextField jokKoloreText;
+	private JRadioButton rdbtnBerdea = new JRadioButton("berdea");
+	private JRadioButton rdbtnUrdina = new JRadioButton("urdina");
 
 	/**
 	 * Launch the application.
@@ -50,11 +52,23 @@ public class DatuenSarrera extends JDialog {
 			}
 		});
 		setModal(true);
-		setBounds(100, 100, 420, 128);
+		setBounds(100, 100, 286, 128);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new GridLayout(2,2));
+		rdbtnBerdea.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				rdbtnUrdina.setSelected(false);
+			}
+		});
+		rdbtnBerdea.setSelected(true);
+		rdbtnUrdina.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				rdbtnBerdea.setSelected(false);
+			}
+		});
+		rdbtnUrdina.setSelected(false);
 		{
 			JLabel jokIzenLabel = new JLabel("Jokalariaren izena");
 			contentPanel.add(jokIzenLabel);
@@ -65,30 +79,29 @@ public class DatuenSarrera extends JDialog {
 			jokIzenText.setColumns(10);
 		}
 		{
-			JLabel jokKoloreLabel = new JLabel("Jokalariaren kolorea");
-			contentPanel.add(jokKoloreLabel);
+			
+			contentPanel.add(rdbtnBerdea);
+			
 		}
 		{
-			jokKoloreText = new JTextField();
-			contentPanel.add(jokKoloreText);
-			jokKoloreText.setColumns(10);
+	
+			contentPanel.add(rdbtnUrdina);
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						String kol="";
-						if(!jokKoloreText.getText().equalsIgnoreCase("berdea") && !jokKoloreText.getText().equalsIgnoreCase("urdina")){
-							kol="berdea";
-						}else kol=jokKoloreText.getText();
+						if (rdbtnBerdea.isSelected()) kol="berdea";
+						else if (rdbtnUrdina.isSelected()) kol="urdina";
 						Jokoa.getnJokoa().addJokalaria(jokIzenText.getText(), kol);
 						dispose();
 					}
 				});
+				buttonPane.setLayout(new GridLayout(0, 2, 0, 0));
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

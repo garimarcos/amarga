@@ -31,6 +31,17 @@ public class Tableroa extends Observable{
 //			if(kartak[i].errekurrenteaDa() && !kartak[i].equals(k)) kartak[i].egikaritu();
 //			i--;
 //		}
+		if(kartak.size()==5){
+			Mahaia m=Mahaia.getnMahaia();
+			m.inpernura(kartak.get(kartak.size()-1));
+			kartak.remove(kartak.size()-1);
+			int i=0;
+			while(i<2){
+				m.zerura(kartak.get(0));
+				kartak.remove(0);
+				i++;
+			}
+		}
 		egoeraAldatua(kartak);
 	}
 	

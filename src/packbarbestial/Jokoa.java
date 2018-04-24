@@ -69,4 +69,12 @@ public class Jokoa {
 	public void addJokalaria(String pIzen, String pKolore){
 		ListaJokalariak.getNireLista().add(new Jokalaria(pIzen,pKolore));
 	}
+	
+	public void sortuKameleoi(int indarra){
+		l.jokLortu(1).kameleoiEsleitu(indarra);
+	}
+	
+	public void kameleoiAukera(){
+		KameleoiAukera.main(null);
+	}
 }

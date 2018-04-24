@@ -23,7 +23,9 @@ public class Tximino extends Karta {
 		if(i>1) {
 			bota(10);
 			bota(11);
-			aurreratu(0);
+			aurreratu(12);
+//			i--;
+//			while(i!=0) aurreratu(12);
 			//lehenengoa jarri eta gainontzeko tximinoak bere atzean
 		}
 	}

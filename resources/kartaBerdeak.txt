@@ -1,0 +1,12 @@
+img/berdea1.png
+img/berdea2.png
+img/berdea3.png
+img/berdea4.png
+img/berdea5.png
+img/berdea6.png
+img/berdea7.png
+img/berdea8.png
+img/berdea9.png
+img/berdea10.png
+img/berdea11.png
+img/berdea12.png

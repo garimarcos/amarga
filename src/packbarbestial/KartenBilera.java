@@ -24,10 +24,10 @@ public class KartenBilera {
 	
 	private void kartakHasieratu(String pKolore){
 		if(pKolore.equalsIgnoreCase("urdina")){
-			File kartaUrdinakURL=new File("resources/kartaUrdinakURL.txt");
+			File kartaUrdinakURL=new File("resources/kartaUrdinak.txt");
 			fitxategiaKargatu(kartaUrdinakURL,kartaUrdinak);
 		}else{
-			File kartaBerdeakURL=new File("resources/kartaBerdeakURL.txt");
+			File kartaBerdeakURL=new File("resources/kartaBerdeak.txt");
 			fitxategiaKargatu(kartaBerdeakURL,kartaBerdeak);
 		}
 	}

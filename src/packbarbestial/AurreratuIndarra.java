@@ -16,9 +16,6 @@ public class AurreratuIndarra implements Aurreratu { //BESTE GUZTIAK (Aurreratu 
 			Karta kar=bilatu(indarra,k);
 			k.remove(kar);
 			k.add(0, kar);
-		}else if(indarra==4){
-			Karta kar=bilatu(indarra,k);
-			
 		}
 	}
 	

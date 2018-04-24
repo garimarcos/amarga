@@ -11,6 +11,7 @@ public class Jokalaria{
 	private int kop;
 	private int azkena;
 	private boolean hutsune;
+	private Jokaera j;
 	
 	public Jokalaria(String pIzen, String pKolore){
 		this.izena=pIzen;
@@ -21,9 +22,9 @@ public class Jokalaria{
 		hasieratu();
 	}
 	
-	public Mazo getHartzeke(){ return hartzeke; }//test gauzatzeko
+	//public Mazo getHartzeke(){ return hartzeke; }//test gauzatzeko
 	
-	public Karta[] getEskuan(){ return eskuan; }//test gauzatzeko
+	//public Karta[] getEskuan(){ return eskuan; }//test gauzatzeko
 	
 	public String getKolore(){ return kolorea; }
 	
@@ -62,35 +63,36 @@ public class Jokalaria{
 	}
 	
 	public int[] hartu(){
-		int[] ondoPosizioa=new int[3];
+		int[] ondoPosizioa=new int[3];//0--> ondo egin du? 1--> non dago hutsunea 2--> kartaren indarra
 		ondoPosizioa[1]=azkena;
-		if(kop!=4){
-			if(eskuan[azkena]==null){
-				eskuan[azkena]=hartzeke.pop();
-				kop++;
-				ondoPosizioa[2]=eskuan[azkena].getIndarra();
-				ondoPosizioa[0]=1;
-				hutsune=false;
-				//notifyObservers();
-				return ondoPosizioa;//ondo egin du
-			}else{
-				ondoPosizioa[0]=2;
-				//notifyObservers();
-				return ondoPosizioa;//ez du hartu karta
+		if(hartzeke.size()==0) ondoPosizioa[0]=3; //mazo hutsik
+		else{
+			if(kop!=4){
+				if(eskuan[azkena]==null){
+					eskuan[azkena]=hartzeke.pop();
+					kop++;
+					ondoPosizioa[2]=eskuan[azkena].getIndarra();
+					ondoPosizioa[0]=1;
+					hutsune=false;
+					return ondoPosizioa;//ondo egin du
+				}else{
+					ondoPosizioa[0]=2;
+					return ondoPosizioa;//ez du hartu karta
+				}
+			}
+			else {
+				ondoPosizioa[0]=0;
+				return ondoPosizioa;//jada 4 karta daude	
 			}
 		}
-		else {
-			ondoPosizioa[0]=0;
-			//notifyObservers();
-			return ondoPosizioa;//jada 4 karta daude	
-		}
-		
+		return ondoPosizioa;
 	}
 	
 	public int bota(int posizioa){
 		Karta k=null;
-		if(hartzeke.size()>0){
-			if(!hutsune){
+		boolean hutsik=eskuan[posizioa-1]==null;
+		//if(hartzeke.size()>0){
+			if(!hutsune || (hartzeke.size()==0 && !hutsik)){
 				kop--;
 				azkena=posizioa-1;
 				switch(posizioa){
@@ -109,8 +111,8 @@ public class Jokalaria{
 				}
 				Jokoa.getnJokoa().gehituTablerora(k);
 				return k.getIndarra();
-			}else return -1; 
-		}else return 0;
+			} else return -1; 
+		//else return 0;
 		//return null;
 		//return 0; //4 karta jadanik
 	}
@@ -124,28 +126,23 @@ public class Jokalaria{
 	}
 	
 	public int botaOrd(){
-		boolean ondo=false;
-		int i=0;
 		int k=0;
-		while(!ondo){
-			k=botaOrd1(i);
-			if(k!=0) return k;
-		}
-		return 0;
+		k=botaOrd1();
+		return k;
 	}
 	
-	private int botaOrd1(int pos){
+	private int botaOrd1(){
 		Karta k =null;
-		if (eskuan[pos]!=null){
-			k=eskuan[pos];
+		if (eskuan[0]!=null){
+			k=eskuan[0];
 			if(k.getIndarra()==5){
 				int ind=kameleoiEsleitu(0);
 				k=new Kameleoi(ind,kolorea);
 			}
 			Jokoa.getnJokoa().gehituTablerora(k);
-			bota1(pos);
+			bota1(0);
 			kop--;
-			hartu();
+			if(hartzeke.size()!=0) hartu();
 			return k.getIndarra();
 		}
 		return 0;
@@ -156,7 +153,15 @@ public class Jokalaria{
 			Random rn=new Random();
 			int ind=rn.nextInt(11)+1;
 			return ind;
-		}return 0;
+		}else{
+			int i=0;
+			while(i<eskuan.length){
+				if(eskuan[i].getIndarra()==5) eskuan[i]=new Kameleoi(indarra,kolorea);
+				else i++;
+				return indarra;
+			}
+			return 0;
+		}
 	}
 
 }

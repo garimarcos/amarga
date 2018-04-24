@@ -4,12 +4,12 @@ public class Krokodiloa extends Karta {
 
 	public Krokodiloa(String pKolore) {
 		super(10, true, pKolore);
+		setBota(new BotaIndarraGutxiago());
 	}
 
 	@Override
 	public void egikaritu() {
-		// TODO Auto-generated method stub
-		
+		bota(10);		
 	}
 
 }
