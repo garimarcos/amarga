@@ -14,8 +14,20 @@ public class AurreratuIndarra implements Aurreratu { //BESTE GUZTIAK (Aurreratu 
 		ArrayList<Karta> k=Tableroa.getnTableroa().hartuKartak();
 		if(indarra==12){
 			Karta kar=bilatu(indarra,k);
-			k.remove(kar);
+			k.remove(kar); 
 			k.add(0, kar);
+		}
+		else{
+			Karta kar=bilatu(indarra,k);
+			int pos=k.indexOf(kar);
+			if(pos!=0){
+				if(k.get(pos-1).getIndarra()<indarra){
+					Karta temp=k.get(pos-1);
+					k.set(pos-1, kar);
+					k.set(pos, temp);
+				}
+			}
+			
 		}
 	}
 	

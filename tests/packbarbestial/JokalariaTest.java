@@ -21,17 +21,6 @@ public class JokalariaTest {
 			System.out.println(kartak[i]);
 		}
 	}
-	
-	@Test
-	public void testGetHartzeke(){
-		//j1.hasieratu();
-		assertTrue(j1.getHartzeke().size()==8);
-	}
-	
-	@Test
-	public void testEskuan(){
-		//j1.hasieratu();
-		assertTrue(j1.getEskuan().length==4);
-	}
+
 
 }

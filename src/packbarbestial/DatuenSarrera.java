@@ -59,12 +59,14 @@ public class DatuenSarrera extends JDialog {
 		contentPanel.setLayout(new GridLayout(2,2));
 		rdbtnBerdea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(!rdbtnBerdea.isSelected()) rdbtnBerdea.setSelected(true);;
 				rdbtnUrdina.setSelected(false);
 			}
 		});
 		rdbtnBerdea.setSelected(true);
 		rdbtnUrdina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(!rdbtnUrdina.isSelected()) rdbtnUrdina.setSelected(true);;
 				rdbtnBerdea.setSelected(false);
 			}
 		});

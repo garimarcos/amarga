@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Foka extends Karta {
+	
 
 	public Foka(String pKolore) {
-		super(6, false,pKolore);
+		super(6, false,pKolore,2);
 	}
 
 	@Override

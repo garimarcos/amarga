@@ -70,11 +70,11 @@ public class Jokoa {
 		ListaJokalariak.getNireLista().add(new Jokalaria(pIzen,pKolore));
 	}
 	
-	public void sortuKameleoi(int indarra){
-		l.jokLortu(1).kameleoiEsleitu(indarra);
+	public void kanporatu(int pPosizioa) throws IndexOutOfBoundsException{
+		t.kanporatu(pPosizioa);
 	}
 	
-	public void kameleoiAukera(){
-		KameleoiAukera.main(null);
+	public void aurreratu(int pKopuru){
+		t.aurreratu(pKopuru);
 	}
 }

@@ -3,7 +3,7 @@ package packbarbestial;
 public class Zebra extends Karta {
 
 	public Zebra(String pKolore) {
-		super(7, true, pKolore);
+		super(7, true, pKolore,4);
 	}
 
 	@Override

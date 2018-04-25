@@ -1,6 +1,7 @@
 package packbarbestial;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Observable;
 
 public class Tableroa extends Observable{
@@ -43,6 +44,19 @@ public class Tableroa extends Observable{
 			}
 		}
 		egoeraAldatua(kartak);
+	}
+	
+	public void kanporatu(int pPosizioa) throws IndexOutOfBoundsException{
+		Mahaia.getnMahaia().inpernura(kartak.remove(pPosizioa-1));
+	}
+	
+	public void aurreratu(int pKopuru){
+		int pPosizioa=kartak.size()-1;
+		if(pKopuru==1) Collections.swap(kartak, pPosizioa, pPosizioa-1);
+		else if(pKopuru==2){
+			Collections.swap(kartak, pPosizioa, pPosizioa-1);
+			Collections.swap(kartak, pPosizioa-1, pPosizioa-2);
+		}
 	}
 	
 	private void egoeraAldatua(ArrayList<Karta> k){

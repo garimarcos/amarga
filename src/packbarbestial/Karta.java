@@ -7,11 +7,15 @@ public abstract class Karta implements Comparable<Karta> {
 	private Bota b=new EzBota();
 	private Aurreratu a=new EzAurreratu();
 	private String kolore;
+	private int puntuak;
 	
-	public Karta(int pIndarra, boolean pErrekurrente, String pKolore){
+	public Karta(int pIndarra, boolean pErrekurrente, String pKolore, int pPuntuak){
 		this.indarra=pIndarra;
 		this.kolore=pKolore;
+		this.puntuak=pPuntuak;
 	}
+	
+	public int zenbatBalioDu(){ return puntuak; }
 	
 	public String getKolore(){ return kolore; }
 	

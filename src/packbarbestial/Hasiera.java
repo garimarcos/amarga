@@ -18,6 +18,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 
 public class Hasiera extends JFrame implements Observer{
 	
@@ -41,6 +43,8 @@ public class Hasiera extends JFrame implements Observer{
 	private boolean hasiera = true;
 	private boolean botaOrd = false;
 	private boolean botaJok = true;
+	private JPanel panelComboBox;
+	private JComboBox<String> comboBox;
 
 	/**
 	 * Launch the application.
@@ -105,7 +109,7 @@ public class Hasiera extends JFrame implements Observer{
 		
 		JLabelPro barBestial = new JLabelPro("");
 		barBestial.erdianJarri();
-		barBestial.setIcon(new ImageIcon("img/barBestialTamaina.png"));
+		barBestial.setIcon(new ImageIcon("img/barBestial-resize.png"));
 		//barBestial.setIconURL("https://i.imgur.com/F3xnPNi.png");
 		
 		panel_goikoa.add(barBestial);
@@ -113,13 +117,13 @@ public class Hasiera extends JFrame implements Observer{
 		titulu = new JButtonPro("");
 		titulu.addActionListener(new GertaeraKudeatzailea());
 		titulu.erdianJarri();
-		titulu.setIcon(new ImageIcon("img/proyect.png"));
+		titulu.setIcon(new ImageIcon("img/logo-resize.png"));
 		//titulu.setIconURL("https://i.imgur.com/1bpmanW.png");
 		panel_goikoa.add(titulu);
 		
 		JLabelPro esLoQueHay = new JLabelPro("");
 		esLoQueHay.erdianJarri();
-		esLoQueHay.setIcon(new ImageIcon("img/esloquehay--copia1.png"));
+		esLoQueHay.setIcon(new ImageIcon("img/esLoQueHay-resize.png"));
 		//esLoQueHay.setIconURL("https://i.imgur.com/Ob4fbBg.png");		
 		panel_goikoa.add(esLoQueHay);
 		
@@ -134,7 +138,7 @@ public class Hasiera extends JFrame implements Observer{
 		
 		JLabelPro zerukoAtea = new JLabelPro("");
 		//zerukoAtea.setIconURL("https://i.imgur.com/ZxIaeus.png");
-		zerukoAtea.setIcon(new ImageIcon("img/puertacielo--copia1.png"));
+		zerukoAtea.setIcon(new ImageIcon("img/puertaCielo-resize.png"));
 		zerukoAtea.erdianJarri();
 		panel_erdikoa.add(zerukoAtea);
 		
@@ -155,7 +159,7 @@ public class Hasiera extends JFrame implements Observer{
 		
 		JLabelPro patada = new JLabelPro("");
 		//patada.setIconURL("https://i.imgur.com/Sb87kRz.png");
-		patada.setIcon(new ImageIcon("img/patada.png"));
+		patada.setIcon(new ImageIcon("img/patada-resize.png"));
 		patada.erdianJarri();
 		panel_erdikoa.add(patada);
 		
@@ -168,16 +172,42 @@ public class Hasiera extends JFrame implements Observer{
 		frame.getContentPane().add(panel_behekoa);
 		panel_behekoa.setLayout(new GridLayout(1, 7));
 		
-		JLabelPro hutsuneBehEzk_1 = new JLabelPro("");
-		hutsuneBehEzk_1.erdianJarri();
-		panel_behekoa.add(hutsuneBehEzk_1);
-		
 		
 		String[] kartaurl = new String[4];
 		kartaurl = j.mahaiaPrestatu();
 		
 		karta1 = new JButtonPro("");
 		karta1.addActionListener(new GertaeraKudeatzailea());
+		
+		panelComboBox = new JPanel();
+		panelComboBox.setBackground(Color.WHITE);
+		panel_behekoa.add(panelComboBox);
+		panelComboBox.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		comboBox = new JComboBox<String>();
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String animalia=(String)comboBox.getSelectedItem();
+			
+				panelComboBox.setVisible(false);
+			}
+		});
+		panelComboBox.add(comboBox);
+		
+		comboBox.addItem("Mofeta");
+		comboBox.addItem("Loro");
+		comboBox.addItem("Kanguro");
+		comboBox.addItem("Tximino");
+		comboBox.addItem("Foka");
+		comboBox.addItem("Zebra");
+		comboBox.addItem("Jirafa");
+		comboBox.addItem("Sugea");
+		comboBox.addItem("Krokodilo");
+		comboBox.addItem("Hipopotamo");
+		comboBox.addItem("Lehoi");
+		
+		panelComboBox.setVisible(false);
+		
 		//karta1.setIconURL(kartaurl[0]);
 		karta1.setIcon(new ImageIcon(kartaurl[0]));
 		panel_behekoa.add(karta1);
@@ -238,7 +268,7 @@ public class Hasiera extends JFrame implements Observer{
 			}
 		});
 		hartzeke.erdianJarri();
-		hartzeke.setIcon(new ImageIcon("img/hartzeke.png"));
+		hartzeke.setIcon(new ImageIcon("img/mazo-resize.png"));
 		//hartzeke.setIconURL("https://i.imgur.com/7rFbePP.png");
 		panel_behekoa.add(hartzeke);
 	
@@ -272,36 +302,48 @@ public class Hasiera extends JFrame implements Observer{
 			if(e.getSource().equals(karta1)){
 				if(botaJok){
 					k=j.bota(1);		
-					botaJok=false;
-					botaOrd=true;
-					if(k!=0 && k!=-1) karta1.setIcon(null);
+					
+					if(k!=0 && k!=-1){
+						karta1.setIcon(null);
+						botaJok=false;
+						botaOrd=true;
+					}
 				}
 				
 			}
 			else if(e.getSource().equals(karta2)){
 				if(botaJok){
 					k=j.bota(2);		
-					botaJok=false;
-					botaOrd=true;
-					if(k!=0 && k!=-1) karta2.setIcon(null);
+					
+					if(k!=0 && k!=-1){
+						karta2.setIcon(null);
+						botaJok=false;
+						botaOrd=true;
+					}
 				}
 				
 			}
 			else if(e.getSource().equals(karta3)){
 				if(botaJok){
 					k=j.bota(3);		
-					botaJok=false;
-					botaOrd=true;
-					if(k!=0 && k!=-1) karta3.setIcon(null);
+					
+					if(k!=0 && k!=-1){
+						karta3.setIcon(null);
+						botaJok=false;
+						botaOrd=true;
+					}
 				}
 				
 			}
 			else if(e.getSource().equals(karta4)){
 				if(botaJok){
 					k=j.bota(4);		
-					botaJok=false;
-					botaOrd=true;
-					if(k!=0 && k!=-1) karta4.setIcon(null);
+					
+					if(k!=0 && k!=-1){
+						karta4.setIcon(null);
+						botaJok=false;
+						botaOrd=true;
+					}
 				}
 				
 			}
@@ -311,29 +353,71 @@ public class Hasiera extends JFrame implements Observer{
 					int pos=j.getTableroKop();
 					tableroanKartaIpini(k, pos,2);
 					j.animaladakGauzatu(k,2);
-					botaOrd=false;
-					botaJok=true;
+					
+					if(k!=0 && k!=-1){
+						botaOrd=false;
+						botaJok=true;
+					}
 				}else k=-8;
 			}
 			try{
 				if(k==0) JOptionPane.showMessageDialog(frame, "Hutsik!");
 				if(k==-1) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
 				else if(k==5){
-					JOptionPane.showMessageDialog(frame, "Aukeratu karta");
-					KameleoiAukera.main(null);
+					if(botaOrd){
+						JOptionPane.showMessageDialog(frame, "Aukeratu karta");
+						panelComboBox.setVisible(true);
+					}
+					
 				}else if(k==2){
-					int erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));
+					int erantzuna=0;
+					
+						if(botaOrd){
+							erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));
+							boolean ondo=(erantzuna>0 && erantzuna<j.getTableroKop());
+							while(!ondo){
+								JOptionPane optionPane = new JOptionPane("MESEDEZ, ZENBAKI EGOKIA SARTU!!!!!!!!!", JOptionPane.ERROR_MESSAGE);    
+								JDialog dialog = optionPane.createDialog("ERROR");
+								dialog.setAlwaysOnTop(true);
+								dialog.setVisible(true);
+								erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));
+								if(erantzuna>0 && erantzuna<j.getTableroKop()) ondo=true;
+							}
+							j.kanporatu(erantzuna);
+						}else j.kanporatu(1);
+					
+					
+					
+				}else if(k==3){
+					if(botaOrd){
+						int zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu?"));
+						boolean ondo=(zenbatAurreratu==1 || zenbatAurreratu==2);
+						while(!ondo){
+							JOptionPane optionPane = new JOptionPane("MESEDEZ, ZENBAKI EGOKIA SARTU!!!!!!!!!", JOptionPane.ERROR_MESSAGE);    
+							JDialog dialog = optionPane.createDialog("ERROR");
+							dialog.setAlwaysOnTop(true);
+							dialog.setVisible(true);
+							zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu?"));
+							if(zenbatAurreratu==1 || zenbatAurreratu==2) ondo=true;
+						}
+						j.aurreratu(zenbatAurreratu);
+					}else{
+						j.aurreratu(1);
+					}
+					
 				}if(k==-8) JOptionPane.showMessageDialog(frame, "Ez da zure txanda");
-				else{
+				else if(botaOrd){
 					int pos=j.getTableroKop();
 					tableroanKartaIpini(k, pos,1);
-					if (!hasiera){
+					if (!hasiera && k!=5){
 						j.animaladakGauzatu(k,1);
 					}
 					hasiera = false;
 				}
 			}catch(NullPointerException x){
 				JOptionPane.showMessageDialog(frame, "Hutsik");
+			}catch(IndexOutOfBoundsException x){
+				JOptionPane.showMessageDialog(frame, "Hor ez dago kartarik");
 			}
 		}
 		

@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class Lehoia extends Karta {
 
 	public Lehoia(String pKolore) {
-		super(12,false, pKolore);
+		super(12,false, pKolore,2);
 		setBota(new BotaIndarra());
 		setAurreratu(new AurreratuIndarra());
 	}
@@ -17,7 +17,7 @@ public class Lehoia extends Karta {
 		Iterator<Karta> itr=k.iterator();
 		int i=0;
 		Mahaia m=Mahaia.getnMahaia();
-		while(itr.hasNext() && i==0){
+		while(itr.hasNext()){
 			Karta kar=itr.next();
 			if(kar.getIndarra()==12) i++;
 		}

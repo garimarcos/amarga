@@ -6,7 +6,7 @@ import java.util.Collections;
 public class Sugea extends Karta {
 
 	public Sugea(String pKolore) {
-		super(9, false, pKolore);
+		super(9, false, pKolore,2);
 	}
 
 	@Override

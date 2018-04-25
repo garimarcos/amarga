@@ -133,12 +133,14 @@ public class Jokalaria{
 	
 	private int botaOrd1(){
 		Karta k =null;
-		if (eskuan[0]!=null){
-			k=eskuan[0];
-			if(k.getIndarra()==5){
-				int ind=kameleoiEsleitu(0);
-				k=new Kameleoi(ind,kolorea);
-			}
+		int i=0;
+		boolean ondo=false;
+		while(!ondo){
+			if(eskuan[i]!=null) ondo=true;
+			else i++;
+		}
+		if (eskuan[i]!=null){
+			k=eskuan[i];
 			Jokoa.getnJokoa().gehituTablerora(k);
 			bota1(0);
 			kop--;
@@ -148,20 +150,6 @@ public class Jokalaria{
 		return 0;
 	}
 	
-	public int kameleoiEsleitu(int indarra){
-		if(indarra==0){
-			Random rn=new Random();
-			int ind=rn.nextInt(11)+1;
-			return ind;
-		}else{
-			int i=0;
-			while(i<eskuan.length){
-				if(eskuan[i].getIndarra()==5) eskuan[i]=new Kameleoi(indarra,kolorea);
-				else i++;
-				return indarra;
-			}
-			return 0;
-		}
 	}
 
-}
+
