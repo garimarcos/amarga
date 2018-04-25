@@ -12,6 +12,7 @@ public class Jokalaria{
 	private int azkena;
 	private boolean hutsune;
 	private Jokaera j;
+	private int kameleoi;
 	
 	public Jokalaria(String pIzen, String pKolore){
 		this.izena=pIzen;
@@ -120,6 +121,7 @@ public class Jokalaria{
 	
 	private Karta bota1(int posizio){
 		Karta k=eskuan[posizio];
+		if(k instanceof Kameleoi) k=new Kameleoi(kameleoi,kolorea);
 		eskuan[posizio]=null;
 		hutsune=true;
 		return k;
@@ -141,14 +143,27 @@ public class Jokalaria{
 		}
 		if (eskuan[i]!=null){
 			k=eskuan[i];
+			if(k instanceof Kameleoi) k=new Kameleoi(random(),kolorea);
 			Jokoa.getnJokoa().gehituTablerora(k);
-			bota1(0);
+			k=bota1(i);
 			kop--;
 			if(hartzeke.size()!=0) hartu();
 			return k.getIndarra();
 		}
 		return 0;
 	}
+	
+	private int random(){
+		Random rn=new Random();
+		int ind=rn.nextInt(11);
+		if(ind==5 || ind==0) ind++;
+		return ind;
+	}
+	
+	public void esleituKameleoi(int indarra){ 
+		kameleoi=indarra; 
+		
+		}
 	
 	}
 

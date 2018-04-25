@@ -77,4 +77,8 @@ public class Jokoa {
 	public void aurreratu(int pKopuru){
 		t.aurreratu(pKopuru);
 	}
+	
+	public void esleituKameleoi(int indarra){
+		l.jokLortu(1).esleituKameleoi(indarra);
+	}
 }

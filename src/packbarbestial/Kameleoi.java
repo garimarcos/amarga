@@ -16,8 +16,8 @@ public class Kameleoi extends Karta {
 
 	@Override
 	public void egikaritu() {
-		//state.egikaritu();
-		setState(5,"berdea");
+		state.egikaritu();
+		//setState(5,"berdea");
 	}
 	
 	public void setState(int indarra,String pKolore){

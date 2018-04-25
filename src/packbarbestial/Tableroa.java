@@ -27,10 +27,12 @@ public class Tableroa extends Observable{
 	
 	public void animaladakGauzatu(int indarra, int jok){
 		//Karta k=ListaJokalariak.getNireLista().jokLortu(jok);
+		int q=kartak.size()-1;
+		Karta k=kartak.get(q);
 		kartak.get(kartak.size()-1).egikaritu();
-//		while(i>=0){
-//			if(kartak[i].errekurrenteaDa() && !kartak[i].equals(k)) kartak[i].egikaritu();
-//			i--;
+//		while(q>=0){
+//			if(kartak.get(q).errekurrenteaDa() && !kartak.get(q).equals(k)) kartak.get(q).egikaritu();
+//			q--;
 //		}
 		if(kartak.size()==5){
 			Mahaia m=Mahaia.getnMahaia();
@@ -47,7 +49,7 @@ public class Tableroa extends Observable{
 	}
 	
 	public void kanporatu(int pPosizioa) throws IndexOutOfBoundsException{
-		Mahaia.getnMahaia().inpernura(kartak.remove(pPosizioa-1));
+		if(kartak.get(pPosizioa)!=null)Mahaia.getnMahaia().inpernura(kartak.remove(pPosizioa-1));
 	}
 	
 	public void aurreratu(int pKopuru){

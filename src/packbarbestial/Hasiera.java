@@ -188,7 +188,41 @@ public class Hasiera extends JFrame implements Observer{
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String animalia=(String)comboBox.getSelectedItem();
-			
+				switch(animalia){
+				case "Mofeta":
+					j.esleituKameleoi(1);
+					break;
+				case "Loro":
+					j.esleituKameleoi(2);
+					break;
+				case "Kanguro":
+					j.esleituKameleoi(3);
+					break;
+				case "Tximino":
+					j.esleituKameleoi(4);
+					break;
+				case "Foka":
+					j.esleituKameleoi(6);
+					break;
+				case "Zebra":
+					j.esleituKameleoi(7);
+					break;
+				case "Jirafa":
+					j.esleituKameleoi(8);
+					break;
+				case "Sugea":
+					j.esleituKameleoi(9);
+					break;
+				case "Krokodilo":
+					j.esleituKameleoi(10);
+					break;
+				case "Hipopotamo":
+					j.esleituKameleoi(11);
+					break;
+				case "Lehoi":
+					j.esleituKameleoi(12);
+					break;
+				}
 				panelComboBox.setVisible(false);
 			}
 		});
@@ -352,7 +386,7 @@ public class Hasiera extends JFrame implements Observer{
 					k=j.botaOrdenagailua();
 					int pos=j.getTableroKop();
 					tableroanKartaIpini(k, pos,2);
-					j.animaladakGauzatu(k,2);
+					//j.animaladakGauzatu(k,2);
 					
 					if(k!=0 && k!=-1){
 						botaOrd=false;
@@ -365,16 +399,17 @@ public class Hasiera extends JFrame implements Observer{
 				if(k==-1) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
 				else if(k==5){
 					if(botaOrd){
-						JOptionPane.showMessageDialog(frame, "Aukeratu karta");
-						panelComboBox.setVisible(true);
+						int erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Zein indarra?"));
+						j.esleituKameleoi(erantzuna);
+//						JOptionPane.showMessageDialog(frame, "Aukeratu karta");
+//						panelComboBox.setVisible(true);
 					}
 					
 				}else if(k==2){
-					int erantzuna=0;
-					
+					int erantzuna=1;
 						if(botaOrd){
 							erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));
-							boolean ondo=(erantzuna>0 && erantzuna<j.getTableroKop());
+							boolean ondo=(erantzuna>=0 && erantzuna<j.getTableroKop());
 							while(!ondo){
 								JOptionPane optionPane = new JOptionPane("MESEDEZ, ZENBAKI EGOKIA SARTU!!!!!!!!!", JOptionPane.ERROR_MESSAGE);    
 								JDialog dialog = optionPane.createDialog("ERROR");
@@ -383,14 +418,11 @@ public class Hasiera extends JFrame implements Observer{
 								erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));
 								if(erantzuna>0 && erantzuna<j.getTableroKop()) ondo=true;
 							}
-							j.kanporatu(erantzuna);
-						}else j.kanporatu(1);
-					
-					
-					
+						} j.kanporatu(erantzuna);
 				}else if(k==3){
+					int zenbatAurreratu=1;
 					if(botaOrd){
-						int zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu?"));
+						zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu?"));
 						boolean ondo=(zenbatAurreratu==1 || zenbatAurreratu==2);
 						while(!ondo){
 							JOptionPane optionPane = new JOptionPane("MESEDEZ, ZENBAKI EGOKIA SARTU!!!!!!!!!", JOptionPane.ERROR_MESSAGE);    
@@ -400,12 +432,10 @@ public class Hasiera extends JFrame implements Observer{
 							zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu?"));
 							if(zenbatAurreratu==1 || zenbatAurreratu==2) ondo=true;
 						}
-						j.aurreratu(zenbatAurreratu);
-					}else{
-						j.aurreratu(1);
-					}
-					
-				}if(k==-8) JOptionPane.showMessageDialog(frame, "Ez da zure txanda");
+						
+					}j.aurreratu(zenbatAurreratu);
+				}
+				if(k==-8) JOptionPane.showMessageDialog(frame, "Ez da zure txanda");
 				else if(botaOrd){
 					int pos=j.getTableroKop();
 					tableroanKartaIpini(k, pos,1);
@@ -413,7 +443,7 @@ public class Hasiera extends JFrame implements Observer{
 						j.animaladakGauzatu(k,1);
 					}
 					hasiera = false;
-				}
+				}if(botaJok) j.animaladakGauzatu(k, 2);
 			}catch(NullPointerException x){
 				JOptionPane.showMessageDialog(frame, "Hutsik");
 			}catch(IndexOutOfBoundsException x){
