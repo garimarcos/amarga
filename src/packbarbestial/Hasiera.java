@@ -80,15 +80,6 @@ public class Hasiera extends JFrame implements Observer{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-//		KopuruAukera.main();
-//		int i=0;
-		DatuenSarrera.main(null);
-//		System.out.println(ListaJokalariazk.getNireLista().getKop());
-//		while(i<ListaJokalariak.getNireLista().getKop()){
-//			DatuenSarrera.main();
-//			i++;
-//			System.out.println(i);
-//		}
 		j.ordenagailuaSortu();
 		frame = new JFrame();
 		frame.addWindowListener(new WindowAdapter() {

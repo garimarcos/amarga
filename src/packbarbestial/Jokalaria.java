@@ -28,6 +28,8 @@ public class Jokalaria{
 	
 	//public Karta[] getEskuan(){ return eskuan; }//test gauzatzeko
 	
+	public void setKolore(String pKolore){ kolorea=pKolore; }
+	
 	public String getKolore(){ return kolorea; }
 	
 	private void hasieratu(){//Kartak banatzeko metodoa
@@ -174,6 +176,10 @@ public class Jokalaria{
 			}else i--;
 		}
 		}
+
+	public String getIzen() {
+		return izena;
+	}
 	
 	}
 

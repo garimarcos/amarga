@@ -11,10 +11,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.plaf.basic.BasicTreeUI.SelectionModelPropertyChangeHandler;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -85,12 +82,17 @@ public class DatuenSarrera {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Datuak.main(null);
-				
 			}
 		});
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton = new JButton("Sartu");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login.main(null);
+				frame.dispose();
+			}
+		});
 		panel.add(btnNewButton);
 	}
 

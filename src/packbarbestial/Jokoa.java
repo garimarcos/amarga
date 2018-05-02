@@ -67,7 +67,15 @@ public class Jokoa {
 	}
 	
 	public void addJokalaria(String pIzen, String pKolore){
-		ListaJokalariak.getNireLista().add(new Jokalaria(pIzen,pKolore));
+		l.add(new Jokalaria(pIzen,pKolore));
+	}
+	
+	public void setKolore(String pKolore){
+		l.jokLortu(1).setKolore(pKolore);
+	}
+	
+	public String jokIzen(){
+		return l.jokLortu(1).getIzen();
 	}
 	
 	public void kanporatu(int pPosizioa) throws IndexOutOfBoundsException{

@@ -4,9 +4,7 @@ import java.sql.DriverManager;
 
 import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.Scanner;
 
-import java.sql.ResultSetMetaData;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException;
 
 import java.sql.PreparedStatement;
@@ -17,7 +15,7 @@ public class Datubasea {
 	
 		private String username="root";
 		private String password="shuaelsa10";
-		private String zerbitzaria="jdbc:mysql://localhost:3306/jokoa";
+		private String zerbitzaria="jdbc:mysql://localhost:3306/jokoa?useSSL=false";
 		private Connection konexioa;
 	
 	private static Datubasea nDatubasea = new Datubasea();
@@ -42,19 +40,61 @@ public class Datubasea {
 
 	}
 	
-	public void jokBerriaSartu(String pIzen, String pAbizen, String pPasahitza, int pJaioUrtea, String pEmail){
+	public boolean jokBerriaSartu(String pIzen, String pAbizen, String pPasahitza, int pJaioUrtea, String pEmail){
 		try {
 			int urtea = Calendar.getInstance().get(Calendar.YEAR);
-			int hil = Calendar.getInstance().get(Calendar.MONTH);
+			int hil = Calendar.getInstance().get(Calendar.MONTH)+1;
 			int egun = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-			String data = urtea+"-"+hil+"-"+egun;
+			String data = urtea + "-" + hil + "-" + egun;
 			PreparedStatement ps=null;
 			ps=konexioa.prepareStatement("insert into jokalaria values ('"+pIzen+"', '"+pAbizen+"', '"+pPasahitza+"', '"+pJaioUrtea+"','"+pEmail+"', '"+data+"','normal')");
 			ps.executeUpdate();
-		} catch (MySQLSyntaxErrorException e){
-			e.printStackTrace();
+			return true;
+		}catch (MySQLSyntaxErrorException e){
+			//e.printStackTrace();
+			return false;
 		}catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean login(String pIzen, String pPasahitza){
+		PreparedStatement ps = null;
+		try{
+			ps=konexioa.prepareStatement("select izena, pasahitza from jokalaria where izena='" + pIzen + "'");
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()){
+				if(rs.getString("pasahitza").equals(pPasahitza)) return true;
+				else return false;
+			}
+			return false;
+		}catch (MySQLSyntaxErrorException e){
+			//e.printStackTrace();
+			return false;
+		}catch (SQLException e) {
+			//e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
+	public boolean administratzaileaDa(String pIzen){
+		PreparedStatement ps = null;
+		try{
+			ps=konexioa.prepareStatement("select izena, mota from jokalaria where izena='" + pIzen + "'");
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()){
+				if(rs.getString("mota").equals("admin")) return true;
+				else return false;
+			}
+			return false;
+		}catch (MySQLSyntaxErrorException e){
+			//e.printStackTrace();
+			return false;
+		}catch (SQLException e) {
+			//e.printStackTrace();
+			return false;
 		}
 	}
 
