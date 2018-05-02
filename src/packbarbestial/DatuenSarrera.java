@@ -1,49 +1,57 @@
 package packbarbestial;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.EventQueue;
+import java.awt.Font;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.JRadioButton;
 
-public class DatuenSarrera extends JDialog {
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicTreeUI.SelectionModelPropertyChangeHandler;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.BoxLayout;
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-	private final JPanel contentPanel = new JPanel();
+public class DatuenSarrera {
+
 	private JFrame frame;
-	private JTextField jokIzenText;
-	private JRadioButton rdbtnBerdea = new JRadioButton("berdea");
-	private JRadioButton rdbtnUrdina = new JRadioButton("urdina");
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(/*String[] args*/) {
-		try {
-			DatuenSarrera dialog = new DatuenSarrera();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DatuenSarrera window = new DatuenSarrera();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**
-	 * Create the dialog.
+	 * Create the application.
 	 */
 	public DatuenSarrera() {
-		addWindowListener(new WindowAdapter() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				int erantzuna=JOptionPane.showConfirmDialog(frame, "Ziur irten nahi zarela?","Irteera",JOptionPane.INFORMATION_MESSAGE);
@@ -51,74 +59,39 @@ public class DatuenSarrera extends JDialog {
 				else if((erantzuna==JOptionPane.NO_OPTION) || (erantzuna==JOptionPane.CANCEL_OPTION)) frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			}
 		});
-		setModal(true);
-		setBounds(100, 100, 286, 128);
-		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(new GridLayout(2,2));
-		rdbtnBerdea.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(!rdbtnBerdea.isSelected()) rdbtnBerdea.setSelected(true);;
-				rdbtnUrdina.setSelected(false);
+		frame.setBounds(100, 100, 815, 567);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new GridLayout(2, 0, 0, 0));
+		
+		JPanel panel_1 = new JPanel();
+		frame.getContentPane().add(panel_1);
+		panel_1.setLayout(new BorderLayout(0, 0));
+		
+		JLabelPro label = new JLabelPro("");
+		label.setIcon(new ImageIcon("img/logo-resizeHandia.png"));
+		label.erdianJarri();
+		panel_1.add(label, BorderLayout.CENTER);
+		
+		JLabelPro lblAukeratu = new JLabelPro("Aukeratu");
+		panel_1.add(lblAukeratu, BorderLayout.NORTH);
+		lblAukeratu.setFont(new Font("Comic Sans",Font.BOLD,40));
+		lblAukeratu.erdianJarri();
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel);
+		panel.setLayout(new GridLayout(1, 2, 0, 0));
+		
+		JButton btnNewButton_1 = new JButton("Jokalari berria sortu");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Datuak.main(null);
+				
 			}
 		});
-		rdbtnBerdea.setSelected(true);
-		rdbtnUrdina.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(!rdbtnUrdina.isSelected()) rdbtnUrdina.setSelected(true);;
-				rdbtnBerdea.setSelected(false);
-			}
-		});
-		rdbtnUrdina.setSelected(false);
-		{
-			JLabel jokIzenLabel = new JLabel("Jokalariaren izena");
-			contentPanel.add(jokIzenLabel);
-		}
-		{
-			jokIzenText = new JTextField();
-			contentPanel.add(jokIzenText);
-			jokIzenText.setColumns(10);
-		}
-		{
-			
-			contentPanel.add(rdbtnBerdea);
-			
-		}
-		{
-	
-			contentPanel.add(rdbtnUrdina);
-		}
-		{
-			JPanel buttonPane = new JPanel();
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String kol="";
-						if (rdbtnBerdea.isSelected()) kol="berdea";
-						else if (rdbtnUrdina.isSelected()) kol="urdina";
-						Jokoa.getnJokoa().addJokalaria(jokIzenText.getText(), kol);
-						dispose();
-					}
-				});
-				buttonPane.setLayout(new GridLayout(0, 2, 0, 0));
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Kantzelatu");
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						System.exit(0);
-					}
-				});
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
-		}
+		panel.add(btnNewButton_1);
+		
+		JButton btnNewButton = new JButton("Sartu");
+		panel.add(btnNewButton);
 	}
 
 }

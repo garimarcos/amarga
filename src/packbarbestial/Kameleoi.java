@@ -16,12 +16,10 @@ public class Kameleoi extends Karta {
 
 	@Override
 	public void egikaritu() {
+		super.setIndarra(state.getIndarra());
 		state.egikaritu();
-		//setState(5,"berdea");
+		super.setIndarra(5);
 	}
 	
-	public void setState(int indarra,String pKolore){
-		this.state=Factory.getnFactory().kartaSortu(indarra,pKolore);
-	}
-
+	
 }

@@ -2,6 +2,7 @@ package packbarbestial;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Observable;
 
 public class Tableroa extends Observable{
@@ -25,15 +26,22 @@ public class Tableroa extends Observable{
 	
 	public int getKop(){ return kartak.size(); }
 	
+	private Iterator<Karta> getIteradorea(){ return kartak.iterator(); }
+	
 	public void animaladakGauzatu(int indarra, int jok){
-		//Karta k=ListaJokalariak.getNireLista().jokLortu(jok);
-		int q=kartak.size()-1;
-		Karta k=kartak.get(q);
 		kartak.get(kartak.size()-1).egikaritu();
-//		while(q>=0){
-//			if(kartak.get(q).errekurrenteaDa() && !kartak.get(q).equals(k)) kartak.get(q).egikaritu();
-//			q--;
-//		}
+		boolean amaitu=false;
+		int k=0;
+		while(!amaitu){
+			while(!kartak.get(k).errekurrenteaDa() && k<kartak.size()-1){
+				/*if(!kartak.get(k).errekurrenteaDa()) */k++;
+			}if(k==kartak.size()-1) amaitu=true;
+			else{
+				kartak.get(k).egikaritu();
+				k++;
+			}
+		}
+
 		if(kartak.size()==5){
 			Mahaia m=Mahaia.getnMahaia();
 			m.inpernura(kartak.get(kartak.size()-1));
@@ -52,7 +60,7 @@ public class Tableroa extends Observable{
 		if(kartak.get(pPosizioa)!=null)Mahaia.getnMahaia().inpernura(kartak.remove(pPosizioa-1));
 	}
 	
-	public void aurreratu(int pKopuru){
+	public void aurreratu(int pKopuru) throws NumberFormatException{
 		int pPosizioa=kartak.size()-1;
 		if(pKopuru==1) Collections.swap(kartak, pPosizioa, pPosizioa-1);
 		else if(pKopuru==2){

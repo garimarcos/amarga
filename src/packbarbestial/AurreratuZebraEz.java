@@ -28,6 +28,8 @@ public class AurreratuZebraEz implements Aurreratu { //HIPOPOTAMO
 	}
 
 	private Karta bilatu(int ind,ArrayList<Karta> k){
+		int i=k.size()-1;
+		
 		Iterator<Karta> itr=k.iterator();
 		while(itr.hasNext()){
 			Karta kar=itr.next();

@@ -1,5 +1,6 @@
 package packbarbestial;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Jokalaria{
@@ -161,8 +162,17 @@ public class Jokalaria{
 	}
 	
 	public void esleituKameleoi(int indarra){ 
-		kameleoi=indarra; 
-		
+		ArrayList<Karta> k=Tableroa.getnTableroa().hartuKartak();
+		int i=k.size()-1;
+		boolean ondo=false;
+		while(i>=0 && !ondo){
+			if(k.get(i).getIndarra()==5){
+				Karta kam=k.get(i);
+				int pos=k.indexOf(kam);
+				k.set(pos, new Kameleoi(indarra,kolorea));
+				ondo=true;
+			}else i--;
+		}
 		}
 	
 	}

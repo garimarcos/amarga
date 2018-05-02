@@ -82,7 +82,7 @@ public class Hasiera extends JFrame implements Observer{
 	private void initialize() {
 //		KopuruAukera.main();
 //		int i=0;
-		DatuenSarrera.main();
+		DatuenSarrera.main(null);
 //		System.out.println(ListaJokalariazk.getNireLista().getKop());
 //		while(i<ListaJokalariak.getNireLista().getKop()){
 //			DatuenSarrera.main();
@@ -439,7 +439,7 @@ public class Hasiera extends JFrame implements Observer{
 				else if(botaOrd){
 					int pos=j.getTableroKop();
 					tableroanKartaIpini(k, pos,1);
-					if (!hasiera && k!=5){
+					if (!hasiera){
 						j.animaladakGauzatu(k,1);
 					}
 					hasiera = false;
@@ -448,6 +448,8 @@ public class Hasiera extends JFrame implements Observer{
 				JOptionPane.showMessageDialog(frame, "Hutsik");
 			}catch(IndexOutOfBoundsException x){
 				JOptionPane.showMessageDialog(frame, "Hor ez dago kartarik");
+			}catch(NumberFormatException x){
+				JOptionPane.showMessageDialog(frame, "Zenbaki okerra");
 			}
 		}
 		

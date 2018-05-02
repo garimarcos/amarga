@@ -19,6 +19,8 @@ public abstract class Karta implements Comparable<Karta> {
 	
 	public String getKolore(){ return kolore; }
 	
+	protected void setIndarra(int indarra){ this.indarra=indarra; }
+	
 	@Override
 	public int compareTo(Karta o) {
 		if(this.indarra<o.indarra) return -1;
