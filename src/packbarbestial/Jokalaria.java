@@ -12,8 +12,9 @@ public class Jokalaria{
 	private int kop;
 	private int azkena;
 	private boolean hutsune;
-	private Jokaera j;
+	//private Jokaera j;
 	private int kameleoi;
+	private int puntuak;
 	
 	public Jokalaria(String pIzen, String pKolore){
 		this.izena=pIzen;
@@ -21,16 +22,23 @@ public class Jokalaria{
 		this.hartzeke=new Mazo();
 		this.eskuan=new Karta[4];
 		kop=0;
-		hasieratu();
+		//hasieratu();
 	}
 	
 	//public Mazo getHartzeke(){ return hartzeke; }//test gauzatzeko
 	
 	//public Karta[] getEskuan(){ return eskuan; }//test gauzatzeko
 	
-	public void setKolore(String pKolore){ kolorea=pKolore; }
+	public void setKolore(String pKolore){ 
+		kolorea=pKolore;
+		hasieratu();
+	}
+	
+	public void hasieratuOrd(){ hasieratu(); }
 	
 	public String getKolore(){ return kolorea; }
+	
+	//public void txikituKopurua(){ kop--; }
 	
 	private void hasieratu(){//Kartak banatzeko metodoa
 		boolean[] pila=new boolean[12];
@@ -93,6 +101,7 @@ public class Jokalaria{
 	}
 	
 	public int bota(int posizioa){
+		if (kop==0 && hartzeke.size()==0) return -2; 
 		Karta k=null;
 		boolean hutsik=eskuan[posizioa-1]==null;
 		//if(hartzeke.size()>0){
@@ -131,6 +140,7 @@ public class Jokalaria{
 	}
 	
 	public int botaOrd(){
+		if (kop==0 && hartzeke.size()==0) return -2; 
 		int k=0;
 		k=botaOrd1();
 		return k;
@@ -179,6 +189,10 @@ public class Jokalaria{
 
 	public String getIzen() {
 		return izena;
+	}
+	
+	public boolean amaituDu(){
+		return (kop==0 && hartzeke.size()==0);
 	}
 	
 	}

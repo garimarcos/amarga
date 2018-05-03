@@ -135,5 +135,17 @@ public class Datubasea {
 			
 		}
 	}
+	
+	public void partidaBerriaSartu(String pKolorea, int hOrdua, int bOrdua, String jokIzen, int puntuJok, int puntuOrd){
+		PreparedStatement ps = null;
+		try{
+			ps=konexioa.prepareStatement("insert into partida values('");
+			ps.executeUpdate();
+		}catch(MySQLSyntaxErrorException e){
+			
+		}catch(SQLException e){
+			
+		}
+	}
 
 }

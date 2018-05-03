@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class DatuenSarrera {
 
@@ -70,8 +71,9 @@ public class DatuenSarrera {
 		panel_1.add(label, BorderLayout.CENTER);
 		
 		JLabelPro lblAukeratu = new JLabelPro("Aukeratu");
+		lblAukeratu.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblAukeratu, BorderLayout.NORTH);
-		lblAukeratu.setFont(new Font("Comic Sans",Font.BOLD,40));
+		lblAukeratu.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
 		lblAukeratu.erdianJarri();
 		
 		JPanel panel = new JPanel();

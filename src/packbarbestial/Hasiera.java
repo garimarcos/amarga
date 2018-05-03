@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -45,6 +46,8 @@ public class Hasiera extends JFrame implements Observer{
 	private boolean botaJok = true;
 	private JPanel panelComboBox;
 	private JComboBox<String> comboBox;
+	
+	private int hOrdua = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 
 	/**
 	 * Launch the application.
@@ -400,7 +403,7 @@ public class Hasiera extends JFrame implements Observer{
 					int erantzuna=1;
 						if(botaOrd){
 							erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));
-							boolean ondo=(erantzuna>=0 && erantzuna<j.getTableroKop());
+							boolean ondo=(erantzuna>0 && erantzuna<j.getTableroKop());
 							while(!ondo){
 								JOptionPane optionPane = new JOptionPane("MESEDEZ, ZENBAKI EGOKIA SARTU!!!!!!!!!", JOptionPane.ERROR_MESSAGE);    
 								JDialog dialog = optionPane.createDialog("ERROR");
@@ -413,7 +416,7 @@ public class Hasiera extends JFrame implements Observer{
 				}else if(k==3){
 					int zenbatAurreratu=1;
 					if(botaOrd){
-						zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu?"));
+						zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu? (1 edo 2)"));
 						boolean ondo=(zenbatAurreratu==1 || zenbatAurreratu==2);
 						while(!ondo){
 							JOptionPane optionPane = new JOptionPane("MESEDEZ, ZENBAKI EGOKIA SARTU!!!!!!!!!", JOptionPane.ERROR_MESSAGE);    
@@ -427,6 +430,16 @@ public class Hasiera extends JFrame implements Observer{
 					}j.aurreratu(zenbatAurreratu);
 				}
 				if(k==-8) JOptionPane.showMessageDialog(frame, "Ez da zure txanda");
+				else if(k==-2){
+					int bOrdua= Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+					String hOrduaS = String.valueOf(hOrdua);
+					String bOrduaS = String.valueOf(bOrdua);
+					String[] args = new String[2];
+					args[0] = hOrduaS;
+					args[1] = bOrduaS;
+					Puntuazioa.main(args);
+					frame.dispose();
+				}
 				else if(botaOrd){
 					int pos=j.getTableroKop();
 					tableroanKartaIpini(k, pos,1);

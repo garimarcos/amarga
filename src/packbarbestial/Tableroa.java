@@ -53,7 +53,14 @@ public class Tableroa extends Observable{
 				i++;
 			}
 		}
+		
+		if(amaituta()) kartak.add(6, null);
+		
 		egoeraAldatua(kartak);
+	}
+	
+	private boolean amaituta(){
+		return ListaJokalariak.getNireLista().jokLortu(1).amaituDu()&&ListaJokalariak.getNireLista().jokLortu(2).amaituDu();
 	}
 	
 	public void kanporatu(int pPosizioa) throws IndexOutOfBoundsException{
@@ -76,6 +83,7 @@ public class Tableroa extends Observable{
 		int j = 0;
 		while (j < k.size()){
 			kartak.add(k.get(j).getIndarra());
+			//System.out.println(k.get(j).getKolore());
 			if(k.get(j).getKolore().equalsIgnoreCase("berdea")) kartak.add(0);
 			else kartak.add(1);
 			j++;

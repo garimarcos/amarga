@@ -44,4 +44,6 @@ public abstract class Karta implements Comparable<Karta> {
 	
 	protected void aurreratu(int indarra){ a.aurreratu(indarra); }
 	
+	public int puntuakLortu(){ return puntuak; }
+	
 }

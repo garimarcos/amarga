@@ -1,5 +1,6 @@
 package packbarbestial;
 
+import java.util.ArrayList;
 import java.util.Observer;
 
 public class Jokoa {
@@ -50,6 +51,7 @@ public class Jokoa {
 		if(jokKolore.equalsIgnoreCase("urdina")) ordKolore="berdea";
 		else ordKolore="urdina";
 		l.add(new Jokalaria("ordenagailua",ordKolore));
+		l.jokLortu(2).hasieratuOrd();
 		//System.out.println(l.jokLortu(2).getKolore());
 	}
 	
@@ -78,6 +80,10 @@ public class Jokoa {
 		return l.jokLortu(1).getIzen();
 	}
 	
+	public String jokKolore(){
+		return l.jokLortu(1).getKolore();
+	}
+	
 	public void kanporatu(int pPosizioa) throws IndexOutOfBoundsException{
 		t.kanporatu(pPosizioa);
 	}
@@ -93,4 +99,9 @@ public class Jokoa {
 	public void hutsituLista(){
 		l.clear();
 	}
+	
+	public int[] lortuPuntuak(){
+		return m.lortuPuntuak();
+	}
+
 }
