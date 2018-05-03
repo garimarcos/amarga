@@ -89,4 +89,8 @@ public class Jokoa {
 	public void esleituKameleoi(int indarra){
 		l.jokLortu(1).esleituKameleoi(indarra);
 	}
+	
+	public void hutsituLista(){
+		l.clear();
+	}
 }

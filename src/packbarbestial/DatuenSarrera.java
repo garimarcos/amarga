@@ -58,7 +58,7 @@ public class DatuenSarrera {
 		});
 		frame.setBounds(100, 100, 815, 567);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(2, 0, 0, 0));
+		frame.getContentPane().setLayout(new GridLayout(2, 0, 0, 0)); 
 		
 		JPanel panel_1 = new JPanel();
 		frame.getContentPane().add(panel_1);

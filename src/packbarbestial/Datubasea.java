@@ -97,5 +97,43 @@ public class Datubasea {
 			return false;
 		}
 	}
+	
+	public void animaliaSartu(String pIzen, int pZenb, int pPunt, String pAzalpena, boolean pOrijinala){
+		PreparedStatement ps = null;
+		try{
+			int orijinala=0;
+			if(pOrijinala) orijinala=1;
+			ps=konexioa.prepareStatement("insert into animalia values('" + pIzen + "'," + pZenb + ",'" + pAzalpena + "'," + pPunt + "," + orijinala + ")");
+			ps.executeUpdate();
+		}catch(MySQLSyntaxErrorException e){
+			
+		}catch(SQLException e){
+			
+		}
+	}
+	
+	public void administratzaileBihurtu(String pIzen){
+		PreparedStatement ps = null;
+		try{
+			ps=konexioa.prepareStatement("update jokalaria set mota='admin' where izena='" + pIzen + "'");
+			ps.executeUpdate();
+		}catch(MySQLSyntaxErrorException e){
+			
+		}catch(SQLException e){
+			
+		}
+	}
+	
+	public void baimenakKendu(String pIzen){
+		PreparedStatement ps = null;
+		try{
+			ps=konexioa.prepareStatement("update jokalaria set pasahitza='admin' where izena='" + pIzen + "'");
+			ps.executeUpdate();
+		}catch(MySQLSyntaxErrorException e){
+			
+		}catch(SQLException e){
+			
+		}
+	}
 
 }

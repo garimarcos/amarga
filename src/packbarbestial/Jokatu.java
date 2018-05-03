@@ -50,6 +50,7 @@ public class Jokatu {
 		atzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
+				Jokoa.getnJokoa().hutsituLista();
 				DatuenSarrera.main(null);
 			}
 		});
@@ -58,18 +59,30 @@ public class Jokatu {
 		JButton jokatu = new JButton("Jokatu");
 		jokatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String kolore=JOptionPane.showInputDialog("Sartu nahi duzun kolorea");
-				Jokoa.getnJokoa().setKolore(kolore);
 				frame.dispose();
-				Hasiera.main(null);
+				KoloreAukera.main(null);
 			}
 		});
+		
+		JButton btnRanking = new JButton("Ranking");
+		btnRanking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				RankingAukeraketa.main(null);
+			}
+		});
+		frame.getContentPane().add(btnRanking);
 		frame.getContentPane().add(jokatu);
 		
-		boolean adminDa=administratzaileaDa();
 		JButton admin = new JButton("Administratzailearen gunea");
+		admin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				AdminGunea.main(null);
+			}
+		});
 		frame.getContentPane().add(admin);
-		if(!adminDa) admin.setEnabled(false);
+		if(!this.administratzaileaDa()) admin.setEnabled(false);
 	}
 	
 	private boolean administratzaileaDa(){
