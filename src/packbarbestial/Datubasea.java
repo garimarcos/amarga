@@ -42,10 +42,7 @@ public class Datubasea {
 	
 	public boolean jokBerriaSartu(String pIzen, String pAbizen, String pPasahitza, int pJaioUrtea, String pEmail){
 		try {
-			int urtea = Calendar.getInstance().get(Calendar.YEAR);
-			int hil = Calendar.getInstance().get(Calendar.MONTH)+1;
-			int egun = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-			String data = urtea + "-" + hil + "-" + egun;
+			String data = gaurkoData();
 			PreparedStatement ps=null;
 			ps=konexioa.prepareStatement("insert into jokalaria values ('"+pIzen+"', '"+pAbizen+"', '"+pPasahitza+"', '"+pJaioUrtea+"','"+pEmail+"', '"+data+"','normal')");
 			ps.executeUpdate();
@@ -106,9 +103,9 @@ public class Datubasea {
 			ps=konexioa.prepareStatement("insert into animalia values('" + pIzen + "'," + pZenb + ",'" + pAzalpena + "'," + pPunt + "," + orijinala + ")");
 			ps.executeUpdate();
 		}catch(MySQLSyntaxErrorException e){
-			
+			e.printStackTrace();
 		}catch(SQLException e){
-			
+			e.printStackTrace();
 		}
 	}
 	
@@ -118,9 +115,9 @@ public class Datubasea {
 			ps=konexioa.prepareStatement("update jokalaria set mota='admin' where izena='" + pIzen + "'");
 			ps.executeUpdate();
 		}catch(MySQLSyntaxErrorException e){
-			
+			e.printStackTrace();
 		}catch(SQLException e){
-			
+			e.printStackTrace();
 		}
 	}
 	
@@ -130,22 +127,41 @@ public class Datubasea {
 			ps=konexioa.prepareStatement("update jokalaria set pasahitza='admin' where izena='" + pIzen + "'");
 			ps.executeUpdate();
 		}catch(MySQLSyntaxErrorException e){
-			
+			e.printStackTrace();
 		}catch(SQLException e){
-			
+			e.printStackTrace();
 		}
 	}
 	
-	public void partidaBerriaSartu(String pKolorea, int hOrdua, int bOrdua, String jokIzen, int puntuJok, int puntuOrd){
+	public void partidaBerriaSartu(String pKolorea, int hOrdua, int hMin, int hSeg, int bOrdua, int bMin, int bSeg,  String jokIzen, int puntuJok, int puntuOrd){
 		PreparedStatement ps = null;
 		try{
-			ps=konexioa.prepareStatement("insert into partida values('");
+			int kode=0;
+			ps=konexioa.prepareStatement("SELECT kodea FROM partida ORDER BY kodea DESC LIMIT 1");
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()){
+				kode=rs.getInt("kodea");
+			}
+			kode++;
+			int egoera = 1;
+			String data = gaurkoData();
+			String hasieraOrdua = hOrdua + ":" + hMin + ":" + hSeg;
+			String bukaeraOrdua = bOrdua + ":" + bMin + ":" + bSeg;
+			ps=konexioa.prepareStatement("insert into partida values(" + kode + ",'" + pKolorea + "','" + data + "','" + hasieraOrdua + "','" + bukaeraOrdua +"','" + jokIzen + "'," + puntuJok + "," + puntuOrd + "," + egoera + ")");
 			ps.executeUpdate();
 		}catch(MySQLSyntaxErrorException e){
-			
+			e.printStackTrace();
 		}catch(SQLException e){
-			
+			e.printStackTrace();
 		}
+	}
+	
+	private String gaurkoData(){
+		int urtea = Calendar.getInstance().get(Calendar.YEAR);
+		int hil = Calendar.getInstance().get(Calendar.MONTH)+1;
+		int egun = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+		String data = urtea + "-" + hil + "-" + egun;
+		return data;
 	}
 
 }

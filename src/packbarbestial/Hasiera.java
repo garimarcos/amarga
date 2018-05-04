@@ -48,6 +48,8 @@ public class Hasiera extends JFrame implements Observer{
 	private JComboBox<String> comboBox;
 	
 	private int hOrdua = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+	private int hMin = Calendar.getInstance().get(Calendar.MINUTE);
+	private int hSeg = Calendar.getInstance().get(Calendar.SECOND);
 
 	/**
 	 * Launch the application.
@@ -431,12 +433,7 @@ public class Hasiera extends JFrame implements Observer{
 				}
 				if(k==-8) JOptionPane.showMessageDialog(frame, "Ez da zure txanda");
 				else if(k==-2){
-					int bOrdua= Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-					String hOrduaS = String.valueOf(hOrdua);
-					String bOrduaS = String.valueOf(bOrdua);
-					String[] args = new String[2];
-					args[0] = hOrduaS;
-					args[1] = bOrduaS;
+					String[] args = dataLortu();
 					Puntuazioa.main(args);
 					frame.dispose();
 				}
@@ -509,6 +506,26 @@ public class Hasiera extends JFrame implements Observer{
 			i++;
 		}
 		
+	}
+	
+	private String[] dataLortu(){
+		int bOrdua= Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+		int bMin = Calendar.getInstance().get(Calendar.MINUTE);
+		int bSeg = Calendar.getInstance().get(Calendar.SECOND);
+		String hOrduaS = String.valueOf(hOrdua);
+		String hMinS = String.valueOf(hMin);
+		String hSegS = String.valueOf(hSeg);
+		String bOrduaS = String.valueOf(bOrdua);
+		String bMinS = String.valueOf(bMin);
+		String bSegS = String.valueOf(bSeg);
+		String[] args = new String[6];
+		args[0] = hOrduaS;
+		args[1] = hMinS;
+		args[2] = hSegS;
+		args[3] = bOrduaS;
+		args[4] = bMinS;
+		args[5] = bSegS;
+		return args;
 	}
 	
 }

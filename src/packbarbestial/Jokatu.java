@@ -42,19 +42,9 @@ public class Jokatu {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 806, 97);
+		frame.setBounds(100, 100, 548, 103);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
-		
-		JButton atzera = new JButton("Atzera");
-		atzera.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Jokoa.getnJokoa().hutsituLista();
-				DatuenSarrera.main(null);
-			}
-		});
-		frame.getContentPane().add(atzera);
+		frame.getContentPane().setLayout(new GridLayout(2, 0, 0, 0));
 		
 		JButton jokatu = new JButton("Jokatu");
 		jokatu.addActionListener(new ActionListener() {
@@ -82,6 +72,16 @@ public class Jokatu {
 			}
 		});
 		frame.getContentPane().add(admin);
+		
+		JButton atzera = new JButton("Atzera");
+		atzera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				Jokoa.getnJokoa().hutsituLista();
+				DatuenSarrera.main(null);
+			}
+		});
+		frame.getContentPane().add(atzera);
 		if(!this.administratzaileaDa()) admin.setEnabled(false);
 	}
 	

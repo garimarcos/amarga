@@ -117,8 +117,12 @@ public class Puntuazioa {
 				String jokKolore = j.jokKolore();
 				String jokIzen = j.jokIzen();
 				int hOrdua = Integer.parseInt(args[0]);
-				int bOrdua = Integer.parseInt(args[1]);
-				Datubasea.getnDatubasea().partidaBerriaSartu(jokKolore, hOrdua, bOrdua, jokIzen, puntuJok, puntuOrd);
+				int hMin = Integer.parseInt(args[1]);
+				int hSeg = Integer.parseInt(args[2]);
+				int bOrdua = Integer.parseInt(args[3]);
+				int bMin= Integer.parseInt(args[4]);
+				int bSeg = Integer.parseInt(args[5]);
+				Datubasea.getnDatubasea().partidaBerriaSartu(jokKolore, hOrdua, hMin, hSeg, bOrdua, bMin, bSeg, jokIzen, puntuJok, puntuOrd);
 				frame.dispose();
 				Jokatu.main(null);
 			}

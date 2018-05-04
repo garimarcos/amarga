@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.GridLayout;
 import javax.swing.JTable;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
 
 public class RankingJokalaria {
 
@@ -39,12 +41,13 @@ public class RankingJokalaria {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 980, 560);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
 		
 		table = new JTable();
 		frame.getContentPane().add(table);
+		
 	}
 
 }
