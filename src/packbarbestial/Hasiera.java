@@ -1,6 +1,7 @@
 package packbarbestial;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JButton;
 
 public class Hasiera extends JFrame implements Observer{
 	
@@ -45,11 +47,11 @@ public class Hasiera extends JFrame implements Observer{
 	private boolean botaOrd = false;
 	private boolean botaJok = true;
 	private JPanel panelComboBox;
-	private JComboBox<String> comboBox;
 	
 	private int hOrdua = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 	private int hMin = Calendar.getInstance().get(Calendar.MINUTE);
 	private int hSeg = Calendar.getInstance().get(Calendar.SECOND);
+	private JButton btnLaguntza;
 
 	/**
 	 * Launch the application.
@@ -76,17 +78,12 @@ public class Hasiera extends JFrame implements Observer{
 		initialize();
 	}
 	
-//	public static Hasiera getnHasiera(){
-//		return nHasiera;
-//	}
-	
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		j.ordenagailuaSortu();
-		frame = new JFrame();
+		frame = new JFrame("Bar Bestial - AMARGA");
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -139,18 +136,23 @@ public class Hasiera extends JFrame implements Observer{
 		panel_erdikoa.add(zerukoAtea);
 		
 		tablero1 = new JLabelPro("KARTA1");
+		tablero1.setText("");
 		panel_erdikoa.add(tablero1);
 		
 		tablero2 = new JLabelPro("KARTA2");
+		tablero2.setText("");
 		panel_erdikoa.add(tablero2);
 		
 		tablero3 = new JLabelPro("KARTA3");
+		tablero3.setText("");
 		panel_erdikoa.add(tablero3);
 		
 		tablero4 = new JLabelPro("KARTA4");
+		tablero4.setText("");
 		panel_erdikoa.add(tablero4);
 		
 		tablero5 = new JLabelPro("KARTA5");
+		tablero5.setText("");
 		panel_erdikoa.add(tablero5);
 		
 		JLabelPro patada = new JLabelPro("");
@@ -180,63 +182,17 @@ public class Hasiera extends JFrame implements Observer{
 		panel_behekoa.add(panelComboBox);
 		panelComboBox.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		comboBox = new JComboBox<String>();
-		comboBox.addActionListener(new ActionListener() {
+		btnLaguntza = new JButton("Laguntza");
+		btnLaguntza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String animalia=(String)comboBox.getSelectedItem();
-				switch(animalia){
-				case "Mofeta":
-					j.esleituKameleoi(1);
-					break;
-				case "Loro":
-					j.esleituKameleoi(2);
-					break;
-				case "Kanguro":
-					j.esleituKameleoi(3);
-					break;
-				case "Tximino":
-					j.esleituKameleoi(4);
-					break;
-				case "Foka":
-					j.esleituKameleoi(6);
-					break;
-				case "Zebra":
-					j.esleituKameleoi(7);
-					break;
-				case "Jirafa":
-					j.esleituKameleoi(8);
-					break;
-				case "Sugea":
-					j.esleituKameleoi(9);
-					break;
-				case "Krokodilo":
-					j.esleituKameleoi(10);
-					break;
-				case "Hipopotamo":
-					j.esleituKameleoi(11);
-					break;
-				case "Lehoi":
-					j.esleituKameleoi(12);
-					break;
+				try{
+					Desktop.getDesktop().open(new java.io.File("resources/BarBestialReglamento.pdf"));
+				}catch(Exception x){
+					x.printStackTrace();
 				}
-				panelComboBox.setVisible(false);
 			}
 		});
-		panelComboBox.add(comboBox);
-		
-		comboBox.addItem("Mofeta");
-		comboBox.addItem("Loro");
-		comboBox.addItem("Kanguro");
-		comboBox.addItem("Tximino");
-		comboBox.addItem("Foka");
-		comboBox.addItem("Zebra");
-		comboBox.addItem("Jirafa");
-		comboBox.addItem("Sugea");
-		comboBox.addItem("Krokodilo");
-		comboBox.addItem("Hipopotamo");
-		comboBox.addItem("Lehoi");
-		
-		panelComboBox.setVisible(false);
+		panelComboBox.add(btnLaguntza);
 		
 		//karta1.setIconURL(kartaurl[0]);
 		karta1.setIcon(new ImageIcon(kartaurl[0]));
@@ -393,50 +349,48 @@ public class Hasiera extends JFrame implements Observer{
 			try{
 				if(k==0) JOptionPane.showMessageDialog(frame, "Hutsik!");
 				if(k==-1) JOptionPane.showMessageDialog(frame, "Karta hartu behar duzu!");
-				else if(k==5){
+				else if(k==5){ //KAMELEOI
 					if(botaOrd){
-						int erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Zein indarra?"));
-						j.esleituKameleoi(erantzuna);
-//						JOptionPane.showMessageDialog(frame, "Aukeratu karta");
-//						panelComboBox.setVisible(true);
-					}
-					
-				}else if(k==2){
-					int erantzuna=1;
-						if(botaOrd){
-							erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));
-							boolean ondo=(erantzuna>0 && erantzuna<j.getTableroKop());
-							while(!ondo){
+						int[] indarrak = j.indarrak();
+						int erantzuna=-1;
+						boolean ondo=false;
+						int i =0;			
+						try{
+							erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Tableroko zein indarra?"));
+						}catch(NumberFormatException x){
+							erantzuna=-1;
+						} while(i<indarrak.length && !ondo){
+							if(erantzuna==indarrak[i]) ondo=true;
+							else i++;
+						}
+						while(!ondo){
+							try{
 								JOptionPane optionPane = new JOptionPane("MESEDEZ, ZENBAKI EGOKIA SARTU!!!!!!!!!", JOptionPane.ERROR_MESSAGE);    
 								JDialog dialog = optionPane.createDialog("ERROR");
 								dialog.setAlwaysOnTop(true);
 								dialog.setVisible(true);
-								erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));
-								if(erantzuna>0 && erantzuna<j.getTableroKop()) ondo=true;
+								erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Tableroko zein indarra?"));	
+								i=0;
+								while(i<indarrak.length && !ondo){
+									if(erantzuna==indarrak[i]) ondo=true;
+									else i++;
+								}
+							}catch(NumberFormatException x){
+								erantzuna=-1;
 							}
-						} j.kanporatu(erantzuna);
-				}else if(k==3){
-					int zenbatAurreratu=1;
-					if(botaOrd){
-						zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu? (1 edo 2)"));
-						boolean ondo=(zenbatAurreratu==1 || zenbatAurreratu==2);
-						while(!ondo){
-							JOptionPane optionPane = new JOptionPane("MESEDEZ, ZENBAKI EGOKIA SARTU!!!!!!!!!", JOptionPane.ERROR_MESSAGE);    
-							JDialog dialog = optionPane.createDialog("ERROR");
-							dialog.setAlwaysOnTop(true);
-							dialog.setVisible(true);
-							zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu?"));
-							if(zenbatAurreratu==1 || zenbatAurreratu==2) ondo=true;
 						}
+						if(erantzuna==2) loro();
+						else if(erantzuna==3) kanguro();
+						else j.esleituKameleoi(erantzuna);		
 						
-					}j.aurreratu(zenbatAurreratu);
+					}
+					
+				}else if(k==2){
+					loro();
+				}else if(k==3){
+					kanguro();					
 				}
 				if(k==-8) JOptionPane.showMessageDialog(frame, "Ez da zure txanda");
-				else if(k==-2){
-					String[] args = dataLortu();
-					Puntuazioa.main(args);
-					frame.dispose();
-				}
 				else if(botaOrd){
 					int pos=j.getTableroKop();
 					tableroanKartaIpini(k, pos,1);
@@ -449,8 +403,13 @@ public class Hasiera extends JFrame implements Observer{
 				JOptionPane.showMessageDialog(frame, "Hutsik");
 			}catch(IndexOutOfBoundsException x){
 				JOptionPane.showMessageDialog(frame, "Hor ez dago kartarik");
-			}catch(NumberFormatException x){
-				JOptionPane.showMessageDialog(frame, "Zenbaki okerra");
+				x.printStackTrace();
+			}
+			
+			if(j.amaituDa()){
+				String[] args = dataLortu();
+				frame.dispose();
+				Puntuazioa.main(args);
 			}
 		}
 		
@@ -506,6 +465,67 @@ public class Hasiera extends JFrame implements Observer{
 			i++;
 		}
 		
+		
+		
+	}
+	
+	private void loro(){
+		if(j.getTableroKop()>1){
+			int erantzuna=1;
+			if(botaOrd){
+				try{
+					erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));
+				}catch(NumberFormatException e){
+					erantzuna=-1;
+				} boolean ondo=(erantzuna>0 && erantzuna<j.getTableroKop());
+				while(!ondo){
+					try{
+						JOptionPane optionPane = new JOptionPane("MESEDEZ, ZENBAKI EGOKIA SARTU!!!!!!!!!", JOptionPane.ERROR_MESSAGE);    
+						JDialog dialog = optionPane.createDialog("ERROR");
+						dialog.setAlwaysOnTop(true);
+						dialog.setVisible(true);
+						erantzuna=Integer.parseInt(JOptionPane.showInputDialog("Aukeratu bota nahi duzun animaliaren posizioa"));				
+						if(erantzuna>0 && erantzuna<j.getTableroKop()) ondo=true;
+					}catch(NumberFormatException e){
+						erantzuna=-1;
+					}
+				}
+				}j.kanporatu(erantzuna);
+				
+		}else{
+			JOptionPane.showMessageDialog(frame, "Ezin da ezer egin");
+		}
+	}
+	
+	private void kanguro(){
+		if(j.getTableroKop()>1){
+			int zenbatAurreratu=1;
+			if(botaOrd){
+				try{
+					zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu? (1 edo 2)"));
+				}catch(NumberFormatException e){
+					zenbatAurreratu=-1;
+				} boolean ondo=false;
+				if(zenbatAurreratu==1 && j.getTableroKop()>1) ondo=true;
+				else if(zenbatAurreratu==2 && j.getTableroKop()>2) ondo=true;
+				while(!ondo){
+					try{
+						JOptionPane optionPane = new JOptionPane("MESEDEZ, ZENBAKI EGOKIA SARTU!!!!!!!!!", JOptionPane.ERROR_MESSAGE);    
+						JDialog dialog = optionPane.createDialog("ERROR");
+						dialog.setAlwaysOnTop(true);
+						dialog.setVisible(true);
+						zenbatAurreratu=Integer.parseInt(JOptionPane.showInputDialog("Zenbat aurreratu nahi dituzu? (1 edo 2)"));				
+						if(zenbatAurreratu==1 && j.getTableroKop()>1) ondo=true;
+						else if(zenbatAurreratu==2 && j.getTableroKop()>2) ondo=true;
+					}catch(NumberFormatException e){
+						zenbatAurreratu=-1;
+					}
+				}
+				}j.aurreratu(zenbatAurreratu);
+				
+		}else{
+			JOptionPane.showMessageDialog(frame, "Ezin da ezer egin");
+		}
 	}
 	
 	private String[] dataLortu(){
@@ -529,3 +549,5 @@ public class Hasiera extends JFrame implements Observer{
 	}
 	
 }
+
+

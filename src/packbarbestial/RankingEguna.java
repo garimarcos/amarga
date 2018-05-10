@@ -47,13 +47,12 @@ public class RankingEguna {
 		frame = new JFrame("Eguneko partida onenak");
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosed(WindowEvent e) {
-				frame.dispose();
+			public void windowClosing(WindowEvent e) {
 				RankingAukeraketa.main(null);
 			}
 		});
 		frame.setBounds(100, 100, 980, 560);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
 		
 		erabiltzaileak = Datubasea.getnDatubasea().egunekoPartidaOnenak();

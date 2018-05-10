@@ -103,5 +103,13 @@ public class Jokoa {
 	public int[] lortuPuntuak(){
 		return m.lortuPuntuak();
 	}
+	
+	public int[] indarrak(){
+		return t.indarrakLortu();
+	}
+	
+	public boolean amaituDa(){
+		return t.amaituta();
+	}
 
 }

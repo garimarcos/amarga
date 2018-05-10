@@ -15,26 +15,24 @@ public class Tximino extends Karta {
 	public void egikaritu() {
 		ArrayList<Karta> k=Tableroa.getnTableroa().hartuKartak();
 		Iterator<Karta> itr=k.iterator();
+		ArrayList<Karta> tximinoak=new ArrayList<Karta>();
 		int i=0;
 		while(itr.hasNext()){
 			Karta kar=itr.next();
-			if(kar.getIndarra()==4) i++;
+			if(kar.getIndarra()==4){
+				Karta p = kar;
+				tximinoak.add(p);
+				i++;
 		}
 		if(i>1) {
 			bota(10);
 			bota(11);
-			int non=k.indexOf(this);
-			Karta ee=k.remove(non);
-			k.add(0,ee);
-			int s=k.size()-1;
-			int pos=1;
-			while(s>=0){
-				if(k.get(s).getIndarra()==4){
-					Karta kart=k.remove(s);
-					k.add(pos,kart);
-					pos++;
-				}
-				s--;
+			Iterator<Karta> it=tximinoak.iterator();
+			while(it.hasNext()){
+				Karta txim=it.next();
+				k.remove(txim);
+				k.add(0,txim);
+			}
 			}
 		}
 	}

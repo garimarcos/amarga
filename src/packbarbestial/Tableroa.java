@@ -54,12 +54,10 @@ public class Tableroa extends Observable{
 			}
 		}
 		
-		if(amaituta()) kartak.add(6, null);
-		
 		egoeraAldatua(kartak);
 	}
 	
-	private boolean amaituta(){
+	public boolean amaituta(){
 		return ListaJokalariak.getNireLista().jokLortu(1).amaituDu()&&ListaJokalariak.getNireLista().jokLortu(2).amaituDu();
 	}
 	
@@ -67,13 +65,23 @@ public class Tableroa extends Observable{
 		if(kartak.get(pPosizioa)!=null)Mahaia.getnMahaia().inpernura(kartak.remove(pPosizioa-1));
 	}
 	
-	public void aurreratu(int pKopuru) throws NumberFormatException{
+	public void aurreratu(int pKopuru){
 		int pPosizioa=kartak.size()-1;
 		if(pKopuru==1) Collections.swap(kartak, pPosizioa, pPosizioa-1);
 		else if(pKopuru==2){
 			Collections.swap(kartak, pPosizioa, pPosizioa-1);
 			Collections.swap(kartak, pPosizioa-1, pPosizioa-2);
 		}
+	}
+	
+	public int[] indarrakLortu(){
+		int[] indarrak = new int[kartak.size()];
+		int i = 0;
+		while(i<kartak.size()){
+			indarrak[i]=kartak.get(i).getIndarra();
+			i++;
+		}
+		return indarrak;
 	}
 	
 	private void egoeraAldatua(ArrayList<Karta> k){

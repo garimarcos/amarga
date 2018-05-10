@@ -15,6 +15,7 @@ public class Puntuazioa {
 
 	private JFrame frame;
 	private String[] args;
+	private boolean jokIrabazi;
 
 	/**
 	 * Launch the application.
@@ -108,6 +109,7 @@ public class Puntuazioa {
 		frame.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
+		
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,7 +124,7 @@ public class Puntuazioa {
 				int bOrdua = Integer.parseInt(args[3]);
 				int bMin= Integer.parseInt(args[4]);
 				int bSeg = Integer.parseInt(args[5]);
-				boolean jokIrabazi = irabaziDu(labelOrdKop.getText(),labelOrdPuntu.getText(),labelKopJok.getText(),labelJokPuntu.getText());
+				
 				Datubasea.getnDatubasea().partidaBerriaSartu(jokKolore, hOrdua, hMin, hSeg, bOrdua, bMin, bSeg, jokEmail, puntuJok, puntuOrd, jokIrabazi);
 				frame.dispose();
 				Jokatu.main(null);
@@ -133,6 +135,17 @@ public class Puntuazioa {
 		labelJokPuntu.setText(puntuString[1]);
 		labelOrdKop.setText(puntuString[2]);
 		labelOrdPuntu.setText(puntuString[3]);
+		
+		jokIrabazi = irabaziDu(labelOrdKop.getText(),labelOrdPuntu.getText(),labelKopJok.getText(),labelJokPuntu.getText());
+		
+			try {
+				if(!jokIrabazi) AudioGaldu.main(null);
+				else AudioIrabazi.main(null);;
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				
+			}
+		
 
 	}
 	
