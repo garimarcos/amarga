@@ -80,22 +80,22 @@ public class DatuenSarrera {
 		frame.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		JButton btnNewButton_1 = new JButton("Jokalari berria sortu");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnJokBerria = new JButton("Jokalari berria sortu");
+		btnJokBerria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Datuak.main(null);
+				Erregistroa.main(null);
 			}
 		});
-		panel.add(btnNewButton_1);
+		panel.add(btnJokBerria);
 		
-		JButton btnNewButton = new JButton("Sartu");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnSartu = new JButton("Sartu");
+		btnSartu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login.main(null);
 				frame.dispose();
 			}
 		});
-		panel.add(btnNewButton);
+		panel.add(btnSartu);
 	}
 
 }

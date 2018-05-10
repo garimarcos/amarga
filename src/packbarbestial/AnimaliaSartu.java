@@ -134,7 +134,7 @@ public class AnimaliaSartu {
 		JButton btnGorde = new JButton("Gorde");
 		btnGorde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				sartuDatuak();
 			}
 		});
 		panel.add(btnGorde);
@@ -147,7 +147,12 @@ public class AnimaliaSartu {
 			int punt = Integer.parseInt(puntuazioa.getText());
 			boolean orijinala=chckbxOinarrizkoa.isSelected();
 			Datubasea.getnDatubasea().animaliaSartu(izena.getText(), zk, punt, azalpena.getText(), orijinala);
-			frame.dispose();
+			JOptionPane.showMessageDialog(frame, "Ondo!");
+			izena.setText("");
+			zenbakia.setText("");
+			puntuazioa.setText("");
+			azalpena.setText("");
+			chckbxOinarrizkoa.setSelected(false);	
 		}catch(NumberFormatException e){
 			JOptionPane.showMessageDialog(frame, "Sartu zenbakia","Error",JOptionPane.ERROR_MESSAGE);
 		}

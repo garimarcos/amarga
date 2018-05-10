@@ -52,10 +52,10 @@ public class RankingAukeraketa {
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		panel_1.add(comboBox);
-		comboBox.addItem("Erabiltzailearen partida onenak");
-		comboBox.addItem("Eguneko partida onenak");
-		comboBox.addItem("Historikoki partida onenak");
-		comboBox.addItem("Jokalari onenak");
+		comboBox.addItem("1. Erabiltzailearen partida onenak");
+		comboBox.addItem("2. Eguneko partida onenak");
+		comboBox.addItem("3. Historikoki partida onenak");
+		comboBox.addItem("4. Jokalari onenak");
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel);
@@ -73,6 +73,23 @@ public class RankingAukeraketa {
 		JButton btnNewButton = new JButton("Gorde");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String aukera = comboBox.getSelectedItem().toString();
+				char zkS = aukera.charAt(0);
+				int zk = Character.getNumericValue(zkS);
+				switch(zk){
+				case 1:
+					RankingJokalaria.main(null);
+					break;
+				case 2:
+					RankingEguna.main(null);
+					break;
+				case 3:
+					HistorikokiOnenak.main(null);
+					break;
+				case 4:
+					BatezBestekoOnenak.main(null);
+					break;
+				}
 				frame.dispose();
 			}
 		});

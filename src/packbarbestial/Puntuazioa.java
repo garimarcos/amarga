@@ -115,14 +115,15 @@ public class Puntuazioa {
 				int puntuOrd = puntuak[3];
 				Jokoa j = Jokoa.getnJokoa();
 				String jokKolore = j.jokKolore();
-				String jokIzen = j.jokIzen();
+				String jokEmail = j.jokEmail();
 				int hOrdua = Integer.parseInt(args[0]);
 				int hMin = Integer.parseInt(args[1]);
 				int hSeg = Integer.parseInt(args[2]);
 				int bOrdua = Integer.parseInt(args[3]);
 				int bMin= Integer.parseInt(args[4]);
 				int bSeg = Integer.parseInt(args[5]);
-				Datubasea.getnDatubasea().partidaBerriaSartu(jokKolore, hOrdua, hMin, hSeg, bOrdua, bMin, bSeg, jokIzen, puntuJok, puntuOrd);
+				boolean jokIrabazi = irabaziDu(labelOrdKop.getText(),labelOrdPuntu.getText(),labelKopJok.getText(),labelJokPuntu.getText());
+				Datubasea.getnDatubasea().partidaBerriaSartu(jokKolore, hOrdua, hMin, hSeg, bOrdua, bMin, bSeg, jokEmail, puntuJok, puntuOrd, jokIrabazi);
 				frame.dispose();
 				Jokatu.main(null);
 			}
@@ -133,6 +134,18 @@ public class Puntuazioa {
 		labelOrdKop.setText(puntuString[2]);
 		labelOrdPuntu.setText(puntuString[3]);
 
+	}
+	
+	private boolean irabaziDu(String ordKop, String ordPuntu, String kopJok, String jokPuntu){ //true bueltatuko du jokalariak irabazi badu
+		int ordKopInt = Integer.parseInt(ordKop);
+		int jokKop = Integer.parseInt(kopJok);
+		if(ordKopInt>jokKop) return false;
+		else{
+			int puntuJok = Integer.parseInt(jokPuntu);
+			int puntuOrd = Integer.parseInt(ordPuntu);
+			if(puntuJok<puntuOrd) return true;
+			else return false;
+		}
 	}
 
 }

@@ -86,8 +86,8 @@ public class Jokatu {
 	}
 	
 	private boolean administratzaileaDa(){
-		String izen = Jokoa.getnJokoa().jokIzen();
-		return Datubasea.getnDatubasea().administratzaileaDa(izen);
+		String email = Jokoa.getnJokoa().jokEmail();
+		return Datubasea.getnDatubasea().administratzaileaDa(email);
 	}
 
 }

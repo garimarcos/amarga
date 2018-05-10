@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Jokalaria{
 	
-	private String izena;
+	private String email;
 	private String kolorea;
 	private Mazo hartzeke;
 	private Karta[] eskuan;
@@ -16,8 +16,8 @@ public class Jokalaria{
 	private int kameleoi;
 	private int puntuak;
 	
-	public Jokalaria(String pIzen, String pKolore){
-		this.izena=pIzen;
+	public Jokalaria(String pEmail, String pKolore){
+		this.email=pEmail;
 		this.kolorea=pKolore;
 		this.hartzeke=new Mazo();
 		this.eskuan=new Karta[4];
@@ -187,8 +187,8 @@ public class Jokalaria{
 		}
 		}
 
-	public String getIzen() {
-		return izena;
+	public String getEmail() {
+		return email;
 	}
 	
 	public boolean amaituDu(){

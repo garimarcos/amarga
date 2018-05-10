@@ -76,8 +76,8 @@ public class Jokoa {
 		l.jokLortu(1).setKolore(pKolore);
 	}
 	
-	public String jokIzen(){
-		return l.jokLortu(1).getIzen();
+	public String jokEmail(){
+		return l.jokLortu(1).getEmail();
 	}
 	
 	public String jokKolore(){

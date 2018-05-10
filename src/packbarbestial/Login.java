@@ -16,11 +16,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.SwingConstants;
 
 public class Login extends JDialog{
 
 	private JFrame frame;
-	private JTextField izena;
+	private JTextField email;
 	private JPasswordField pasahitza;
 
 	/**
@@ -69,18 +70,20 @@ public class Login extends JDialog{
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		JLabel lblIzena = new JLabel("Izena");
+		JLabel lblIzena = new JLabel("Email");
+		lblIzena.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblIzena);
 		
-		izena = new JTextField();
-		panel_1.add(izena);
-		izena.setColumns(10);
+		email = new JTextField();
+		panel_1.add(email);
+		email.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(new GridLayout(1, 2, 0, 0));
 		
 		JLabel lblPasahitza = new JLabel("Pasahitza");
+		lblPasahitza.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblPasahitza);
 		
 		pasahitza = new JPasswordField();
@@ -113,10 +116,10 @@ public class Login extends JDialog{
 	private void sartuDatuak(){
 		char[] pass=pasahitza.getPassword();
 		String pasahitza = new String(pass);
-		boolean ondo =Datubasea.getnDatubasea().login(izena.getText(), pasahitza);
+		boolean ondo =Datubasea.getnDatubasea().login(email.getText(), pasahitza);
 		if(!ondo) JOptionPane.showMessageDialog(frame, "Login errorea","Error",JOptionPane.ERROR_MESSAGE);
 		else{
-			Jokoa.getnJokoa().addJokalaria(izena.getText(), null);
+			Jokoa.getnJokoa().addJokalaria(email.getText(), null);
 			frame.dispose();
 			Jokatu.main(null);
 		}

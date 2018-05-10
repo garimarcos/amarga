@@ -11,12 +11,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
-public class Datuak {
+public class Erregistroa {
 
 	private JFrame frame;
 	private JTextField izena;
@@ -33,7 +36,7 @@ public class Datuak {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Datuak window = new Datuak();
+					Erregistroa window = new Erregistroa();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +48,7 @@ public class Datuak {
 	/**
 	 * Create the application.
 	 */
-	public Datuak() {
+	public Erregistroa() {
 		initialize();
 	}
 
@@ -53,7 +56,15 @@ public class Datuak {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("Erregistroa");
+		frame= new JFrame("Erregistroa");
+		frame.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==KeyEvent.VK_ENTER){
+					erregistro();
+				}
+			}
+		});
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addWindowListener(new WindowAdapter() {
@@ -71,6 +82,7 @@ public class Datuak {
 		panel.setLayout(new GridLayout(1, 2, 0, 0));
 		
 		JLabel lblIzena = new JLabel("Izena");
+		lblIzena.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblIzena);
 		
 		izena = new JTextField();
@@ -82,6 +94,7 @@ public class Datuak {
 		panel_1.setLayout(new GridLayout(1, 2, 0, 0));
 		
 		JLabel lblAbizena = new JLabel("Abizena");
+		lblAbizena.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblAbizena);
 		
 		abizena = new JTextField();
@@ -93,6 +106,7 @@ public class Datuak {
 		panel_2.setLayout(new GridLayout(1, 2, 0, 0));
 		
 		JLabel lblPasahitza = new JLabel("Pasahitza");
+		lblPasahitza.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblPasahitza);
 		
 		pasahitza = new JPasswordField();
@@ -104,6 +118,7 @@ public class Datuak {
 		panel_6.setLayout(new GridLayout(1, 2, 0, 0));
 		
 		JLabel lblPasahitzaBerrets = new JLabel("Pasahitza berretsi");
+		lblPasahitzaBerrets.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_6.add(lblPasahitzaBerrets);
 		
 		pasahitzaBerretsi = new JPasswordField();
@@ -115,6 +130,7 @@ public class Datuak {
 		panel_3.setLayout(new GridLayout(1, 2, 0, 0));
 		
 		JLabel lblJaiotzeurtea = new JLabel("Jaiotze-urtea");
+		lblJaiotzeurtea.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(lblJaiotzeurtea);
 		
 		jaioUrtea = new JTextField();
@@ -126,6 +142,7 @@ public class Datuak {
 		panel_4.setLayout(new GridLayout(1, 2, 0, 0));
 		
 		JLabel lblEmail = new JLabel("E-mail");
+		lblEmail.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblEmail);
 		
 		email = new JTextField();
@@ -135,25 +152,11 @@ public class Datuak {
 		JPanel panel_5 = new JPanel();
 		frame.getContentPane().add(panel_5);
 		panel_5.setLayout(new GridLayout(1, 0, 0, 0));
-		
-		
-		
+
 		JButton btnGorde = new JButton("Gorde");
 		btnGorde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
-					if(!(Arrays.equals(pasahitza.getPassword(), pasahitzaBerretsi.getPassword()))) throw new PasahitzaOkerrakException();
-					char[] pass=pasahitza.getPassword();
-					String pasahitza = new String(pass);
-					String jaioU = jaioUrtea.getText();
-					int jaiotzeUrt = Integer.parseInt(jaioU);
-					Datubasea.getnDatubasea().jokBerriaSartu(izena.getText(),abizena.getText(),pasahitza,jaiotzeUrt,email.getText());
-					frame.dispose();
-				}catch(NumberFormatException x){
-					JOptionPane.showMessageDialog(frame, "Jaiotze-urtea egokia sartu","Error",JOptionPane.ERROR_MESSAGE);
-				}catch(PasahitzaOkerrakException x){
-					JOptionPane.showMessageDialog(frame, "Pasahitza desberdinak","Error",JOptionPane.ERROR_MESSAGE);
-				}
+				erregistro();
 			}
 		});
 		
@@ -167,4 +170,24 @@ public class Datuak {
 		panel_5.add(btnGorde);
 	}
 
+	private void erregistro(){
+		try{
+			if(!(Arrays.equals(pasahitza.getPassword(), pasahitzaBerretsi.getPassword()))) throw new PasahitzaOkerrakException();
+			char[] pass=pasahitza.getPassword();
+			EmailValidator emailValidator = new EmailValidator();
+			if(!emailValidator.validate(email.getText().trim())) throw new EmailOkerraException();
+			String pasahitza = new String(pass);
+			String jaioU = jaioUrtea.getText();
+			int jaiotzeUrt = Integer.parseInt(jaioU);
+			Datubasea.getnDatubasea().jokBerriaSartu(izena.getText(),abizena.getText(),pasahitza,jaiotzeUrt,email.getText());
+		}catch(NumberFormatException x){
+			JOptionPane.showMessageDialog(frame, "Jaiotze-urtea egokia sartu","Error",JOptionPane.ERROR_MESSAGE);
+		}catch(PasahitzaOkerrakException x){
+			JOptionPane.showMessageDialog(frame, "Pasahitza desberdinak","Error",JOptionPane.ERROR_MESSAGE);
+		}catch(JokalariBerriaException x){
+			JOptionPane.showMessageDialog(frame, "Jadanik erregistratuta","Error",JOptionPane.ERROR_MESSAGE);
+		} catch (EmailOkerraException e) {
+			JOptionPane.showMessageDialog(frame, "Email okerra","Error",JOptionPane.ERROR_MESSAGE);
+		}
+	}
 }

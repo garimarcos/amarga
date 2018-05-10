@@ -53,18 +53,18 @@ public class AdminGunea {
 		
 		JButton btnAdminErab = new JButton("Erabiltzaile bat administratzaile bihurtu");
 		btnAdminErab.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String izena = JOptionPane.showInputDialog("Sartu erabiltzailearen izena");
-				Datubasea.getnDatubasea().administratzaileBihurtu(izena);
+			public void actionPerformed(ActionEvent e) {				
+				String[] args = new String[] {"1"};
+				ErabiltzaileLista.main(args);
 			}
 		});
 		panel_1.add(btnAdminErab);
 		
 		JButton btnSuprErabiltzaile = new JButton("Erabiltzaile bati baimenak kendu");
 		btnSuprErabiltzaile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String izena = JOptionPane.showInputDialog("Sartu erabiltzailearen izena");
-				Datubasea.getnDatubasea().baimenakKendu(izena);
+			public void actionPerformed(ActionEvent e) {		
+				String[] args = new String[] {"2"};
+				ErabiltzaileLista.main(args);
 			}
 		});
 		panel_1.add(btnSuprErabiltzaile);

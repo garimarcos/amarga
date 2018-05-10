@@ -1,19 +1,16 @@
 package packbarbestial;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JFrame;
 import javax.swing.JTable;
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
-public class RankingJokalaria {
+public class HistorikokiOnenak {
 
 	private JFrame frame;
 	private JTable table;
@@ -27,7 +24,7 @@ public class RankingJokalaria {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RankingJokalaria window = new RankingJokalaria();
+					HistorikokiOnenak window = new HistorikokiOnenak();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +36,7 @@ public class RankingJokalaria {
 	/**
 	 * Create the application.
 	 */
-	public RankingJokalaria() {
+	public HistorikokiOnenak() {
 		initialize();
 	}
 
@@ -47,7 +44,7 @@ public class RankingJokalaria {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("Jokalariaren partida onenak");
+		frame = new JFrame("Historikoki partida onenak");
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent e) {
@@ -59,7 +56,7 @@ public class RankingJokalaria {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
 		
-		erabiltzaileak = Datubasea.getnDatubasea().jokalariarenPartidaOnenak();
+		erabiltzaileak = Datubasea.getnDatubasea().historikokiPartidaOnenak();
 		
 		tableModel = new MyTableModel();
 		
@@ -76,7 +73,6 @@ public class RankingJokalaria {
 		
 		table = new JTable(tableModel);
 		frame.getContentPane().add(table);
-		
 	}
 
 }
