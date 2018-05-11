@@ -203,7 +203,7 @@ public class Datubasea {
 		PreparedStatement ps = null;
 		try{
 			String email = Jokoa.getnJokoa().jokEmail();
-			ps = konexioa.prepareStatement("select P.* from (partida AS P INNER JOIN jokalaria AS J ON P.jokEmail=J.email) ORDER BY P.puntuJok DESC;");
+			ps = konexioa.prepareStatement("select P.* from (partida AS P INNER JOIN jokalaria AS J ON P.jokEmail=J."+email+") ORDER BY P.puntuJok DESC;");
 			ResultSet rs = ps.executeQuery();
 			ArrayList<String>[] erabiltzaileak =  (ArrayList<String>[])(new ArrayList[9]);
 			for(int i=0;i<erabiltzaileak.length;i++){
