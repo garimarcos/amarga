@@ -14,7 +14,6 @@ public class Jokalaria{
 	private boolean hutsune;
 	//private Jokaera j;
 	private int kameleoi;
-	private int puntuak;
 	
 	public Jokalaria(String pEmail, String pKolore){
 		this.email=pEmail;

@@ -15,7 +15,7 @@ import java.sql.Connection;
 public class Datubasea {
 	
 		private String username="root";
-		private String password="";
+		private String password="shuaelsa10";
 		private String zerbitzaria="jdbc:mysql://localhost:3306/jokoa?useSSL=false";
 		private Connection konexioa;
 	
@@ -114,10 +114,10 @@ public class Datubasea {
 		}
 	}
 	
-	public void administratzaileBihurtu(String pIzen){
+	public void administratzaileBihurtu(String pEmail){
 		PreparedStatement ps = null;
 		try{
-			ps=konexioa.prepareStatement("update jokalaria set mota='admin' where izena='" + pIzen + "'");
+			ps=konexioa.prepareStatement("update jokalaria set mota='admin' where email='" + pEmail + "'");
 			ps.executeUpdate();
 		}catch(MySQLSyntaxErrorException e){
 			e.printStackTrace();
@@ -126,10 +126,10 @@ public class Datubasea {
 		}
 	}
 	
-	public void baimenakKendu(String pIzen){
+	public void baimenakKendu(String pEmail){
 		PreparedStatement ps = null;
 		try{
-			ps=konexioa.prepareStatement("delete from jokalaria where izena='"+pIzen+"'");
+			ps=konexioa.prepareStatement("delete from jokalaria where email='"+pEmail+"'");
 			ps.executeUpdate();
 		}catch(MySQLSyntaxErrorException e){
 			e.printStackTrace();
@@ -138,7 +138,7 @@ public class Datubasea {
 		}
 	}
 	
-	public void partidaBerriaSartu(String pKolorea, int hOrdua, int hMin, int hSeg, int bOrdua, int bMin, int bSeg,  String jokIzen, int puntuJok, int puntuOrd, boolean jokIrabazi){
+	public void partidaBerriaSartu(String pKolorea, int hOrdua, int hMin, int hSeg, int bOrdua, int bMin, int bSeg,  String jokEmail, int puntuJok, int puntuOrd, boolean jokIrabazi){
 		PreparedStatement ps = null;
 		try{
 			int kode=0;
@@ -153,7 +153,7 @@ public class Datubasea {
 			String data = gaurkoData();
 			String hasieraOrdua = hOrdua + ":" + hMin + ":" + hSeg;
 			String bukaeraOrdua = bOrdua + ":" + bMin + ":" + bSeg;
-			ps=konexioa.prepareStatement("insert into partida values(" + kode + ",'" + pKolorea + "','" + data + "','" + hasieraOrdua + "','" + bukaeraOrdua +"','" + jokIzen + "'," + puntuJok + "," + puntuOrd + "," + egoera + ")");
+			ps=konexioa.prepareStatement("insert into partida values(" + kode + ",'" + pKolorea + "','" + data + "','" + hasieraOrdua + "','" + bukaeraOrdua +"','" + jokEmail + "'," + puntuJok + "," + puntuOrd + "," + egoera + ")");
 			ps.executeUpdate();
 		}catch(MySQLSyntaxErrorException e){
 			e.printStackTrace();

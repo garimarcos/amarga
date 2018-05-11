@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -20,9 +21,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JButton;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseEvent;
 
 public class Hasiera extends JFrame implements Observer{
 	
@@ -108,6 +112,14 @@ public class Hasiera extends JFrame implements Observer{
 		panel_goikoa.add(barBestial);
 		
 		titulu = new JButtonPro("");
+		titulu.addMouseListener(new MouseAdapter() {
+	         public void mouseEntered(MouseEvent me) {
+	         
+	         }
+	         public void mouseExited(MouseEvent me) {
+	        	
+	         }
+	      });
 		titulu.addActionListener(new GertaeraKudeatzailea());
 		titulu.erdianJarri();
 		titulu.setIcon(new ImageIcon("img/logo-resize.png"));

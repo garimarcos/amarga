@@ -2,7 +2,6 @@ package packbarbestial;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Observable;
 
 public class Tableroa extends Observable{
@@ -25,8 +24,6 @@ public class Tableroa extends Observable{
 	}
 	
 	public int getKop(){ return kartak.size(); }
-	
-	private Iterator<Karta> getIteradorea(){ return kartak.iterator(); }
 	
 	public void animaladakGauzatu(int indarra, int jok){
 		kartak.get(kartak.size()-1).egikaritu();
@@ -86,14 +83,16 @@ public class Tableroa extends Observable{
 	
 	private void egoeraAldatua(ArrayList<Karta> k){
 		ArrayList<Integer> kartak = new ArrayList<Integer>(); //posizio bikoitiak = indarra
-									//posizio bakoitiak = kolorea --> 0=berdea 1=urdina
+									//posizio bakoitiak = kolorea --> 0=berdea 1=urdina 2=gorria 3=horia
 		int i = 0;
 		int j = 0;
 		while (j < k.size()){
 			kartak.add(k.get(j).getIndarra());
 			//System.out.println(k.get(j).getKolore());
 			if(k.get(j).getKolore().equalsIgnoreCase("berdea")) kartak.add(0);
-			else kartak.add(1);
+			else if(k.get(j).getKolore().equalsIgnoreCase("urdina")) kartak.add(1);
+			else if(k.get(j).getKolore().equalsIgnoreCase("gorria")) kartak.add(2);
+			else if(k.get(j).getKolore().equalsIgnoreCase("horia")) kartak.add(3);
 			j++;
 			i=i+2;
 		}

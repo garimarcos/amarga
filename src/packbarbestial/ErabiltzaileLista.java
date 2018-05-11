@@ -68,8 +68,8 @@ public class ErabiltzaileLista {
 				}
 			}
 		});
-		frame.setBounds(100, 100, 937, 228);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 1252, 228);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(1, 2, 0, 0));
 		
 		JPanel panel = new JPanel();
@@ -84,9 +84,9 @@ public class ErabiltzaileLista {
 		panel_2.add(panel_4);
 		panel_4.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JLabel lblIzena = new JLabel("Izena");
-		lblIzena.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_4.add(lblIzena);
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_4.add(lblEmail);
 		
 		textField = new JTextField();
 		panel_4.add(textField);
@@ -121,22 +121,22 @@ public class ErabiltzaileLista {
 		
 		
 		
-		erabiltzaileak = Datubasea.getnDatubasea().erabiltzaileakIkusi();
-		
-		tableModel = new MyTableModel();
-		
-		tableModel.addColumn("Izena",new Vector(erabiltzaileak[0]));
-		tableModel.addColumn("Abizena", new Vector(erabiltzaileak[1]));
-		tableModel.addColumn("Pasahitza", new Vector(erabiltzaileak[2]));
-		tableModel.addColumn("Jaio urtea", new Vector(erabiltzaileak[3]));
-		tableModel.addColumn("email", new Vector(erabiltzaileak[4]));
-		tableModel.addColumn("Erregistro data", new Vector(erabiltzaileak[5]));
-		tableModel.addColumn("Mota", new Vector(erabiltzaileak[6]));
-		tableModel.insertRow(0, new Object[] { "Izena","Abizena","Pasahitza", "Jaio urtea","email","Erregistro data","Mota" });
-	
-		
-		table = new JTable(tableModel);
-		panel_5.add(table);
+//		erabiltzaileak = Datubasea.getnDatubasea().erabiltzaileakIkusi();
+//		
+//		tableModel = new MyTableModel();
+//		
+//		tableModel.addColumn("Izena",new Vector(erabiltzaileak[0]));
+//		tableModel.addColumn("Abizena", new Vector(erabiltzaileak[1]));
+//		tableModel.addColumn("Pasahitza", new Vector(erabiltzaileak[2]));
+//		tableModel.addColumn("Jaio urtea", new Vector(erabiltzaileak[3]));
+//		tableModel.addColumn("email", new Vector(erabiltzaileak[4]));
+//		tableModel.addColumn("Erregistro data", new Vector(erabiltzaileak[5]));
+//		tableModel.addColumn("Mota", new Vector(erabiltzaileak[6]));
+//		tableModel.insertRow(0, new Object[] { "Izena","Abizena","Pasahitza", "Jaio urtea","email","Erregistro data","Mota" });
+//	
+//		
+//		table = new JTable(tableModel);
+		panel_5.add(new ErabiltzaileLista2());
 		
 	}
 	

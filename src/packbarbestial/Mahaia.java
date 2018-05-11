@@ -17,12 +17,12 @@ public class Mahaia {
 		return nMahaia;
 	}
 	
-	public void hasieratu(String pIzen, String pKolore){
-		sortuJokalariak(pIzen, pKolore);
+	public void hasieratu(String pEmail, String pKolore){
+		sortuJokalariak(pEmail, pKolore);
 	}
 	
-	private void sortuJokalariak(String pIzen, String pKolore){
-		ListaJokalariak.getNireLista().add(new Jokalaria(pIzen,pKolore));
+	private void sortuJokalariak(String pEmail, String pKolore){
+		ListaJokalariak.getNireLista().add(new Jokalaria(pEmail,pKolore));
 	}
 	
 	public String[] mahaiaPrestatu(){

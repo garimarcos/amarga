@@ -127,8 +127,7 @@ public class Puntuazioa {
 				
 				Datubasea.getnDatubasea().partidaBerriaSartu(jokKolore, hOrdua, hMin, hSeg, bOrdua, bMin, bSeg, jokEmail, puntuJok, puntuOrd, jokIrabazi);
 				frame.dispose();
-				AudioGaldu.stop();
-				AudioIrabazi.stop();
+				Audio.stop();
 				Jokatu.main(null);
 			}
 		});

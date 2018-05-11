@@ -59,6 +59,8 @@ public class KoloreAukera {
 		
 		comboBox.addItem("Berdea");
 		comboBox.addItem("Urdina");
+		comboBox.addItem("Gorria");
+		comboBox.addItem("Horia");
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel);

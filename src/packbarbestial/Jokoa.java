@@ -1,6 +1,5 @@
 package packbarbestial;
 
-import java.util.ArrayList;
 import java.util.Observer;
 
 public class Jokoa {
@@ -61,15 +60,17 @@ public class Jokoa {
 	
 	public String getKartaUrl(int pIndarra,int pKolore){
 		if(pKolore==0) return KartenBilera.getnKartenBilera().getURL(pIndarra, "berdea");
-		else return KartenBilera.getnKartenBilera().getURL(pIndarra, "urdina");
+		else if(pKolore==1) return KartenBilera.getnKartenBilera().getURL(pIndarra, "urdina");
+		else if(pKolore==2) return KartenBilera.getnKartenBilera().getURL(pIndarra, "gorria");
+		else return KartenBilera.getnKartenBilera().getURL(pIndarra, "horia");
 	}
 	
 	public int botaOrdenagailua(){
 		return l.jokLortu(2).botaOrd();
 	}
 	
-	public void addJokalaria(String pIzen, String pKolore){
-		l.add(new Jokalaria(pIzen,pKolore));
+	public void addJokalaria(String pEmail, String pKolore){
+		l.add(new Jokalaria(pEmail,pKolore));
 	}
 	
 	public void setKolore(String pKolore){

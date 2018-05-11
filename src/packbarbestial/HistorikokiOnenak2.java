@@ -10,13 +10,13 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class RankingJokalaria extends JPanel {
+public class HistorikokiOnenak2 extends JPanel {
 	
 	private JTable table;
 	private ArrayList<String>[] erabiltzaileak =  (ArrayList<String>[])(new ArrayList[9]);
 	private MyTableModel tableModel;
 	
-    public RankingJokalaria() {
+    public HistorikokiOnenak2() {
         initializeUI();
     }
 
@@ -24,7 +24,7 @@ public class RankingJokalaria extends JPanel {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(1129, 200));
         
-        erabiltzaileak = Datubasea.getnDatubasea().jokalariarenPartidaOnenak();
+        erabiltzaileak = Datubasea.getnDatubasea().historikokiPartidaOnenak();
 		
 		tableModel = new MyTableModel();
 		
@@ -53,7 +53,6 @@ public class RankingJokalaria extends JPanel {
 		columnModel.getColumn(6).setPreferredWidth(150);
 		columnModel.getColumn(7).setPreferredWidth(170);
 		columnModel.getColumn(8).setPreferredWidth(100);
-
         // Turn off JTable's auto resize so that JScrollPane will show a horizontal
         // scroll bar.
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -63,7 +62,7 @@ public class RankingJokalaria extends JPanel {
     }
 
     private static void showFrame() {
-        JPanel panel = new RankingJokalaria();
+        JPanel panel = new HistorikokiOnenak2();
         panel.setOpaque(true);
 
         JFrame frame = new JFrame();
@@ -74,7 +73,7 @@ public class RankingJokalaria extends JPanel {
 			}
 		});
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        frame.setTitle("Jokalari hoberenak");
+        frame.setTitle("Historioki jokatu diren partida onenak");
         frame.setContentPane(panel);
         frame.pack();
         frame.setVisible(true);
@@ -83,7 +82,7 @@ public class RankingJokalaria extends JPanel {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-               RankingJokalaria.showFrame();
+               HistorikokiOnenak2.showFrame();
             }
         });
     }

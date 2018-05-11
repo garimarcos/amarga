@@ -15,8 +15,6 @@ public abstract class Karta implements Comparable<Karta> {
 		this.puntuak=pPuntuak;
 	}
 	
-	public int zenbatBalioDu(){ return puntuak; }
-	
 	public String getKolore(){ return kolore; }
 	
 	protected void setIndarra(int indarra){ this.indarra=indarra; }

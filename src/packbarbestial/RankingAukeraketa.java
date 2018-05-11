@@ -81,13 +81,13 @@ public class RankingAukeraketa {
 					RankingJokalaria.main(null);
 					break;
 				case 2:
-					RankingEguna.main(null);
+					RankingEguna2.main(null);
 					break;
 				case 3:
-					HistorikokiOnenak.main(null);
+					HistorikokiOnenak2.main(null);
 					break;
 				case 4:
-					BatezBestekoOnenak.main(null);
+					BatezBestekoOnenak2.main(null);
 					break;
 				}
 				frame.dispose();

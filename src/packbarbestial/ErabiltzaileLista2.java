@@ -10,13 +10,13 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class RankingJokalaria extends JPanel {
+public class ErabiltzaileLista2 extends JPanel {
 	
 	private JTable table;
-	private ArrayList<String>[] erabiltzaileak =  (ArrayList<String>[])(new ArrayList[9]);
+	private ArrayList<String>[] erabiltzaileak =  (ArrayList<String>[])(new ArrayList[7]);
 	private MyTableModel tableModel;
 	
-    public RankingJokalaria() {
+    public ErabiltzaileLista2() {
         initializeUI();
     }
 
@@ -24,21 +24,19 @@ public class RankingJokalaria extends JPanel {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(1129, 200));
         
-        erabiltzaileak = Datubasea.getnDatubasea().jokalariarenPartidaOnenak();
+        erabiltzaileak = Datubasea.getnDatubasea().erabiltzaileakIkusi();
 		
 		tableModel = new MyTableModel();
 		
-		tableModel.addColumn("Kodea",new Vector(erabiltzaileak[0]));
-		tableModel.addColumn("Kolorea", new Vector(erabiltzaileak[1]));
-		tableModel.addColumn("Data", new Vector(erabiltzaileak[2]));
-		tableModel.addColumn("Hasiera ordua", new Vector(erabiltzaileak[3]));
-		tableModel.addColumn("Bukaera ordua", new Vector(erabiltzaileak[4]));
-		tableModel.addColumn("Jokalariaren email", new Vector(erabiltzaileak[5]));
-		tableModel.addColumn("Jokalariaren puntuak", new Vector(erabiltzaileak[6]));
-		tableModel.addColumn("Ordenagailuaren puntuak", new Vector(erabiltzaileak[7]));
-		tableModel.addColumn("Irabazi du", new Vector(erabiltzaileak[8]));
-		//tableModel.insertRow(0, new Object[] { "Kodea","Kolorea","Data", "Hasiera ordua","Bukaera ordua","Jokalariaren email","Jokalariaren puntuak" ,"Ordenagailuaren puntuak","Irabazi du"});	
-		
+		tableModel.addColumn("Izena",new Vector(erabiltzaileak[0]));
+		tableModel.addColumn("Abizena", new Vector(erabiltzaileak[1]));
+		tableModel.addColumn("Pasahitza", new Vector(erabiltzaileak[2]));
+		tableModel.addColumn("Jaio urtea", new Vector(erabiltzaileak[3]));
+		tableModel.addColumn("email", new Vector(erabiltzaileak[4]));
+		tableModel.addColumn("Erregistro data", new Vector(erabiltzaileak[5]));
+		tableModel.addColumn("Mota", new Vector(erabiltzaileak[6]));
+		//tableModel.insertRow(0, new Object[] { "Izena","Abizena","Pasahitza", "Jaio urtea","email","Erregistro data","Mota" });
+	
 		table = new JTable(tableModel);
 		TableColumnModel columnModel = table.getColumnModel();
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -46,13 +44,11 @@ public class RankingJokalaria extends JPanel {
 		table.setDefaultRenderer(String.class, centerRenderer);
 		columnModel.getColumn(0).setPreferredWidth(50);
 		columnModel.getColumn(1).setPreferredWidth(100);
-		columnModel.getColumn(2).setPreferredWidth(100);
-		columnModel.getColumn(3).setPreferredWidth(150);
+		columnModel.getColumn(2).setPreferredWidth(80);
+		columnModel.getColumn(3).setPreferredWidth(80);
 		columnModel.getColumn(4).setPreferredWidth(150);
-		columnModel.getColumn(5).setPreferredWidth(150);
-		columnModel.getColumn(6).setPreferredWidth(150);
-		columnModel.getColumn(7).setPreferredWidth(170);
-		columnModel.getColumn(8).setPreferredWidth(100);
+		columnModel.getColumn(5).setPreferredWidth(100);
+		columnModel.getColumn(6).setPreferredWidth(50);
 
         // Turn off JTable's auto resize so that JScrollPane will show a horizontal
         // scroll bar.
@@ -63,18 +59,18 @@ public class RankingJokalaria extends JPanel {
     }
 
     private static void showFrame() {
-        JPanel panel = new RankingJokalaria();
+        JPanel panel = new ErabiltzaileLista2();
         panel.setOpaque(true);
 
         JFrame frame = new JFrame();
         frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent e) {
-				RankingAukeraketa.main(null);
+				
 			}
 		});
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        frame.setTitle("Jokalari hoberenak");
+        frame.setTitle("Erabiltzaileen lista");
         frame.setContentPane(panel);
         frame.pack();
         frame.setVisible(true);
@@ -83,7 +79,7 @@ public class RankingJokalaria extends JPanel {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-               RankingJokalaria.showFrame();
+               ErabiltzaileLista2.showFrame();
             }
         });
     }
