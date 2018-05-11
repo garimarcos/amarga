@@ -127,6 +127,8 @@ public class Puntuazioa {
 				
 				Datubasea.getnDatubasea().partidaBerriaSartu(jokKolore, hOrdua, hMin, hSeg, bOrdua, bMin, bSeg, jokEmail, puntuJok, puntuOrd, jokIrabazi);
 				frame.dispose();
+				AudioGaldu.stop();
+				AudioIrabazi.stop();
 				Jokatu.main(null);
 			}
 		});
@@ -153,12 +155,12 @@ public class Puntuazioa {
 		int ordKopInt = Integer.parseInt(ordKop);
 		int jokKop = Integer.parseInt(kopJok);
 		if(ordKopInt>jokKop) return false;
-		else{
+		else if (ordKopInt == jokKop){
 			int puntuJok = Integer.parseInt(jokPuntu);
 			int puntuOrd = Integer.parseInt(ordPuntu);
 			if(puntuJok<puntuOrd) return true;
 			else return false;
-		}
+		}else return true;
 	}
 
 }

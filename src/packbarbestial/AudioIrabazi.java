@@ -11,20 +11,24 @@ import sun.audio.AudioStream;
  * AudioStream and AudioPlayer code comes from a javaworld.com example.
  * @author alvin alexander, devdaily.com.
  */
-public class AudioIrabazi
-{
-  public static void main(String[] args) 
-  throws Exception
-  {
+public class AudioIrabazi{
+	
+	private static AudioStream audioStream;
+	
+  public static void main(String[] args) throws Exception{
     // open the sound file as a Java input stream
     String gongFile = "resources/celebration.wav";
     InputStream in = new FileInputStream(gongFile);
 
     // create an audiostream from the inputstream
-    AudioStream audioStream = new AudioStream(in);
+    audioStream = new AudioStream(in);
 
     // play the audio clip with the audioplayer class
     AudioPlayer.player.start(audioStream);
+  }
+  
+  public static void stop(){
+	  AudioPlayer.player.stop(audioStream);
   }
 }
 
