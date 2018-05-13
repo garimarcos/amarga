@@ -12,7 +12,6 @@ public class Jokalaria{
 	private int kop;
 	private int azkena;
 	private boolean hutsune;
-	//private Jokaera j;
 	private int kameleoi;
 	
 	public Jokalaria(String pEmail, String pKolore){
@@ -21,8 +20,9 @@ public class Jokalaria{
 		this.hartzeke=new Mazo();
 		this.eskuan=new Karta[4];
 		kop=0;
-		//hasieratu();
 	}
+	
+	public void addEskuan(int pos,Karta k){ eskuan[pos]=k;}//test gauzatzeko
 	
 	//public Mazo getHartzeke(){ return hartzeke; }//test gauzatzeko
 	
@@ -30,6 +30,7 @@ public class Jokalaria{
 	
 	public void setKolore(String pKolore){ 
 		kolorea=pKolore;
+		hutsune=false;
 		hasieratu();
 	}
 	

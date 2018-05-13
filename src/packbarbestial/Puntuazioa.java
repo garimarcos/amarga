@@ -130,6 +130,7 @@ public class Puntuazioa {
 				AudioIrabazi.stop();
 				AudioGaldu.stop();
 				Jokatu.main(null);
+				j.tableroaHutsitu();
 			}
 		});
 		panel.add(btnOk);

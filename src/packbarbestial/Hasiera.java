@@ -406,11 +406,11 @@ public class Hasiera extends JFrame implements Observer{
 				else if(botaOrd){
 					int pos=j.getTableroKop();
 					tableroanKartaIpini(k, pos,1);
-					if (!hasiera){
+					if (!hasiera && k>=1){
 						j.animaladakGauzatu(k,1);
 					}
 					hasiera = false;
-				}if(botaJok) j.animaladakGauzatu(k, 2);
+				}if(botaJok && k>=1) j.animaladakGauzatu(k, 2);
 			}catch(NullPointerException x){
 				JOptionPane.showMessageDialog(frame, "Hutsik");
 			}catch(IndexOutOfBoundsException x){

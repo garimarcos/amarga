@@ -37,6 +37,11 @@ public class Mahaia {
 		inpernua.add(pKarta);
 	}
 	
+	public void clear(){
+		zerua.clear();
+		inpernua.clear();
+	}
+	
 	public int[] lortuPuntuak(){
 		int[] puntuak=new int[4]; //0--> Jokalariaren karta kopurua 1--> Jokalariaren puntuak 2--> Ordenagailuaren karta kopurua 3--> Ordenagailuaren puntuak
 		int i = 0;

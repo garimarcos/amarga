@@ -22,8 +22,9 @@ public class Tableroa extends Observable{
 	public void gehituKarta(Karta pKarta){
 		kartak.add(pKarta);
 	}
-	
-	public int getKop(){ return kartak.size(); }
+	/** test **/
+	public void setKartak(ArrayList<Karta> k){ kartak=k;} //test gauzatzeko
+	public int getKop(){ return kartak.size(); } //test gauzatzeko
 	
 	public void animaladakGauzatu(int indarra, int jok){
 		kartak.get(kartak.size()-1).egikaritu();
@@ -31,7 +32,7 @@ public class Tableroa extends Observable{
 		int k=0;
 		while(!amaitu){
 			while(!kartak.get(k).errekurrenteaDa() && k<kartak.size()-1){
-				/*if(!kartak.get(k).errekurrenteaDa()) */k++;
+				k++;
 			}if(k==kartak.size()-1) amaitu=true;
 			else{
 				kartak.get(k).egikaritu();
@@ -98,6 +99,10 @@ public class Tableroa extends Observable{
 		}
 		setChanged();
 		notifyObservers(kartak);
+	}
+	
+	public void clear(){
+		kartak.clear();
 	}
 	
 }

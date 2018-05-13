@@ -101,6 +101,12 @@ public class Jokoa {
 		l.clear();
 	}
 	
+	public void tableroaHutsitu(){
+		m.clear();
+		t.clear();
+		t.deleteObservers();
+	}
+	
 	public int[] lortuPuntuak(){
 		return m.lortuPuntuak();
 	}

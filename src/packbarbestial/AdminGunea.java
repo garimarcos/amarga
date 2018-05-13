@@ -55,7 +55,7 @@ public class AdminGunea {
 		btnAdminErab.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				String[] args = new String[] {"1"};
-				ErabiltzaileLista2.main(args);
+				ErabiltzaileLista.main(args);
 			}
 		});
 		panel_1.add(btnAdminErab);
