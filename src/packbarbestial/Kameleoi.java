@@ -29,7 +29,7 @@ public class Kameleoi extends Karta {
 				}
 			}
 		}
-		else state.egikaritu();
+		else if(state.getIndarra()!=5) state.egikaritu();
 		super.setIndarra(5);
 	}
 	

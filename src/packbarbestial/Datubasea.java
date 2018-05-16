@@ -15,7 +15,7 @@ import java.sql.Connection;
 public class Datubasea {
 	
 		private String username="root";
-		private String password="shuaelsa10";
+		private String password="euiti";
 		private String zerbitzaria="jdbc:mysql://localhost:3306/jokoa?useSSL=false";
 		private Connection konexioa;
 	
