@@ -27,6 +27,9 @@ import javax.swing.JDialog;
 import javax.swing.JButton;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import javax.swing.JTextPane;
 
 public class Hasiera extends JFrame implements Observer{
 	
@@ -56,6 +59,9 @@ public class Hasiera extends JFrame implements Observer{
 	private int hMin = Calendar.getInstance().get(Calendar.MINUTE);
 	private int hSeg = Calendar.getInstance().get(Calendar.SECOND);
 	private JButton btnLaguntza;
+	private JMenuItem mntmPartidaAmaitu;
+	private JPopupMenu popupMenu;
+	private JTextPane txtpnSakatuHemenOrdenagailuak;
 
 	/**
 	 * Launch the application.
@@ -91,7 +97,12 @@ public class Hasiera extends JFrame implements Observer{
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				int erantzuna=JOptionPane.showConfirmDialog(frame, "Ziur irten nahi zarela?","Irteera",JOptionPane.INFORMATION_MESSAGE);
+				String[] aukerak=new String[3];
+				aukerak[0]="Bai";
+				aukerak[1]="Ez";
+				aukerak[2]="Atzera";
+				int erantzuna=JOptionPane.showOptionDialog(frame.getContentPane(),"Ziur irten nahi zarela?","Irteera", 0,JOptionPane.INFORMATION_MESSAGE,null,aukerak,null);
+				//int erantzuna=JOptionPane.showConfirmDialog(frame, "Ziur irten nahi zarela?","Irteera",JOptionPane.INFORMATION_MESSAGE);
 				if(erantzuna==JOptionPane.YES_OPTION) System.exit(0);
 				else if((erantzuna==JOptionPane.NO_OPTION) || (erantzuna==JOptionPane.CANCEL_OPTION)) frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			}
@@ -114,10 +125,10 @@ public class Hasiera extends JFrame implements Observer{
 		titulu = new JButtonPro("");
 		titulu.addMouseListener(new MouseAdapter() {
 	         public void mouseEntered(MouseEvent me) {
-	         
+	         popupMenu.setVisible(true);
 	         }
 	         public void mouseExited(MouseEvent me) {
-	        	
+	        	 popupMenu.setVisible(false);
 	         }
 	      });
 		titulu.addActionListener(new GertaeraKudeatzailea());
@@ -125,6 +136,14 @@ public class Hasiera extends JFrame implements Observer{
 		titulu.setIcon(new ImageIcon("img/logo-resize.png"));
 		//titulu.setIconURL("https://i.imgur.com/1bpmanW.png");
 		panel_goikoa.add(titulu);
+		
+		popupMenu = new JPopupMenu();
+		addPopup(titulu, popupMenu);
+		
+		txtpnSakatuHemenOrdenagailuak = new JTextPane();
+		txtpnSakatuHemenOrdenagailuak.setText("Sakatu hemen ordenagailuak jolasteko");
+		popupMenu.add(txtpnSakatuHemenOrdenagailuak);
+		popupMenu.setLocation(200,200);
 		
 		JLabelPro esLoQueHay = new JLabelPro("");
 		esLoQueHay.erdianJarri();
@@ -194,7 +213,7 @@ public class Hasiera extends JFrame implements Observer{
 		panel_behekoa.add(panelComboBox);
 		panelComboBox.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		btnLaguntza = new JButton("Laguntza");
+		btnLaguntza = new JButtonPro("Laguntza");
 		btnLaguntza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
@@ -283,9 +302,19 @@ public class Hasiera extends JFrame implements Observer{
 		mntmItxi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
+				System.exit(0);
 			}
 		});
 		menu.add(mntmItxi);
+		
+		mntmPartidaAmaitu = new JMenuItem("Partida amaitu");
+		mntmPartidaAmaitu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				Jokatu.main(null);
+			}
+		});
+		menu.add(mntmPartidaAmaitu);
 		
 		
 	}
@@ -560,6 +589,23 @@ public class Hasiera extends JFrame implements Observer{
 		return args;
 	}
 	
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
 }
 
 

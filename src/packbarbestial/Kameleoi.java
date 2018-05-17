@@ -29,6 +29,7 @@ public class Kameleoi extends Karta {
 				}
 			}
 		}
+		else if(state.getIndarra()==12) Tableroa.getnTableroa().hartuKartak().remove(this);
 		else if(state.getIndarra()!=5) state.egikaritu();
 		super.setIndarra(5);
 	}

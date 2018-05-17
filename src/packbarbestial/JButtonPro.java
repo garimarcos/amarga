@@ -1,5 +1,6 @@
 package packbarbestial;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -24,7 +25,7 @@ public class JButtonPro extends JButton {
 	}
 
 	public JButtonPro(String text) {
-		super(text);
+		super(text);		
 		// TODO Auto-generated constructor stub
 	}
 

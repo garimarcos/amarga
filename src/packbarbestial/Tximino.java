@@ -23,6 +23,7 @@ public class Tximino extends Karta {
 				Karta p = kar;
 				tximinoak.add(p);
 				i++;
+			}
 		}
 		if(i>1) {
 			bota(10);
@@ -34,7 +35,7 @@ public class Tximino extends Karta {
 				k.add(0,txim);
 			}
 			}
-		}
+		
 	}
 
 }
