@@ -70,7 +70,9 @@ public class Erregistroa {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				int erantzuna=JOptionPane.showConfirmDialog(frame, "Ziur irten nahi zarela?","Irteera",JOptionPane.INFORMATION_MESSAGE);
+				String[] aukerak={"Bai","Ez","Atzera"};
+				int erantzuna=JOptionPane.showOptionDialog(frame.getContentPane(),"Ziur irten nahi zarela?","Irteera", 0,JOptionPane.INFORMATION_MESSAGE,null,aukerak,null);
+				//int erantzuna=JOptionPane.showConfirmDialog(frame, "Ziur irten nahi zarela?","Irteera",JOptionPane.INFORMATION_MESSAGE);
 				if(erantzuna==JOptionPane.YES_OPTION) System.exit(0);
 				else if((erantzuna==JOptionPane.NO_OPTION) || (erantzuna==JOptionPane.CANCEL_OPTION)) frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			}
@@ -180,6 +182,12 @@ public class Erregistroa {
 			String jaioU = jaioUrtea.getText();
 			int jaiotzeUrt = Integer.parseInt(jaioU);
 			Datubasea.getnDatubasea().jokBerriaSartu(izena.getText(),abizena.getText(),pasahitza,jaiotzeUrt,email.getText());
+			izena.setText("");
+			abizena.setText("");
+			this.pasahitza.setText("");
+			pasahitzaBerretsi.setText("");
+			jaioUrtea.setText("");
+			email.setText("");
 		}catch(NumberFormatException x){
 			JOptionPane.showMessageDialog(frame, "Jaiotze-urtea egokia sartu","Error",JOptionPane.ERROR_MESSAGE);
 		}catch(PasahitzaOkerrakException x){

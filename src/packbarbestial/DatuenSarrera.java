@@ -52,10 +52,7 @@ public class DatuenSarrera {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				String[] aukerak=new String[3];
-				aukerak[0]="Bai";
-				aukerak[1]="Ez";
-				aukerak[2]="Atzera";
+				String[] aukerak={"Bai","Ez","Atzera"};
 				int erantzuna=JOptionPane.showOptionDialog(frame.getContentPane(),"Ziur irten nahi zarela?","Irteera", 0,JOptionPane.INFORMATION_MESSAGE,null,aukerak,null);
 				//int erantzuna=JOptionPane.showConfirmDialog(frame, "Ziur irten nahi zarela?","Irteera",JOptionPane.INFORMATION_MESSAGE);
 				if(erantzuna==JOptionPane.YES_OPTION) System.exit(0);

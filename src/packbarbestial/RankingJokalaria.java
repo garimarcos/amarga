@@ -22,7 +22,7 @@ public class RankingJokalaria extends JPanel {
 
     private void initializeUI() {
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(1129, 200));
+        setPreferredSize(new Dimension(1160, 200));
         
         erabiltzaileak = Datubasea.getnDatubasea().jokalariarenPartidaOnenak();
 		
@@ -74,7 +74,7 @@ public class RankingJokalaria extends JPanel {
 			}
 		});
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        frame.setTitle("Jokalari hoberenak");
+        frame.setTitle("Partida hoberenak");
         frame.setContentPane(panel);
         frame.pack();
         frame.setVisible(true);

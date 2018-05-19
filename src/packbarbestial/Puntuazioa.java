@@ -52,7 +52,7 @@ public class Puntuazioa {
 			puntuString[i] = String.valueOf(puntuak[i]);
 			i++;
 		}
-		frame = new JFrame();
+		frame = new JFrame("Puntuazioak");
 		frame.setBounds(100, 100, 509, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(5, 0, 0, 0));
