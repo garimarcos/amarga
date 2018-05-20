@@ -26,4 +26,7 @@ public class ListaJokalariak {
 		lista.clear();
 	}
 
+	public int getKop() { // test gauzatzeko
+		return lista.size();
+	}
 }

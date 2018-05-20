@@ -22,11 +22,14 @@ public class Jokalaria{
 		kop=0;
 	}
 	
-	public void addEskuan(int pos,Karta k){ eskuan[pos]=k;}//test gauzatzeko
+	public void addEskuan(int pos,Karta k){ 
+		eskuan[pos]=k;
+		kop++;
+	}//test gauzatzeko
 	
-	//public Mazo getHartzeke(){ return hartzeke; }//test gauzatzeko
+	public Mazo getHartzeke(){ return hartzeke; }//test gauzatzeko
 	
-	//public Karta[] getEskuan(){ return eskuan; }//test gauzatzeko
+	public Karta[] getEskuan(){ return eskuan; }//test gauzatzeko
 	
 	public void setKolore(String pKolore){ 
 		kolorea=pKolore;
@@ -87,9 +90,9 @@ public class Jokalaria{
 					ondoPosizioa[0]=1;
 					hutsune=false;
 					return ondoPosizioa;//ondo egin du
-				}else{
-					ondoPosizioa[0]=2;
-					return ondoPosizioa;//ez du hartu karta
+//				}else{
+//					ondoPosizioa[0]=2;
+//					return ondoPosizioa;//ez du hartu karta
 				}
 			}
 			else {

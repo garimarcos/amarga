@@ -63,5 +63,9 @@ public class Mahaia {
 		}
 		return puntuak;
 	}
+	
+	public ArrayList<Karta> getZerua(){  //test gauzatzeko
+		return zerua;
+	}
 
 }

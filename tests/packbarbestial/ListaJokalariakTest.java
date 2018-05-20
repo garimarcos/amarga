@@ -29,5 +29,12 @@ public class ListaJokalariakTest {
 		ListaJokalariak.getNireLista().add(new Jokalaria("amaia","laranja"));
 		assertNotNull(ListaJokalariak.getNireLista().jokLortu(1));
 	}
+	
+	@Test
+	public void testClear() {
+		ListaJokalariak.getNireLista().clear();
+		assertTrue(ListaJokalariak.getNireLista().getKop()==0);
+		assertTrue(ListaJokalariak.getNireLista().getKop()==1);
+	}
 
 }
