@@ -1,7 +1,6 @@
 package packbarbestial;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class AurreratuZebraEz implements Aurreratu { //HIPOPOTAMO
 

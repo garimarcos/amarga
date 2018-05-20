@@ -19,28 +19,15 @@ public class ListaJokalariakTest {
 
 	@Test
 	public void testAdd() {
-		ListaJokalariak.getNireLista().add(new Jokalaria("amaia","laranja"));
-		assertTrue(ListaJokalariak.getNireLista().getKop()==1);
+		Jokalaria j1 = new Jokalaria("amaia","laranja");
+		ListaJokalariak.getNireLista().add(j1);
+		assertEquals(ListaJokalariak.getNireLista().jokLortu(1),j1);
 	}
 
 	@Test
 	public void testJokLortu() {
 		ListaJokalariak.getNireLista().add(new Jokalaria("amaia","laranja"));
 		assertNotNull(ListaJokalariak.getNireLista().jokLortu(1));
-	}
-
-	@Test
-	public void testSetKop() {
-		ListaJokalariak.getNireLista().setKop(3);
-		assertTrue(ListaJokalariak.getNireLista().getKop()==3);
-		assertFalse(ListaJokalariak.getNireLista().getKop()==1);
-		ListaJokalariak.getNireLista().clear();
-	}
-
-	@Test
-	public void testGetKop() {
-		assertTrue(ListaJokalariak.getNireLista().getKop()==0);
-		assertFalse(ListaJokalariak.getNireLista().getKop()==1);
 	}
 
 }

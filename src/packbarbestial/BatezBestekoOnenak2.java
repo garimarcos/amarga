@@ -13,7 +13,7 @@ import java.util.Vector;
 public class BatezBestekoOnenak2 extends JPanel {
 	
 	private JTable table;
-	private ArrayList<String>[] erabiltzaileak =  (ArrayList<String>[])(new ArrayList[1]);
+	private ArrayList<String>[] erabiltzaileak =  (ArrayList<String>[])(new ArrayList[2]);
 	private MyTableModel tableModel;
 	
     public BatezBestekoOnenak2() {
@@ -22,13 +22,14 @@ public class BatezBestekoOnenak2 extends JPanel {
 
     private void initializeUI() {
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(370, 200));
+        setPreferredSize(new Dimension(500, 200));
         
-        erabiltzaileak = Datubasea.getnDatubasea().historikokiPartidaOnenak();
+        erabiltzaileak = Datubasea.getnDatubasea().batezBestekoPartidaOnenak();
 		
 		tableModel = new MyTableModel();
 		
-		tableModel.addColumn("Partida kodea",new Vector(erabiltzaileak[0]));
+		tableModel.addColumn("Jokalariaren email",new Vector(erabiltzaileak[0]));
+		tableModel.addColumn("Jokalariaren puntuen batez-bestekoa",new Vector(erabiltzaileak[1]));
 		//tableModel.insertRow(0, new Object[] { "Izena"});
 		
 		table = new JTable(tableModel);
@@ -37,8 +38,8 @@ public class BatezBestekoOnenak2 extends JPanel {
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		table.setDefaultRenderer(String.class, centerRenderer);
-		columnModel.getColumn(0).setPreferredWidth(100);
-
+		columnModel.getColumn(0).setPreferredWidth(200);
+		columnModel.getColumn(1).setPreferredWidth(250);
         // Turn off JTable's auto resize so that JScrollPane will show a horizontal
         // scroll bar.
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

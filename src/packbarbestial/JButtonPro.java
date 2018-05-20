@@ -1,6 +1,5 @@
 package packbarbestial;
 
-import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.MalformedURLException;

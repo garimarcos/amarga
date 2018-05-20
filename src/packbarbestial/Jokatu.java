@@ -3,8 +3,6 @@ package packbarbestial;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;

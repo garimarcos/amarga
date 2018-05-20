@@ -232,7 +232,6 @@ public class Datubasea {
 	public ArrayList<String>[] egunekoPartidaOnenak(){
 		PreparedStatement ps = null;
 		try{
-			String email = Jokoa.getnJokoa().jokEmail();
 			ps = konexioa.prepareStatement("(SELECT puntuJok FROM partida WHERE data=CURDATE()) UNION (SELECT puntuOrd FROM partida WHERE data=CURDATE()) ORDER BY puntuJok DESC"); //ez dakigu norenak diren
 			ResultSet rs = ps.executeQuery();
 			ArrayList<String>[] erabiltzaileak =  (ArrayList<String>[])(new ArrayList[1]);
@@ -262,7 +261,6 @@ public class Datubasea {
 	public ArrayList<String>[] historikokiPartidaOnenak(){
 		PreparedStatement ps = null;
 		try{
-			String email = Jokoa.getnJokoa().jokEmail();
 			ps = konexioa.prepareStatement("SELECT * FROM partida ORDER BY puntuJok DESC");
 			ResultSet rs = ps.executeQuery();
 			ArrayList<String>[] erabiltzaileak =  (ArrayList<String>[])(new ArrayList[9]);
@@ -292,10 +290,9 @@ public class Datubasea {
 	public ArrayList<String>[] batezBestekoPartidaOnenak(){
 		PreparedStatement ps = null;
 		try{
-			String email = Jokoa.getnJokoa().jokEmail();
-			ps = konexioa.prepareStatement("SELECT izena FROM jokalaria INNER JOIN partida ON jokEmail=email WHERE egoera=1 GROUP BY ORDER BY AVG(puntuJok) DESC");
+			ps = konexioa.prepareStatement("SELECT jokEmail, AVG(puntuJok) from partida GROUP BY jokEmail ORDER BY AVG(puntuJok) DESC");
 			ResultSet rs = ps.executeQuery();
-			ArrayList<String>[] erabiltzaileak =  (ArrayList<String>[])(new ArrayList[1]);
+			ArrayList<String>[] erabiltzaileak =  (ArrayList<String>[])(new ArrayList[2]);
 			for(int i=0;i<erabiltzaileak.length;i++){
 				erabiltzaileak[i]=new ArrayList<String>();
 			}

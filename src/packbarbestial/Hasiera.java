@@ -21,11 +21,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JButton;
-import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPopupMenu;
 import java.awt.Component;
@@ -309,6 +306,7 @@ public class Hasiera extends JFrame implements Observer{
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				Jokatu.main(null);
+				j.tableroaHutsitu();
 			}
 		});
 		menu.add(mntmPartidaAmaitu);
@@ -419,7 +417,9 @@ public class Hasiera extends JFrame implements Observer{
 						}
 						if(erantzuna==2) loro();
 						else if(erantzuna==3) kanguro();
-						else j.esleituKameleoi(erantzuna);		
+						else j.esleituKameleoi(erantzuna);	
+						
+							
 						
 					}
 					
