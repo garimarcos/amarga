@@ -19,7 +19,8 @@ public class AudioIrabazi{
     // open the sound file as a Java input stream
 	
 
-    InputStream in = new FileInputStream("resources/celebration.wav");
+	  InputStream in = AudioGaldu.class.getResourceAsStream("/celebration.wav");
+   // InputStream in = new FileInputStream("resources/celebration.wav");
 
     // create an audiostream from the inputstream
     audioStream = new AudioStream(in);

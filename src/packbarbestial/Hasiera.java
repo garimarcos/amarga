@@ -9,6 +9,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Observable;
@@ -69,7 +77,6 @@ public class Hasiera extends JFrame implements Observer{
 				try {
 					Hasiera window = new Hasiera();
 					window.frame.setVisible(true);
-					//nHasiera.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -111,7 +118,8 @@ public class Hasiera extends JFrame implements Observer{
 		
 		JLabelPro barBestial = new JLabelPro("");
 		barBestial.erdianJarri();
-		barBestial.setIcon(new ImageIcon("img/barBestial-resize.png"));
+		barBestial.setIcon(new ImageIcon(Hasiera.class.getResource("/barBestial-resize.png")));
+		//barBestial.setIcon(new ImageIcon("img/barBestial-resize.png"));
 		//barBestial.setIconURL("https://i.imgur.com/F3xnPNi.png");
 		
 		panel_goikoa.add(barBestial);
@@ -127,7 +135,7 @@ public class Hasiera extends JFrame implements Observer{
 	      });
 		titulu.addActionListener(new GertaeraKudeatzailea());
 		titulu.erdianJarri();
-		titulu.setIcon(new ImageIcon("img/logo-resize.png"));
+		titulu.setIcon(new ImageIcon(Hasiera.class.getResource("/logo-resize.png")));
 		//titulu.setIconURL("https://i.imgur.com/1bpmanW.png");
 		panel_goikoa.add(titulu);
 		
@@ -141,7 +149,8 @@ public class Hasiera extends JFrame implements Observer{
 		
 		JLabelPro esLoQueHay = new JLabelPro("");
 		esLoQueHay.erdianJarri();
-		esLoQueHay.setIcon(new ImageIcon("img/esLoQueHay-resize.png"));
+		esLoQueHay.setIcon(new ImageIcon(Hasiera.class.getResource("/esLoQueHay-resize.png")));
+		//esLoQueHay.setIcon(new ImageIcon("img/esLoQueHay-resize.png"));
 		//esLoQueHay.setIconURL("https://i.imgur.com/Ob4fbBg.png");		
 		panel_goikoa.add(esLoQueHay);
 		
@@ -156,7 +165,8 @@ public class Hasiera extends JFrame implements Observer{
 		
 		JLabelPro zerukoAtea = new JLabelPro("");
 		//zerukoAtea.setIconURL("https://i.imgur.com/ZxIaeus.png");
-		zerukoAtea.setIcon(new ImageIcon("img/puertaCielo-resize.png"));
+		//zerukoAtea.setIcon(new ImageIcon("img/puertaCielo-resize.png"));
+		zerukoAtea.setIcon(new ImageIcon(Hasiera.class.getResource("/puertaCielo-resize.png")));
 		zerukoAtea.erdianJarri();
 		panel_erdikoa.add(zerukoAtea);
 		
@@ -182,7 +192,8 @@ public class Hasiera extends JFrame implements Observer{
 		
 		JLabelPro patada = new JLabelPro("");
 		//patada.setIconURL("https://i.imgur.com/Sb87kRz.png");
-		patada.setIcon(new ImageIcon("img/patada-resize.png"));
+		///patada.setIcon(new ImageIcon("img/patada-resize.png"));
+		patada.setIcon(new ImageIcon(Hasiera.class.getResource("/patada-resize.png")));
 		patada.erdianJarri();
 		panel_erdikoa.add(patada);
 		
@@ -211,7 +222,9 @@ public class Hasiera extends JFrame implements Observer{
 		btnLaguntza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					Desktop.getDesktop().open(new java.io.File("resources/AraudiaBarBestial.pdf"));
+				    File f = new File((getClass().getResource("/AraudiaBarBestial.pdf").toURI()));
+				    Desktop.getDesktop().open(f);
+					//Desktop.getDesktop().open(new java.io.File("resources/AraudiaBarBestial.pdf"));
 				}catch(Exception x){
 					x.printStackTrace();
 				}
@@ -219,29 +232,36 @@ public class Hasiera extends JFrame implements Observer{
 		});
 		panelComboBox.add(btnLaguntza);
 		
+		
+		
 		//karta1.setIconURL(kartaurl[0]);
-		karta1.setIcon(new ImageIcon(kartaurl[0]));
+		//karta1.setIcon(new ImageIcon(kartaurl[0]));
+		karta1.setIcon(new ImageIcon(Hasiera.class.getResource(kartaurl[0])));
+		//karta1.setIcon(new ImageIcon(Hasiera.class.getResource("/berdea2.png")));
 		panel_behekoa.add(karta1);
 		karta1.erdianJarri();
 		
 		karta2 = new JButtonPro("");
 		karta2.addActionListener(new GertaeraKudeatzailea());
 		//karta2.setIconURL(kartaurl[1]);
-		karta2.setIcon(new ImageIcon(kartaurl[1]));
+		//karta2.setIcon(new ImageIcon(kartaurl[1]));
+		karta2.setIcon(new ImageIcon(Hasiera.class.getResource(kartaurl[1])));
 		karta2.erdianJarri();
 		panel_behekoa.add(karta2);
 		
 		karta3 = new JButtonPro("");
 		karta3.addActionListener(new GertaeraKudeatzailea());
 		//karta3.setIconURL(kartaurl[2]);
-		karta3.setIcon(new ImageIcon(kartaurl[2]));
+		//karta3.setIcon(new ImageIcon(kartaurl[2]));
+		karta3.setIcon(new ImageIcon(Hasiera.class.getResource(kartaurl[2])));
 		karta3.erdianJarri();
 		panel_behekoa.add(karta3);
 		
 		karta4 = new JButtonPro("");
 		karta4.addActionListener(new GertaeraKudeatzailea());
 		//karta4.setIconURL(kartaurl[3]);
-		karta4.setIcon(new ImageIcon(kartaurl[3]));
+		//karta4.setIcon(new ImageIcon(kartaurl[3]));
+		karta4.setIcon(new ImageIcon(Hasiera.class.getResource(kartaurl[3])));
 		karta4.erdianJarri();
 		panel_behekoa.add(karta4);
 		
@@ -263,23 +283,27 @@ public class Hasiera extends JFrame implements Observer{
 					String url=kokatu(indarra);
 					switch(posizioa){
 					case 0:
-						karta1.setIcon(new ImageIcon(url));
+						//karta1.setIcon(new ImageIcon(url));
+						karta1.setIcon(new ImageIcon(Hasiera.class.getResource(url)));
 						break;
 					case 1:
-						karta2.setIcon(new ImageIcon(url));
+						//karta2.setIcon(new ImageIcon(url));
+						karta2.setIcon(new ImageIcon(Hasiera.class.getResource(url)));
 						break;
 					case 2:
-						karta3.setIcon(new ImageIcon(url));
+						//karta3.setIcon(new ImageIcon(url));
+						karta3.setIcon(new ImageIcon(Hasiera.class.getResource(url)));
 						break;
 					case 3:
-						karta4.setIcon(new ImageIcon(url));
+						karta4.setIcon(new ImageIcon(Hasiera.class.getResource(url)));
+						//karta4.setIcon(new ImageIcon(url));
 						break;
 					}
 				}
 			}
 		});
 		hartzeke.erdianJarri();
-		hartzeke.setIcon(new ImageIcon("img/mazo-resize.png"));
+		hartzeke.setIcon(new ImageIcon(Hasiera.class.getResource("/mazo-resize.png")));
 		//hartzeke.setIconURL("https://i.imgur.com/7rFbePP.png");
 		panel_behekoa.add(hartzeke);
 	
@@ -310,7 +334,7 @@ public class Hasiera extends JFrame implements Observer{
 			}
 		});
 		menu.add(mntmPartidaAmaitu);
-		
+		frame.setVisible(true);
 		
 	}
 	private String kokatu(int indarra){
@@ -455,19 +479,24 @@ public class Hasiera extends JFrame implements Observer{
 		private void tableroanKartaIpini(int k,int pos,int jok){
 			switch(pos){
 			case 1:
-				tablero1.setIcon(new ImageIcon(j.getUrl(k,jok)));
+				//tablero1.setIcon(new ImageIcon(j.getUrl(k,jok)));
+				tablero1.setIcon(new ImageIcon(Hasiera.class.getResource(j.getUrl(k,jok))));
 				break;
 			case 2:
-				tablero2.setIcon(new ImageIcon(j.getUrl(k,jok)));
+				tablero2.setIcon(new ImageIcon(Hasiera.class.getResource(j.getUrl(k,jok))));
+				//tablero2.setIcon(new ImageIcon(j.getUrl(k,jok)));
 				break;
 			case 3:
-				tablero3.setIcon(new ImageIcon(j.getUrl(k,jok)));
+				tablero3.setIcon(new ImageIcon(Hasiera.class.getResource(j.getUrl(k,jok))));
+				//tablero3.setIcon(new ImageIcon(j.getUrl(k,jok)));
 				break;
 			case 4:
-				tablero4.setIcon(new ImageIcon(j.getUrl(k,jok)));
+				tablero4.setIcon(new ImageIcon(Hasiera.class.getResource(j.getUrl(k,jok))));
+				//tablero4.setIcon(new ImageIcon(j.getUrl(k,jok)));
 				break;
 			case 5:
-				tablero5.setIcon(new ImageIcon(j.getUrl(k,jok)));
+				tablero5.setIcon(new ImageIcon(Hasiera.class.getResource(j.getUrl(k,jok))));
+				//tablero5.setIcon(new ImageIcon(j.getUrl(k,jok)));
 				break;
 			}
 		}
@@ -482,23 +511,28 @@ public class Hasiera extends JFrame implements Observer{
 		while (i<kartak.size()-1){
 			switch(i){
 			case 0:
-				tablero1.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
+				tablero1.setIcon(new ImageIcon(Hasiera.class.getResource(j.getKartaUrl(kartak.get(i),kartak.get(i+1)))));
+				//tablero1.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
 				tablero2.setIcon(null);
 				tablero3.setIcon(null);
 				tablero4.setIcon(null);
 				tablero5.setIcon(null);
 				break;
 			case 2:
-				tablero2.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
+				tablero2.setIcon(new ImageIcon(Hasiera.class.getResource(j.getKartaUrl(kartak.get(i),kartak.get(i+1)))));
+				//tablero2.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
 				break;
 			case 4:
-				tablero3.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
+				tablero3.setIcon(new ImageIcon(Hasiera.class.getResource(j.getKartaUrl(kartak.get(i),kartak.get(i+1)))));
+				//tablero3.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
 				break;
 			case 6:
-				tablero4.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
+				tablero4.setIcon(new ImageIcon(Hasiera.class.getResource(j.getKartaUrl(kartak.get(i),kartak.get(i+1)))));
+				//tablero4.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
 				break;
 			case 8:
-				tablero5.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
+				tablero5.setIcon(new ImageIcon(Hasiera.class.getResource(j.getKartaUrl(kartak.get(i),kartak.get(i+1)))));
+				//tablero5.setIcon(new ImageIcon(j.getKartaUrl(kartak.get(i),kartak.get(i+1))));
 				break;
 			}
 			i++;

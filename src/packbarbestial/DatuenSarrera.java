@@ -68,7 +68,8 @@ public class DatuenSarrera {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		JLabelPro label = new JLabelPro("");
-		label.setIcon(new ImageIcon("img/logo-resizeHandia.png"));
+		label.setIcon(new ImageIcon(DatuenSarrera.class.getResource("/logo-resizeHandia.png")));
+		//label.setIcon(new ImageIcon("img/logo-resizeHandia.png"));
 		label.erdianJarri();
 		panel_1.add(label, BorderLayout.CENTER);
 		

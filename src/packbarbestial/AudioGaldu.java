@@ -19,7 +19,8 @@ public class AudioGaldu{
     // open the sound file as a Java input stream
 	
 
-    InputStream in = new FileInputStream("resources/lose.wav");
+	InputStream in = AudioGaldu.class.getResourceAsStream("/lose.wav");
+    //InputStream in = new FileInputStream("resources/lose.wav");
 
     // create an audiostream from the inputstream
     audioStream = new AudioStream(in);
